@@ -1,7 +1,7 @@
 # R4 Aerospace and Defence Private Limited
 
 ## Project Overview
-R4 represents Resilient, Responsible, Reconfigurable, and Reconnaissance systems. This repository includes aerospace system code, algorithms, and simulations.
+R4 represents Resilient, Responsible, Reconfigurable, and Reconnaissance systems.
 
 ## Setup Instructions
 1. Clone the repository
