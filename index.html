@@ -180,7 +180,8 @@
 
   <!-- ABOUT (R⁴ only) -->
   <section id="about" class="reveal" style="background:url('BG.jpg') center/cover no-repeat;position:relative;color:yellow">
-    <div class="container" style="position:relative;z-index:1">
+  <div style="position:absolute; inset:0; background:rgba(0,0,0,0.6);"></div>
+  <div class="container" style="position:relative;z-index:1">
       <h2>Our Vision & Principles</h2>
       <div class="divider"></div>
       <p class="sub" style="color:#00FFFF;font-weight:bold">ℝ<sup>4</sup> — Resilient · Responsive · Real-time · Reconnaissance</p>
@@ -216,48 +217,56 @@
   </section>
 
   <!-- SOLUTIONS -->
-  <section id="solutions" class="reveal">
-    <div class="container">
-      <h2>Our Solutions</h2>
-      <div class="divider"></div>
-      <p class="sub">All-weather intelligence via multi-modal sensing and AI-driven fusion.</p>
-<style>
-  .figure {
-    width: 400px;   /* set your desired width */
-    height: auto;   /* keep aspect ratio */
-  }
-</style>
-      <div class="grid grid-auto">
-        <div class="card delay-1">
-          <i class="fa-solid fa-satellite ico-gold" aria-hidden="true"></i>
-          <h3>“Insight Set” Constellation</h3>
-          <p class="muted">Optical, SAR, and cooperative tracking integrated for persistent global coverage and minutes-scale revisit.</p>
-          <div class="feature-list">
-            <span class="pill"><i class="fa-solid fa-cloud-moon" aria-hidden="true"></i> All-weather</span>
-            <span class="pill"><i class="fa-solid fa-wave-square" aria-hidden="true"></i> SAR + HSI fusion</span>
-            <span class="pill"><i class="fa-solid fa-eye" aria-hidden="true"></i> Night operations</span>
-            <span class="pill"><i class="fa-solid fa-globe" aria-hidden="true"></i> Global revisit</span>
-          </div>
-          <!-- Reduced brightness of CI.jpg -->
-          <img loading="lazy" src="CI.jpg" alt="Constellation Infrastructure diagram" class="figure dim"/>
-        </div>
+<section id="solutions" class="reveal">
+  <div class="container">
+    <h2>Our Solutions</h2>
+    <div class="divider"></div>
+    <p class="sub">All-weather intelligence via multi-modal sensing and AI-driven fusion.</p>
 
-        <div class="card delay-2">
-          <i class="fa-solid fa-brain ico-violet" aria-hidden="true"></i>
-          <h3>Proprietary Analytics Platform</h3>
-          <p class="muted">Multi-source fusion, anomaly detection, predictive modeling, and confidence-scored alerts for mission-grade decisions.</p>
-          <div class="feature-list">
-            <span class="pill"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Low-latency</span>
-            <span class="pill"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i> Data fusion</span>
-            <span class="pill"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Secure</span>
-            <span class="pill"><i class="fa-solid fa-gauge-high" aria-hidden="true"></i> Scalable</span>
-          </div>
-          <!-- Added BG2.png illustration specifically for this platform -->
-          <img loading="lazy" src="BG2.png" alt="Proprietary analytics platform architecture" class="figure" />
+    <style>
+      .figure {
+        width: 400px;       /* uniform width */
+        height: 250px;      /* uniform height */
+        object-fit: contain; /* keep full image visible inside box */
+        display: block;
+        margin: 0 auto;     /* center images */
+      }
+    </style>
+
+    <div class="grid grid-auto">
+      <div class="card delay-1">
+        <i class="fa-solid fa-satellite ico-gold" aria-hidden="true"></i>
+        <h3>“Insight Set” Constellation</h3>
+        <p class="muted">
+          Optical, SAR, and cooperative tracking integrated for persistent global coverage and minutes-scale revisit.
+        </p>
+        <div class="feature-list">
+          <span class="pill"><i class="fa-solid fa-cloud-moon" aria-hidden="true"></i> All-weather</span>
+          <span class="pill"><i class="fa-solid fa-wave-square" aria-hidden="true"></i> SAR + HSI fusion</span>
+          <span class="pill"><i class="fa-solid fa-eye" aria-hidden="true"></i> Night operations</span>
+          <span class="pill"><i class="fa-solid fa-globe" aria-hidden="true"></i> Global revisit</span>
         </div>
+        <img loading="lazy" src="CI.jpg" alt="Constellation Infrastructure diagram" class="figure"/>
+      </div>
+
+      <div class="card delay-2">
+        <i class="fa-solid fa-brain ico-violet" aria-hidden="true"></i>
+        <h3>Proprietary Analytics Platform</h3>
+        <p class="muted">
+          Multi-source fusion, anomaly detection, predictive modeling, and confidence-scored alerts for mission-grade decisions.
+        </p>
+        <div class="feature-list">
+          <span class="pill"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Low-latency</span>
+          <span class="pill"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i> Data fusion</span>
+          <span class="pill"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Secure</span>
+          <span class="pill"><i class="fa-solid fa-gauge-high" aria-hidden="true"></i> Scalable</span>
+        </div>
+        <img loading="lazy" src="BG2.png" alt="Proprietary analytics platform architecture" class="figure"/>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- LAYERS -->
   <section id="layers" class="soft-bg reveal" style="background:url('BG2.jpg') center/cover no-repeat">
@@ -611,5 +620,6 @@
   </script>
 </body>
 </html>
+
 
 
