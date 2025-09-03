@@ -86,12 +86,6 @@
     /* ---------- LAYERED APPROACH ---------- */
     .icon-emoji { font-size: 2rem; display:inline-block; margin-bottom:.6rem; }
 
-    /* ---------- METRICS (Counters) ---------- */
-    .metrics { display:grid; grid-template-columns: repeat(4,1fr); gap:1rem; text-align:center; }
-    .metric { background: var(--card); padding:1.4rem; border-radius: var(--radius); border:1px solid rgba(255,255,255,.06); }
-    .metric .num { font-family:'Montserrat',sans-serif; font-size: clamp(1.8rem,4vw,2.6rem); font-weight:700; }
-    .metric .label { color: var(--secondary); }
-
     /* ---------- TABS ---------- */
     .tabs { margin-top:1.4rem; }
     .tab-head { display:flex; flex-wrap:wrap; gap:.6rem; justify-content:center; }
@@ -236,9 +230,7 @@
   <div style="position:absolute; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.8); z-index:1;"></div>
 </section>
 
-
-
-  <!-- PROBLEM -->
+<!-- PROBLEM -->
   <section id="problem" class="soft-bg reveal">
     <div class="container">
       <h2>The Problem We Solve</h2>
@@ -428,21 +420,7 @@
     </div>
   </section>
 
-  <!-- METRICS / COUNTERS -->
-  <section id="metrics" class="soft-bg reveal">
-    <div class="container">
-      <h2>Mission‑Grade Metrics</h2>
-      <div class="divider"></div>
-      <div class="metrics">
-        <div class="metric"><div class="num" data-count="24">0</div><div class="label">Satellites (Target)</div></div>
-        <div class="metric"><div class="num" data-count="99.95">0</div><div class="label">Uptime SLA (%)</div></div>
-        <div class="metric"><div class="num" data-count="15">0</div><div class="label">Min Latency (min)</div></div>
-        <div class="metric"><div class="num" data-count="120">0</div><div class="label">Global Revisit (min)</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CAPABILITY TABS -->
+<!-- CAPABILITY TABS -->
   <section class="reveal">
     <div class="container">
       <h2>Capabilities</h2>
@@ -757,5 +735,6 @@
   </script>
 </body>
 </html>
+
 
 
