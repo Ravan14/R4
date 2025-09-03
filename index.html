@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ℝ4 Aerospace & Defence Private Limited</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary: #071427;
+      --primary-80: rgba(7, 20, 39, 0.85);
+      --secondary: #cfe3ff;
+      --accent: #00e5ff;
+      --accent-2: #6c5ce7;
+      --gradient: linear-gradient(135deg, var(--accent), var(--accent-2));
+      --text: #eef5ff;
+      --muted: rgba(255, 255, 255, 0.62);
+      --card: rgba(255, 255, 255, 0.06);
+      --glass: rgba(255, 255, 255, 0.1);
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+      --radius: 16px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: Arial, sans-serif; background: var(--primary); color: var(--text); line-height: 1.6; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+
+    /* ---------- NAV ---------- */
+    .nav { position: sticky; top: 0; z-index: 1000; backdrop-filter: saturate(150%) blur(10px); background: linear-gradient( to right, rgba(6, 15, 33, .75), rgba(6, 15, 33, .35) ); border-bottom: 1px solid rgba(255,255,255,.08); box-shadow: 0 4px 18px rgba(0,0,0,.3); }
+    .nav-inner { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.6rem 2rem; }
+    .brand { display:flex; align-items:center; gap:.8rem; text-decoration:none; color:var(--text); }
+    .brand img { width:44px; height:auto; }
+    .brand span { font-family:'Montserrat',sans-serif; font-weight:700; letter-spacing:.3px; }
+    .nav-links { display:flex; gap:1.2rem; flex-wrap:wrap; }
+    .nav-links a { color:var(--secondary); text-decoration:none; font-weight:600; padding:.4rem .7rem; border-radius:10px; transition: all .25s ease; }
+    .nav-links a:hover, .nav-links a.active { color:#fff; background:var(--glass); }
+
+    /* ---------- HERO ---------- */
+    header.hero { position: relative; min-height: 100vh; display:grid; place-items:center; text-align:center; overflow:hidden; background: radial-gradient(1000px 500px at 50% 0%, rgba(255,255,255,.08), transparent 60%), linear-gradient(var(--primary-80), var(--primary-80)), url('https://images.unsplash.com/photo-1541873676882-9f69741c099c?auto=format&fit=crop&w=2000&q=75') center/cover no-repeat; }
+    .stars { position:absolute; inset:0; background: transparent; pointer-events:none; }
+    .stars::before, .stars::after { content:""; position:absolute; inset:0; background-image: radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.7) 50%, transparent 50%), radial-gradient(1.5px 1.5px at 60% 70%, rgba(255,255,255,.6) 50%, transparent 50%), radial-gradient(1.5px 1.5px at 80% 20%, rgba(255,255,255,.45) 50%, transparent 50%), radial-gradient(1.5px 1.5px at 35% 85%, rgba(255,255,255,.6) 50%, transparent 50%), radial-gradient(1.5px 1.5px at 10% 60%, rgba(255,255,255,.55) 50%, transparent 50%); animation: drift 120s linear infinite; }
+    .stars::after { animation-duration: 160s; opacity:.6; }
+    @keyframes drift { from{ transform: translateY(0)} to{ transform: translateY(-800px)} }
+
+    .hero-content { position:relative; z-index:2; max-width: 900px; padding: 2rem; }
+    .hero .logo { width: 120px; height:auto; display:block; margin: 0 auto 1rem; }
+    .hero h1 { font-family:'Montserrat',sans-serif; font-size: clamp(2rem, 6vw, 3.4rem); margin:.5rem 0; text-shadow: var(--shadow); }
+    .tagline { font-size: clamp(1rem, 2.8vw, 1.35rem); color: var(--secondary); margin: 1rem auto 2rem; max-width: 700px; }
+    .cta-row { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+    .btn { display:inline-block; padding:.9rem 1.4rem; border-radius:12px; font-weight:700; text-decoration:none; transition: transform .2s ease, background .3s ease; }
+    .btn-primary { background: var(--gradient); color: var(--text); box-shadow: 0 8px 20px rgba(0,0,0,.35); }
+    .btn-primary:hover { transform: translateY(-3px) scale(1.01); filter: brightness(.95); }
+    .btn-ghost { background: transparent; color: var(--text); border:1px solid rgba(255,255,255,.2); }
+    .btn-ghost:hover { transform: translateY(-3px); background: var(--glass); }
+
+    /* ---------- HEADINGS ---------- */
+    section { padding: 5rem 0; position: relative; overflow: clip; }
+    h2 { font-family:'Montserrat',sans-serif; font-size: clamp(1.6rem, 3.2vw, 2.4rem); margin: 0 0 1.2rem; text-align:center; }
+    .sub { text-align:center; color: var(--secondary); max-width: 850px; margin: 0 auto 2.4rem; }
+    .divider { width: 64px; height: 4px; background: var(--gradient); border-radius: 4px; margin: .2rem auto 2.2rem; }
+
+    /* ---------- CARDS / GRIDS ---------- */
+    .grid { display:grid; gap: 1.8rem; }
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-auto { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+
+    .card { background: var(--card); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding: 1.6rem; box-shadow: var(--shadow); transition: transform .3s ease, box-shadow .3s ease; backdrop-filter: blur(6px); }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 14px 38px rgba(0,0,0,.45); }
+    .card i { font-size: 2rem; color: var(--accent); margin-bottom:.8rem; }
+    .card h3 { font-family:'Montserrat',sans-serif; margin:.2rem 0 .6rem; font-size:1.25rem; }
+
+    /* ---------- ABOUT ---------- */
+    .muted { color: var(--muted); }
+
+    /* ---------- PROBLEM ---------- */
+    .soft-bg { background: linear-gradient( to bottom, rgba(255,255,255,.04), rgba(255,255,255,.02) ); border-top: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.06); }
+    .media { display:flex; flex-wrap:wrap; align-items:center; gap:1.6rem; justify-content:center; }
+    .media video, .media img { width: min(720px, 100%); border-radius: var(--radius); box-shadow: var(--shadow); border:1px solid rgba(255,255,255,.08); }
+
+    /* ---------- SOLUTIONS ---------- */
+    .feature-list { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:1rem; margin-top:1rem; }
+    .pill { background: rgba(108,92,231,.16); color:#cfe0ff; border:1px solid rgba(108,92,231,.35); padding:.4rem .7rem; border-radius: 999px; font-size:.9rem; display:inline-flex; align-items:center; gap:.5rem; }
+
+    /* ---------- LAYERED APPROACH ---------- */
+    .icon-emoji { font-size: 2rem; display:inline-block; margin-bottom:.6rem; }
+
+    /* ---------- METRICS (Counters) ---------- */
+    .metrics { display:grid; grid-template-columns: repeat(4,1fr); gap:1rem; text-align:center; }
+    .metric { background: var(--card); padding:1.4rem; border-radius: var(--radius); border:1px solid rgba(255,255,255,.06); }
+    .metric .num { font-family:'Montserrat',sans-serif; font-size: clamp(1.8rem,4vw,2.6rem); font-weight:700; }
+    .metric .label { color: var(--secondary); }
+
+    /* ---------- TABS ---------- */
+    .tabs { margin-top:1.4rem; }
+    .tab-head { display:flex; flex-wrap:wrap; gap:.6rem; justify-content:center; }
+    .tab-head button { background: var(--glass); border:1px solid rgba(255,255,255,.12); color:var(--text); padding:.6rem 1rem; border-radius: 999px; cursor:pointer; font-weight:700; }
+    .tab-head button.active { background: var(--gradient); border-color: transparent; }
+    .tab-panel { display:none; margin-top:1rem; }
+    .tab-panel.active { display:block; }
+
+    /* ---------- TIMELINE ---------- */
+    .timeline { position: relative; margin:2rem auto; max-width: 900px; }
+    .timeline::before { content:""; position:absolute; left:50%; top:0; bottom:0; width:2px; background: rgba(255,255,255,.12); transform: translateX(-50%); }
+    .milestone { position:relative; width: 48%; padding:1rem 1.2rem; background: var(--card); border:1px solid rgba(255,255,255,.08); border-radius: var(--radius); margin:1rem 0; }
+    .milestone.left { left:0; }
+    .milestone.right { left:52%; }
+    .milestone .dot { position:absolute; top:1rem; width:12px; height:12px; background: var(--accent); border-radius:50%; box-shadow: 0 0 0 4px rgba(26,115,232,.2); }
+    .milestone.left .dot { right:-30px; }
+    .milestone.right .dot { left:-30px; }
+
+    /* ---------- FAQ ---------- */
+    .faq { max-width: 900px; margin: 0 auto; }
+    details { background: var(--card); border:1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding: 1rem 1.2rem; margin:.8rem 0; }
+    details[open] { background: rgba(255,255,255,.08); }
+    summary { cursor:pointer; font-weight:700; font-family:'Montserrat',sans-serif; }
+    .faq-search { text-align:center; margin: 0 auto 1rem; }
+    .faq-search input { width:min(680px,100%); background: var(--glass); color: var(--text); border:1px solid rgba(255,255,255,.14); border-radius: 999px; padding:.7rem 1rem; }
+
+    /* ---------- CONTACT ---------- */
+    .contact { text-align:center; }
+    .contact .actions a, .contact .actions button { margin:.4rem; }
+    .contact form { max-width:720px; margin:1rem auto 0; display:grid; gap: .9rem; grid-template-columns: repeat(2, 1fr); }
+    .contact form input, .contact form textarea { background: var(--glass); color: var(--text); border:1px solid rgba(255,255,255,.14); border-radius: 10px; padding:.8rem 1rem; font-size:1rem; }
+    .contact form textarea { grid-column: 1/-1; min-height: 140px; resize: vertical; }
+
+    /* ---------- FOOTER ---------- */
+    footer { background: #0a1730; border-top:1px solid rgba(255,255,255,.08); padding: 2rem 0; color: var(--secondary); }
+    .footer-content { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+    .social a { color: var(--secondary); font-size:1.3rem; margin:0 .5rem; text-decoration:none; }
+    .social a:hover { color: var(--accent); }
+
+    /* ---------- UTIL ---------- */
+    .reveal { opacity:0; transform: translateY(14px) scale(.98); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.on { opacity:1; transform: none; }
+    .delay-1 { transition-delay: .08s; } .delay-2{ transition-delay:.16s;} .delay-3{ transition-delay:.24s;} .delay-4{ transition-delay:.32s;}
+
+    .back-to-top { position: fixed; right: 18px; bottom: 18px; background: var(--gradient); color:#fff; border:none; border-radius: 999px; width:46px; height:46px; display:grid; place-items:center; box-shadow: var(--shadow); cursor:pointer; opacity:0; visibility:hidden; transition: opacity .25s ease; z-index: 1000; }
+    .back-to-top.show { opacity:1; visibility:visible; }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 1024px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } .metrics { grid-template-columns: repeat(2,1fr);} }
+    @media (max-width: 768px) {
+      .nav-inner { padding:.6rem 1rem; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .milestone, .milestone.right, .milestone.left { left:0; width:100%; }
+      .timeline::before { left: 12px; }
+      .milestone { padding-left: 2.2rem; }
+      .milestone .dot { left: -6px !important; right:auto; }
+    }
+
+    /* Reduced motion preference */
+    @media (prefers-reduced-motion: reduce) { * { animation:none !important; transition:none !important; } }
+
+    /* Offices map */
+    .map-embed { margin-top:1rem; border-radius: var(--radius); overflow:hidden; border:1px solid rgba(255,255,255,.08); box-shadow: var(--shadow); }
+    .map-embed iframe { width:100%; height:420px; border:0; }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a class="brand" href="#top" aria-label="R4 Home">
+        <img src="LOGO.png" alt="ℝ4 Logo" />
+        <span>ℝ<sup>4</sup> Aerospace & Defence</span>
+      </a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#problem">Problem</a>
+        <a href="#solutions">Solutions</a>
+        <a href="#layers">Layers</a>
+        <a href="#applications">Applications</a>
+        <a href="#metrics">Metrics</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#team">Team</a>
+        <a href="#faq">FAQ</a>
+        <a href="#offices">Offices</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+<!-- HERO -->
+<header id="top" class="hero" style="position: relative; height: 100vh; overflow: hidden;">
+  
+  <!-- Background Video -->
+  <video autoplay loop muted playsinline preload="auto" 
+         style="position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%;
+                width: auto; height: auto; z-index: -1; transform: translate(-50%, -50%);
+                object-fit: cover; filter: brightness(140%);">
+    <source src="C:/Users/kathi/OneDrive/Desktop/R4 Website/Intro.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Overlay -->
+  <div class="hero-overlay" style="position: absolute; top:0; left:0; width:100%; height:100%; 
+       background: rgba(0,0,0,0.1); z-index:0;"></div>
+
+  <!-- Content -->
+  <div class="hero-content" style="position: relative; z-index: 1; text-align: center; color: #ffffff; 
+       text-shadow: 0 0 10px rgba(0,0,0,0.7);">
+    <h1 style="font-size: 2.5rem; margin-bottom: 10px;">ℝ<sup>4</sup> Aerospace and Defence Private Limited</h1>
+    <p class="tagline" style="font-size: 1.2rem; margin-bottom: 20px;">The First Line of Defense. The Final Word in Rescue.</p>
+    
+    <div class="cta-row">
+      <a href="#contact" style="padding:12px 24px; background:#007bff; color:white; text-decoration:none; margin:5px; border-radius:6px; font-weight:bold;">Get in Touch</a>
+      <a href="#solutions" style="padding:12px 24px; border:2px solid white; color:white; text-decoration:none; margin:5px; border-radius:6px; font-weight:bold;">Explore Solutions</a>
+    </div>
+  </div>
+</header>
+
+  <!-- ABOUT -->
+<section id="about" class="reveal" 
+  style="background: url('C:/Users/kathi/OneDrive/Desktop/R4 Website/BG.jpg') no-repeat center center/cover; position: relative; color: yellow;">
+  
+  <div class="container" style="position: relative; z-index: 2;">
+    <h2>Our Vision & Principles</h2>
+    <div class="divider"></div>
+
+    <!-- Different color just for this line -->
+    <p class="sub" style="color: #00FFFF; font-weight: bold;">
+      ℝ<sup>4</sup> Aerospace & Defence pioneers a <em>Resilient, Responsible, Reconfigurable</em>, and <em>Reconnaissance</em>-driven space infrastructure, delivering fused, actionable intelligence for defence, environment, and disaster domains.
+    </p>
+
+    <div class="grid grid-4">
+      <div class="card delay-1"><i class="fas fa-shield-alt" style="color: orange;" aria-hidden="true"></i><h3>Resilient</h3><p class="muted">Systems engineered to withstand adverse conditions and maintain operational capability.</p></div>
+      <div class="card delay-2"><i class="fas fa-handshake" style="color: green;" aria-hidden="true"></i><h3>Responsible</h3><p class="muted">Ethics, safety, and accountability embedded throughout our operations.</p></div>
+      <div class="card delay-3"><i class="fas fa-wrench" style="color: blue;" aria-hidden="true"></i><h3>Reconfigurable</h3><p class="muted">Modular architectures adaptable to evolving mission requirements.</p></div>
+      <div class="card delay-4"><i class="fas fa-satellite-dish"style="color: brown;"  aria-hidden="true"></i><h3>Reconnaissance</h3><p class="muted">Advanced earth observation and intelligence-gathering capabilities.</p></div>
+    </div>
+  </div>
+
+  <!-- Dark overlay to reduce background brightness -->
+  <div style="position:absolute; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.8); z-index:1;"></div>
+</section>
+
+
+
+  <!-- PROBLEM -->
+  <section id="problem" class="soft-bg reveal">
+    <div class="container">
+      <h2>The Problem We Solve</h2>
+      <div class="divider"></div>
+      <div class="media">
+        <div style="max-width:760px">
+          <p><strong>Current Earth Observation (EO) systems are fragmented.</strong> Optical satellites struggle at night and under clouds; SAR lacks spectral detail; AIS/ADS‑B/APRS miss non‑cooperative or "dark" targets — creating gaps in situational awareness and delaying disaster response.</p>
+         <<video controls autoplay muted loop preload="metadata" aria-label="R4 problem explainer video">
+                        <source src="C:/Users/kathi/OneDrive/Desktop/R4 Website/4.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTIONS -->
+  <section id="solutions" class="reveal">
+    <div class="container">
+      <h2>Our Solutions</h2>
+      <div class="divider"></div>
+      <p class="sub">All‑weather intelligence via multi‑modal sensing and AI‑driven fusion.</p>
+
+      <div class="grid grid-auto">
+        <div class="card delay-1">
+          <i class="fas fa-satellite"style="color: orange;" ></i>
+          <h3>“Insight Set” Constellation</h3>
+          <p class="muted">A flagship constellation unifying optical, radar and tracking inputs for persistent global coverage and near real-time monitoring.</p>
+          <div class="feature-list">
+            <span class="pill"><i class="fa-solid fa-cloud-moon"></i> All‑weather</span>
+            <span class="pill"><i class="fa-solid fa-wave-square"></i> SAR + HSI fusion</span>
+            <span class="pill"><i class="fa-solid fa-eye"></i> Night‑time ops</span>
+            <span class="pill"><i class="fa-solid fa-globe"></i> Global revisit</span>
+          </div>
+        </div>
+        <div class="card delay-2">
+          <i class="fas fa-brain"style="color: green;" ></i>
+          <h3>PROPRIETARY ANALYTICS PLATFORM</h3>
+          <p class="muted">Advanced, proprietary analytics (R Analytics Platform) delivering multi‑source fusion, anomaly detection, predictive modeling, and confidence‑scored alerts for mission‑grade decisions.</p>
+          <div class="feature-list">
+            <span class="pill"><i class="fa-solid fa-bolt"></i> Low‑latency</span>
+            <span class="pill"><i class="fa-solid fa-diagram-project"></i> Data fusion</span>
+            <span class="pill"><i class="fa-solid fa-shield-halved"></i> Secure</span>
+            <span class="pill"><i class="fa-solid fa-gauge-high"></i> Scalable</span>
+          </div>
+        </div>
+      </div>
+
+      <img src="C:/Users/kathi/OneDrive/Desktop/R4 Website/CI.jpg" alt="Constellation Infrastructure diagram" style="width:min(900px,100%); height:auto; display:block; margin:2rem auto; border-radius:14px; box-shadow: var(--shadow); border:1px solid rgba(255,255,255,.08)" />
+    </div>
+  </section>
+
+<!-- LAYERS -->
+<section id="layers" class="soft-bg reveal">
+  <div class="container">
+    <h2>Our Layered Approach to Intelligence</h2>
+    <div class="divider"></div>
+    <div class="grid grid-4">
+
+      <!-- Layer 1 -->
+      <div class="card delay-1">
+        <span class="icon-emoji">📸</span>
+        <h3>Layer 1 – Sensing</h3>
+        <h4 class="muted">“Insight Set” Constellation</h4>
+        <p class="muted">
+          A multi-payload spaceborne sensing layer integrating:
+          <br><br>
+          Hyperspectral sensors for material identification, anomaly detection, and environmental monitoring.
+          <br><br>
+          Synthetic Aperture Radar (SAR) for all-weather, day-night imaging of terrain and infrastructure.
+          <br><br>
+          On-board cooperative receivers: AIS (ships), ADS-B (aircraft), APRS (vehicles, UAVs, mobile assets).
+          <br><br>
+          Together, these form a persistent, multi-modal foundation capturing spectral, structural, and positional signatures.
+        </p>
+      </div>
+
+      <!-- Layer 2 -->
+      <div class="card delay-2">
+        <span class="icon-emoji">📊</span>
+        <h3>Layer 2 – Integration</h3>
+        <h4 class="muted">Ground & Auxiliary Systems</h4>
+        <p class="muted">
+          Raw signals are downlinked and harmonized through advanced ground and auxiliary systems. 
+          Data from HSI, SAR, AIS, ADS-B, and APRS is time-synchronized, georeferenced, and fused, 
+          producing a coherent multi-domain operating picture ready for higher-level analytics.
+        </p>
+      </div>
+
+      <!-- Layer 3 -->
+      <div class="card delay-3">
+        <span class="icon-emoji">💻</span>
+        <h3>Layer 3 – Analytics</h3>
+        <h4 class="muted">Proprietary Analytics Platform</h4>
+        <p class="muted">
+          Data pipelines conduct fusion, pattern learning, anomaly scoring, and predictive modeling.
+          <br><br>
+          Hyperspectral → material classification, environmental monitoring.
+          <br>
+          SAR → change detection, infrastructure monitoring, motion analysis.
+          <br>
+          AIS/ADS-B/APRS → global asset tracking, behavioral insights, correlation with non-cooperative signatures.
+          <br><br>
+          The system outputs confidence-scored insights and prioritized alerts that convert big data into operational intelligence.
+        </p>
+      </div>
+
+      <!-- Layer 4 -->
+      <div class="card delay-4">
+        <span class="icon-emoji">📍</span>
+        <h3>Layer 4 – Decision</h3>
+        <h4 class="muted">Actionable Intelligence Delivery</h4>
+        <p class="muted">
+          Analytics outputs are delivered as taskable products, dashboards, and APIs, enabling integration into mission workflows. 
+          Applications span climate resilience, disaster response, maritime/aviation safety, border security, and defense intelligence. 
+          This closes the loop between sensing and action, ensuring stakeholders operate with real-time, trusted decision support.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+  <!-- APPLICATIONS -->
+  <section id="applications" class="reveal">
+    <div class="container">
+      <h2>Dual‑Use Applications</h2>
+      <div class="divider"></div>
+      <p class="sub">Serving high‑stakes defence missions and critical civil needs across land, sea, air, space, and urban domains.</p>
+      <div class="grid grid-3">
+        <!-- Defence & Security -->
+        <div class="card delay-1">
+          <i class="fas fa-user-secret" aria-hidden="true"></i>
+          <h3>Defence & Security</h3>
+          <p class="muted"><strong>Ops & ISR:</strong> Persistent awareness, threat detection, target tracking, and BDA under cloud cover and at night.</p>
+          <p class="muted"><strong>Border & Maritime:</strong> Dark‑target detection, smuggling interdiction, piracy monitoring with 24/7 coverage.</p>
+          <p class="muted"><strong>Intel:</strong> Network mapping, anomaly detection, predictive indicators for proactive missions.</p>
+        </div>
+        <!-- Disaster Response -->
+        <div class="card delay-2">
+          <i class="fas fa-house-damage" aria-hidden="true"></i>
+          <h3>Disaster Response</h3>
+          <p class="muted"><strong>Rapid Mapping:</strong> Pre/post‑event imagery for floods, fires, quakes, and storms.</p>
+          <p class="muted"><strong>Rescue:</strong> Geospatial tasking + APRS to coordinate first responders and evacuations.</p>
+          <p class="muted"><strong>Critical Infra:</strong> Damage scoring for roads, bridges, grids, and telecoms to prioritize recovery.</p>
+        </div>
+        <!-- Environmental & Civil -->
+        <div class="card delay-3">
+          <i class="fas fa-leaf" aria-hidden="true"></i>
+          <h3>Environmental & Civil</h3>
+          <p class="muted"><strong>Monitoring:</strong> Pollution plumes, illegal deforestation, soil/river health.</p>
+          <p class="muted"><strong>Agriculture:</strong> Crop stress, soil composition, irrigation planning, pest outbreak prediction.</p>
+          <p class="muted"><strong>Urban:</strong> SAR for structural health, congestion trends, and construction oversight.</p>
+        </div>
+        <!-- Aviation & Air Traffic -->
+        <div class="card delay-1">
+          <i class="fas fa-plane" aria-hidden="true"></i>
+          <h3>Aviation & Air Traffic</h3>
+          <p class="muted"><strong>ADS‑B Fusion:</strong> Cooperative tracking plus SAR/EO for non‑cooperative detections.</p>
+          <p class="muted"><strong>Airspace Security:</strong> Low‑altitude/UAS monitoring near sensitive sites.</p>
+          <p class="muted"><strong>Flight Safety:</strong> Weather‑linked risk insights and emergency response support.</p>
+        </div>
+        <!-- Maritime Domain Awareness -->
+        <div class="card delay-2">
+          <i class="fas fa-ship" aria-hidden="true"></i>
+          <h3>Maritime Domain Awareness</h3>
+          <p class="muted"><strong>IUU & Smuggling:</strong> Vessel classification in AIS‑dark zones via SAR/HSI fusion.</p>
+          <p class="muted"><strong>Port Security:</strong> Traffic analytics, dwell time, and compliance monitoring.</p>
+          <p class="muted"><strong>Env. Crime:</strong> Oil spills, bilge dumping, and waste discharge detection.</p>
+        </div>
+        <!-- Climate & Sustainability -->
+        <div class="card delay-3">
+          <i class="fas fa-globe" aria-hidden="true"></i>
+          <h3>Climate & Sustainability</h3>
+          <p class="muted"><strong>Change Tracking:</strong> Glacier retreat, sea‑level rise, desertification.</p>
+          <p class="muted"><strong>Carbon:</strong> Forest carbon stock estimation and industrial emissions insight.</p>
+          <p class="muted"><strong>Renewables:</strong> Performance/risk monitoring for solar, wind, and hydro assets.</p>
+        </div>
+        <!-- Space Domain Awareness -->
+        <div class="card delay-1">
+          <i class="fas fa-satellite" aria-hidden="true"></i>
+          <h3>Space Domain Awareness</h3>
+          <p class="muted"><strong>RSO Tracking:</strong> Catalogue maintenance of satellites & debris for spaceflight safety.</p>
+          <p class="muted"><strong>Conjunction:</strong> Predictive collision alerts & manoeuvre planning.</p>
+          <p class="muted"><strong>Counterspace:</strong> Monitoring jamming/spoofing, proximity ops, and hostile behaviours.</p>
+        </div>
+        <!-- Smart Cities & Infrastructure -->
+        <div class="card delay-2">
+          <i class="fas fa-city" aria-hidden="true"></i>
+          <h3>Smart Cities & Infrastructure</h3>
+          <p class="muted"><strong>Mobility:</strong> Congestion prediction and logistics optimisation.</p>
+          <p class="muted"><strong>Critical Sites:</strong> Airports, power plants, water facilities, pipelines surveillance.</p>
+          <p class="muted"><strong>Digital Twins:</strong> Geospatial feeds powering AI‑enabled urban twins.</p>
+        </div>
+        <!-- Humanitarian & Development -->
+        <div class="card delay-3">
+          <i class="fas fa-briefcase-medical" aria-hidden="true"></i>
+          <h3>Humanitarian & Development</h3>
+          <p class="muted"><strong>Food & Water Security:</strong> Drought/famine early warning; reservoir monitoring.</p>
+          <p class="muted"><strong>Refugee Support:</strong> Movement insights and camp planning for NGOs.</p>
+          <p class="muted"><strong>Public Health:</strong> Vectors & air‑quality signals linked to land/climate change.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS / COUNTERS -->
+  <section id="metrics" class="soft-bg reveal">
+    <div class="container">
+      <h2>Mission‑Grade Metrics</h2>
+      <div class="divider"></div>
+      <div class="metrics">
+        <div class="metric"><div class="num" data-count="24">0</div><div class="label">Satellites (Target)</div></div>
+        <div class="metric"><div class="num" data-count="99.95">0</div><div class="label">Uptime SLA (%)</div></div>
+        <div class="metric"><div class="num" data-count="15">0</div><div class="label">Min Latency (min)</div></div>
+        <div class="metric"><div class="num" data-count="120">0</div><div class="label">Global Revisit (min)</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITY TABS -->
+  <section class="reveal">
+    <div class="container">
+      <h2>Capabilities</h2>
+      <div class="divider"></div>
+      <div class="tabs">
+        <div class="tab-head" role="tablist" aria-label="Capabilities">
+          <button class="active" data-tab="tab1" role="tab" aria-selected="true">Fusion</button>
+          <button data-tab="tab2" role="tab" aria-selected="false">Tasking</button>
+          <button data-tab="tab3" role="tab" aria-selected="false">Security</button>
+          <button data-tab="tab4" role="tab" aria-selected="false">APIs</button>
+        </div>
+        <div id="tab1" class="tab-panel active" role="tabpanel">
+          <p class="sub">Pixel‑level SAR+HSI fusion, pansharpening, and physics‑aware models producing georegistered, uncertainty‑aware products.</p>
+        </div>
+        <div id="tab2" class="tab-panel" role="tabpanel">
+          <p class="sub">On‑demand acquisition windows, priority queuing, and edge filtering to minimize downlink + processing times.</p>
+        </div>
+        <div id="tab3" class="tab-panel" role="tabpanel">
+          <p class="sub">End‑to‑end encryption, role‑based access, and tamper‑evident audit trails aligned with defence compliance regimes.</p>
+        </div>
+        <div id="tab4" class="tab-panel" role="tabpanel">
+          <p class="sub">REST/OGC endpoints for tiles, vector alerts, and reports—drop‑in to common C2 and GIS stacks.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROADMAP / TIMELINE -->
+  <section id="roadmap" class="soft-bg reveal">
+    <div class="container">
+      <h2>Roadmap</h2>
+      <div class="divider"></div>
+      <div class="timeline">
+        <div class="milestone left"><span class="dot"></span><h3>Q4 2025</h3><p class="muted">Complete PDR for Insight Set and finalize sensor trade studies.</p></div>
+        <div class="milestone right"><span class="dot"></span><h3>Q2 2026</h3><p class="muted">Critical design freeze; begin payload AIT; ground segment MVP.</p></div>
+        <div class="milestone left"><span class="dot"></span><h3>Q4 2026</h3><p class="muted">Pathfinder launch (x2); early access program with pilot customers.</p></div>
+        <div class="milestone right"><span class="dot"></span><h3>2027+</h3><p class="muted">Scale constellation; enable taskable global intelligence at minutes‑scale.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team" class="reveal">
+    <div class="container">
+      <h2>Our Team</h2>
+      <div class="divider"></div>
+      <div class="grid grid-auto">
+        <div class="card delay-1" style="text-align:center;">
+          <i class="fas fa-user-astronaut" aria-hidden="true" style="font-size:2rem;color:var(--accent);"></i>
+          <h3>Aerospace Engineers</h3>
+          <p class="muted">Specialists in spacecraft design, propulsion, and orbital mechanics who create resilient and reconfigurable systems.</p>
+        </div>
+        <div class="card delay-2" style="text-align:center;">
+          <i class="fas fa-flask" aria-hidden="true" style="font-size:2rem;color:var(--accent);"></i>
+          <h3>Researchers</h3>
+          <p class="muted">Innovators in AI, earth observation, and geospatial analytics developing the intelligence behind our solutions.</p>
+        </div>
+        <div class="card delay-3" style="text-align:center;">
+          <i class="fas fa-users" aria-hidden="true" style="font-size:2rem;color:var(--accent);"></i>
+          <h3>Collaborators</h3>
+          <p class="muted">A global network of partners and advisors contributing interdisciplinary expertise and strategic insight.</p>
+        </div>
+      </div>
+      <div style="margin-top:2rem; text-align:center;">
+        <a href="#careers" class="btn btn-primary"><i class="fa-solid fa-rocket"></i> Join Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAREERS -->
+  <section id="careers" class="soft-bg reveal">
+    <div class="container">
+      <h2>Careers</h2>
+      <div class="divider"></div>
+      <p class="sub">We are always looking for passionate engineers, researchers, and innovators to join our mission. Explore opportunities to contribute to next‑generation aerospace and defence technologies.</p>
+      <div class="grid grid-auto">
+        <div class="card delay-1">
+          <i class="fas fa-satellite" style="font-size:2rem;color:var(--accent);"></i>
+          <h3>Satellite Systems Engineer</h3>
+          <p class="muted">Design and develop resilient spacecraft systems including payload integration, GNC, and power subsystems.</p>
+        </div>
+        <div class="card delay-2">
+          <i class="fas fa-brain" style="font-size:2rem;color:var(--accent);"></i>
+          <h3>AI & Data Scientist</h3>
+          <p class="muted">Develop advanced analytics, AI fusion models, and predictive algorithms for earth observation and situational awareness.</p>
+        </div>
+        <div class="card delay-3">
+          <i class="fas fa-network-wired" style="font-size:2rem;color:var(--accent);"></i>
+          <h3>Systems Integration Specialist</h3>
+          <p class="muted">Bridge space, ground, and user segments by ensuring seamless integration and performance across architectures.</p>
+        </div>
+      </div>
+      <div style="margin-top:2rem; text-align:center;">
+        <a href="mailto:careers@r4space.com" class="btn btn-ghost"><i class="fa-solid fa-envelope"></i> Send Your CV</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="soft-bg reveal">
+    <div class="container">
+      <h2>FAQs</h2>
+      <div class="divider"></div>
+      <div class="faq-search"><input type="search" id="faqSearch" placeholder="Search FAQs..." aria-label="Search FAQs"></div>
+      <div class="faq">
+        <details>
+          <summary>How do you handle cloud cover and night operations?</summary>
+          <p class="muted">We combine SAR (cloud‑penetrating) with optical and hyperspectral sensors, then fuse them through the ℝ Insight Engine. This ensures consistent intelligence regardless of weather, time of day, or visibility conditions.</p>
+        </details>
+
+        <details>
+          <summary>What data formats and products do you deliver?</summary>
+          <p class="muted">Our outputs include orthorectified imagery, spectral indices, object detection layers, vector alerts, temporal change maps, and standardized GIS layers. Delivery is via OGC‑compliant services, REST APIs, or secure data packages tailored to client infrastructure.</p>
+        </details>
+
+        <details>
+          <summary>Can your products integrate with existing C2/GIS tools?</summary>
+          <p class="muted">Yes. We provide standards‑based endpoints and SDK snippets for integration into common C2, ISR, and GIS platforms. Multi‑tenant access controls ensure secure role‑based integration.</p>
+        </details>
+
+        <details>
+          <summary>What industries or sectors can benefit from your technology?</summary>
+          <p class="muted">Defence and intelligence agencies, disaster management authorities, environmental agencies, agricultural organisations, maritime and aviation regulators, urban planners, and humanitarian NGOs all benefit from our multi‑domain solutions.</p>
+        </details>
+
+        <details>
+          <summary>How secure is the data you provide?</summary>
+          <p class="muted">Security is paramount. Data is encrypted in transit and at rest, with access controlled through multi‑factor authentication and detailed audit logs. We comply with defence and critical‑infrastructure security standards.</p>
+        </details>
+
+        <details>
+          <summary>What is the revisit rate of your constellation?</summary>
+          <p class="muted">Our Insight Set constellation is designed to achieve a global average revisit of 120 minutes, with regional tasking enabling much higher refresh rates for priority zones.</p>
+        </details>
+
+        <details>
+          <summary>How do you ensure data accuracy and reliability?</summary>
+          <p class="muted">We employ physics‑informed models, calibration with ground truth, and redundancy across sensing modalities. Automated quality checks and AI‑driven anomaly detection maintain high reliability.</p>
+        </details>
+
+        <details>
+          <summary>Do you offer customised solutions?</summary>
+          <p class="muted">Absolutely. We co‑design mission‑specific data pipelines and analytic dashboards with customers, ensuring outputs are tailored to operational needs.</p>
+        </details>
+
+        <details>
+          <summary>What support do you provide for disaster response?</summary>
+          <p class="muted">We maintain a dedicated rapid‑response tasking protocol for natural disasters, with high‑priority acquisition, expedited processing, and direct collaboration with relief agencies to deliver critical intelligence in hours.</p>
+        </details>
+
+        <details>
+          <summary>Can commercial organisations also access your services?</summary>
+          <p class="muted">Yes. Beyond defence and government, we serve commercial sectors including insurance, logistics, energy, agriculture, and infrastructure management, providing dual‑use value across industries.</p>
+        </details>
+      </div>
+      <div style="text-align:center; margin-top:1.4rem;">
+        <a class="btn btn-primary" href="#contact"><i class="fa-solid fa-circle-question"></i> Didn’t find your answer? Contact us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFICES -->
+  <section id="offices" class="reveal">
+    <div class="container">
+      <h2>Offices</h2>
+      <div class="divider"></div>
+      <div class="grid grid-auto">
+        <div class="card delay-1">
+          <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+          <h3>Coimbatore, India</h3>
+          <p class="muted">Replace with your exact address.</p>
+          <a class="btn btn-ghost" href="https://www.google.com/maps?q=Coimbatore%2C%20INDIA" target="_blank" rel="noopener">Open in Google Maps</a>
+        </div>
+      </div>
+      <div class="map-embed">
+        <iframe loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Coimbatore%2C%2India&output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact reveal">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <div class="divider"></div>
+      <p class="sub">For enquiries and collaborations, reach out. We typically respond within one business day.</p>
+      <div class="actions">
+        <a href="mailto:info@r4space.com" class="btn btn-primary"><i class="fa-solid fa-envelope"></i> Email Us</a>
+        <a href="tel:+0000000000" class="btn btn-ghost"><i class="fa-solid fa-phone"></i> Call</a>
+      </div>
+      <form aria-label="Contact form" onsubmit="event.preventDefault(); alert('Thanks! We\'ll be in touch.');">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="text" name="org" placeholder="Organisation" />
+        <input type="text" name="subject" placeholder="Subject" />
+        <textarea name="message" placeholder="Message"></textarea>
+        <button class="btn btn-primary" type="submit" style="grid-column:1/-1; justify-self:start;">Send</button>
+      </form>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-content">
+      <div>
+        <p>ℝ<sup>4</sup> Aerospace & Defence Private Limited</p>
+        <p>Building the Future of Global Intelligence.</p>
+      </div>
+      <div>
+        <p><i class="fas fa-envelope"></i> info@r4space.com</p>
+        <p><i class="fas fa-phone"></i> [Phone Number]</p>
+        <p><i class="fas fa-location-dot"></i> <a href="https://www.google.com/maps?q=Coimbatore,India" target="_blank" rel="noopener">Coimbatore, India</a></p>
+      </div>
+      <div class="social">
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="#" aria-label="X/Twitter"><i class="fab fa-x-twitter"></i></a>
+      </div>
+    </div>
+    <hr style="border-color:rgba(255,255,255,.2); margin:1rem 0;">
+    <div style="text-align:center; color: var(--muted); font-size:0.9rem;">
+      <p><strong>Visitors:</strong>
+        <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fr4space.com&title=Visitors" alt="Visitor counter" referrerpolicy="no-referrer-when-downgrade">
+      </p>
+      <p>
+        Built in India
+        <img src="https://flagcdn.com/w20/in.png" alt="India Flag" width="20" height="15" style="vertical-align:middle; margin:0 0.3em;"/>
+        For the World
+        <span role="img" aria-label="Globe">🌍</span>
+      </p>
+      <p>© 2025 ℝ4 Aerospace & Defence Private Limited. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+
+
+<p>© 2025 ℝ4 Aerospace & Defence Private Limited. All rights reserved.</p>
+
+  <button class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    // ---------- Scroll Reveal (IntersectionObserver)
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ---------- Active Nav Link on Scroll
+    const sections = [...document.querySelectorAll('section, header.hero')];
+    const links = [...document.querySelectorAll('.nav-links a')];
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(({ target, isIntersecting }) => {
+        if (isIntersecting) {
+          const id = target.id || 'top';
+          links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+        }
+      });
+    }, { threshold: 0.6 });
+    sections.forEach(s => spy.observe(s));
+
+    // ---------- Back to Top
+    const back = document.querySelector('.back-to-top');
+    window.addEventListener('scroll', () => { if (window.scrollY > 600) back.classList.add('show'); else back.classList.remove('show'); });
+    back.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // ---------- Counters
+    const counterEls = document.querySelectorAll('.metric .num');
+    const runCounter = (el) => {
+      const end = parseFloat(el.dataset.count);
+      const isInt = Number.isInteger(end);
+      const duration = 1600; const start = performance.now();
+      const step = (now) => {
+        const p = Math.min(1, (now - start) / duration);
+        const val = end * p;
+        el.textContent = isInt ? Math.round(val) : val.toFixed(2);
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+    const metricObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { runCounter(e.target); metricObs.unobserve(e.target); } });
+    }, { threshold: 0.5 });
+    counterEls.forEach(el => metricObs.observe(el));
+
+    // ---------- Tabs
+    const head = document.querySelector('.tab-head');
+    if (head) {
+      head.addEventListener('click', (e) => {
+        const btn = e.target.closest('button[data-tab]');
+        if (!btn) return;
+        document.querySelectorAll('.tab-head button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const id = btn.dataset.tab;
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+      });
+    }
+
+    // ---------- FAQ Search Filter
+    const faqInput = document.getElementById('faqSearch');
+    if (faqInput) {
+      faqInput.addEventListener('input', () => {
+        const q = faqInput.value.toLowerCase();
+        document.querySelectorAll('#faq details').forEach(d => {
+          const text = d.textContent.toLowerCase();
+          d.style.display = text.includes(q) ? '' : 'none';
+        });
+      });
+    }
+  </script>
+</body>
+</html>
