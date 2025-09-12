@@ -56,10 +56,7 @@
     .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.6rem 2rem}
     .brand{display:flex;align-items:center;gap:.8rem;text-decoration:none;color:var(--text)}
     .brand img{width:44px;height:auto}
-    .brand span{
-      font-family:"Roboto", system-ui, -apple-system, "Segoe UI", Arial, "Helvetica Neue", Roboto, "Noto Sans", sans-serif;
-      font-weight:900;letter-spacing:.2px
-    }
+    .brand span{font-weight:900;letter-spacing:.2px}
     .nav-links{display:flex;gap:1.2rem;flex-wrap:wrap}
     .nav-links a{color:var(--secondary);text-decoration:none;font-weight:600;padding:.4rem .7rem;border-radius:10px;transition:all .25s;
       font-size: clamp(14px, 0.6vw + 0.5rem, 16px)}
@@ -71,10 +68,7 @@
       linear-gradient(var(--primary-80),var(--primary-80)),
       url('https://images.unsplash.com/photo-1541873676882-9f69741c099c?auto=format&fit=crop&w=2000&q=75') center/cover no-repeat}
     .hero-content{position:relative;z-index:2;max-width:900px;padding:2rem}
-    .hero h1{
-      font-family:"Roboto", system-ui, -apple-system, "Segoe UI", Arial, "Helvetica Neue", Roboto, "Noto Sans", sans-serif;
-      font-size:var(--fs-h1);margin:.5rem 0;text-shadow:var(--shadow);font-weight:900;letter-spacing:-.01em;line-height:1.2
-    }
+    .hero h1{font-size:var(--fs-h1);margin:.5rem 0;text-shadow:var(--shadow);font-weight:900;letter-spacing:-.01em;line-height:1.2}
     .tagline{font-size:var(--fs-sub);color:var(--secondary);margin:1rem auto 2rem;max-width:700px}
     .cta-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
     .btn{display:inline-block;padding:.9rem 1.4rem;border-radius:12px;font-weight:700;text-decoration:none;transition:transform .2s,background .3s;
@@ -86,12 +80,8 @@
 
     /* HEADINGS */
     section{padding:5rem 0;position:relative;overflow:clip}
-    h2{
-      font-family:"Roboto", system-ui, -apple-system, "Segoe UI", Arial, "Helvetica Neue", Roboto, "Noto Sans", sans-serif;
-      font-size:var(--fs-h2);margin:0 0 1.2rem;text-align:center;font-weight:900;letter-spacing:-.01em;line-height:1.22
-    }
-    h3{font-family:"Roboto", system-ui, -apple-system, "Segoe UI", Arial, "Helvetica Neue", Roboto, "Noto Sans", sans-serif;
-      font-size:var(--fs-h3);font-weight:700;letter-spacing:-.005em}
+    h2{font-size:var(--fs-h2);margin:0 0 1.2rem;text-align:center;font-weight:900;letter-spacing:-.01em;line-height:1.22}
+    h3{font-size:var(--fs-h3);font-weight:700;letter-spacing:-.005em}
 
     .sub{text-align:center;color:var(--secondary);max-width:850px;margin:0 auto 2.4rem;font-size:var(--fs-sub)}
     .divider{width:64px;height:4px;background:var(--gradient);border-radius:4px;margin:.2rem auto 2.2rem}
@@ -201,6 +191,9 @@
       box-shadow:var(--shadow);
       border:1px solid rgba(255,255,255,.08)
     }
+
+    /* Small local tweak for card figures (kept) */
+    .card .figure { width: 200px; height: 125px; object-fit: contain; display: block; margin: 0 auto; }
   </style>
 </head>
 <body>
@@ -213,15 +206,13 @@
       </a>
       <div class="nav-links">
         <a href="#about">About</a>
-        <!-- FIX: link matched to lowercase id -->
         <a href="#opportunity">Opportunity</a>
         <a href="#solutions">Solutions</a>
-        <a href="#layers">Layers</a>
+        <!-- removed: <a href="#layers">Layers</a> -->
         <a href="#applications">Applications</a>
         <a href="#capabilities">Capabilities</a>
         <a href="#roadmap">Roadmap</a>
         <a href="#team">Team</a>
-        <!-- FIX: Careers now points to #careers -->
         <a href="#careers">Careers</a>
         <a href="#faq">FAQ</a>
         <a href="#offices">Offices</a>
@@ -238,8 +229,8 @@
     </video>
     <div class="hero-overlay" style="position:absolute;inset:0;background:rgba(0,0,0,.1);z-index:0"></div>
     <div class="hero-content" style="z-index:1;text-align:center;color:#fff;text-shadow:0 0 10px rgba(0,0,0,.7)">
-    <h1 class="brand"><span class="math">ℝ<sup>4</sup></span> Aerospace and Defence Private Limited </h1>
-     <p class="tagline">The First Line of Defense. The Final Word in Rescue.</p>
+      <h1 class="brand"><span>ℝ<sup>4</sup></span> Aerospace and Defence Private Limited</h1>
+      <p class="tagline">The First Line of Defense. The Final Word in Rescue.</p>
       <div class="cta-row">
         <a href="#contact" class="btn btn-primary"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Get in Touch</a>
         <a href="#solutions" class="btn btn-ghost"><i class="fa-solid fa-compass-drafting" aria-hidden="true"></i> Explore Solutions</a>
@@ -277,7 +268,7 @@
       <div class="media">
         <div style="max-width:760px">
           <p><strong>Current Earth Observation systems are fragmented.</strong> Optical struggles at night/under cloud; SAR lacks spectral detail; AIS/ADS-B/APRS miss non-cooperative targets — creating gaps in awareness and delaying response.</p>
-          <video controls autoplay muted loop playsinline preload="metadata" aria-label="R4 problem explainer video">
+          <video controls muted loop playsinline preload="metadata" aria-label="R4 problem explainer video">
             <source src="4.mp4" type="video/mp4"/>
           </video>
         </div>
@@ -285,17 +276,12 @@
     </div>
   </section>
 
-  <!-- SOLUTIONS -->
+  <!-- SOLUTIONS (merged with former LAYERS/FRAMEWORK) -->
   <section id="solutions" class="reveal">
     <div class="container">
-      <h2>Our Solutions</h2>
+      <h2>Our Solutions & 4D Framework</h2>
       <div class="divider"></div>
-      <p class="sub">All-weather intelligence via multi-modal sensing and AI-driven fusion.</p>
-
-      <style>
-        /* keep figure sizing consistent for images placed inside cards */
-        .figure { width: 200px; height: 125px; object-fit: contain; display: block; margin: 0 auto; }
-      </style>
+      <p class="sub">All-weather intelligence via multi-modal sensing and AI-driven fusion — delivered through our 4D (ℝ<sup>4</sup>) layered framework.</p>
 
       <div class="grid grid-auto">
         <div class="card delay-1">
@@ -328,65 +314,50 @@
           <img loading="lazy" src="BG2.png" alt="Proprietary analytics platform architecture" class="figure"/>
         </div>
       </div>
+
+      <!-- Former LAYERS content starts -->
+      <div class="divider"></div>
+      <h2 style="color:#FFD700;text-align:center;margin-top:1rem">Layered Approach — The 4Dimensional Intelligence Framework</h2>
+      <p class="sub" style="text-align:center;color:#00FFFF;font-weight:bold">Resilient · Responsive · Real-time · Reconnaissance</p>
+      <p style="text-align:center;color:#bbb;max-width:900px;margin:20px auto;">
+        A structured, defense-grade intelligence pipeline that transforms spaceborne sensing into mission-ready decision support.
+      </p>
+
+      <img src="4D2.png" alt="4D Intelligence Framework diagram" class="img-adjustable" style="--img-max: var(--framework-img-max);" loading="lazy" />
+
+      <div class="grid grid-4" style="margin-top:1.4rem">
+        <div class="card delay-1">
+          <i class="fa-solid fa-camera-rotate ico-gold" aria-hidden="true"></i>
+          <h3 style="color:#FFD700;">Dimension 1 – Reconnaissance (Sensing Layer)</h3>
+          <h4 class="muted">“Insight Set” Constellation</h4>
+          <p class="muted">Integrated optical, SAR and tracking sensors capture spectral, structural and positional signatures for persistent coverage.</p>
+        </div>
+        <div class="card delay-2">
+          <i class="fa-solid fa-network-wired ico-teal" aria-hidden="true"></i>
+          <h3 style="color:#FFD700;">Dimension 2 – Resilient (Integration Layer)</h3>
+          <h4 class="muted">Ground & Auxiliary Systems</h4>
+          <p class="muted">Downlink, time-sync, georeference and fuse streams into a coherent, trusted operating picture resilient to disruption.</p>
+        </div>
+        <div class="card delay-3">
+          <i class="fa-solid fa-microscope ico-sky" aria-hidden="true"></i>
+          <h3 style="color:#FFD700;">Dimension 3 – Responsive (Analytics Layer)</h3>
+          <h4 class="muted">Proprietary Analytics Platform</h4>
+          <p class="muted">Fusion, pattern learning, anomaly scoring and predictive models produce prioritized, confidence-scored insights.</p>
+        </div>
+        <div class="card delay-4">
+          <i class="fa-solid fa-crosshairs ico-rose" aria-hidden="true"></i>
+          <h3 style="color:#FFD700;">Dimension 4 – Real-time (Decision Layer)</h3>
+          <h4 class="muted">Actionable Intelligence Delivery</h4>
+          <p class="muted">Dashboards, taskable products and secure APIs integrate into C2/GIS workflows for real-time decision support.</p>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:40px;font-size:20px;color:#FFD700;">
+        “Our 4D (ℝ<sup>4</sup>) layered approach ensures stakeholders operate with real-time, trusted decision support.”
+      </div>
+      <!-- Former LAYERS content ends -->
     </div>
   </section>
-
-  <!-- LAYERS -->
-  <section id="layers" class="soft-bg reveal" style="background:url('BG2.jpg') center/cover no-repeat">
-    <div class="container">
-
-      <!-- R⁴ Intelligence Framework -->
-      <section id="framework" class="reveal" 
-        style="background: url('BG2.jpg') no-repeat center center/cover; position: relative; color: white; padding: 60px 0; border-radius: 16px;">
-        <div class="container" style="position: relative; z-index: 2;">
-          <h2 style="color: #FFD700; text-align: center;">Layered Approach — The 4Dimensional Intelligence Framework</h2>
-          <div class="divider"></div>
-          <p class="sub" style="text-align: center; color: #00FFFF; font-size: 18px; font-weight: bold;">
-            Resilient · Responsive · Real-time · Reconnaissance
-          </p>
-          <p style="text-align: center; color: #bbb; max-width: 900px; margin: 20px auto;">
-            A structured, defense-grade intelligence pipeline that transforms spaceborne sensing into mission-ready decision support.
-          </p>
-
-          <!-- 4D2.png with adjustable max width -->
-          <img src="4D2.png" alt="4D Intelligence Framework diagram" class="img-adjustable" style="--img-max: var(--framework-img-max);" loading="lazy" />
-
-          <div class="divider"></div>
-          <div class="grid grid-4">
-            <div class="card delay-1">
-              <i class="fa-solid fa-camera-rotate ico-gold" aria-hidden="true"></i>
-              <h3 style="color:#FFD700;">Dimension 1 – Reconnaissance (Sensing Layer)</h3>
-              <h4 class="muted">“Insight Set” Constellation</h4>
-              <p class="muted">Integrated optical, SAR and tracking sensors capture spectral, structural and positional signatures for persistent coverage.</p>
-            </div>
-            <div class="card delay-2">
-              <i class="fa-solid fa-network-wired ico-teal" aria-hidden="true"></i>
-              <h3 style="color:#FFD700;">Dimension 2 – Resilient (Integration Layer)</h3>
-              <h4 class="muted">Ground & Auxiliary Systems</h4>
-              <p class="muted">Downlink, time-sync, georeference and fuse streams into a coherent, trusted operating picture resilient to disruption.</p>
-            </div>
-            <div class="card delay-3">
-              <i class="fa-solid fa-microscope ico-sky" aria-hidden="true"></i>
-              <h3 style="color:#FFD700;">Dimension 3 – Responsive (Analytics Layer)</h3>
-              <h4 class="muted">Proprietary Analytics Platform</h4>
-              <p class="muted">Fusion, pattern learning, anomaly scoring and predictive models produce prioritized, confidence-scored insights.</p>
-            </div>
-            <div class="card delay-4">
-              <i class="fa-solid fa-crosshairs ico-rose" aria-hidden="true"></i>
-              <h3 style="color:#FFD700;">Dimension 4 – Real-time (Decision Layer)</h3>
-              <h4 class="muted">Actionable Intelligence Delivery</h4>
-              <p class="muted">Dashboards, taskable products and secure APIs integrate into C2/GIS workflows for real-time decision support.</p>
-            </div>
-          </div>
-
-          <!-- Tagline -->
-          <div style="text-align: center; margin-top: 40px; font-size: 20px; color: #FFD700;">
-            “Our 4D (ℝ<sup>4</sup>) layered approach ensures stakeholders operate with real-time, trusted decision support.”
-          </div>
-        </div>
-      </section>
-    </div>
-  </section> <!-- ✅ properly closed #layers -->
 
   <!-- DUAL-USE APPLICATIONS -->
   <section id="applications" class="reveal">
@@ -395,7 +366,6 @@
       <div class="divider"></div>
       <p class="sub">Designed for high-stakes defence missions and critical civil needs — equally weighted.</p>
 
-      <!-- D3.png with adjustable max width -->
       <img src="D3.png" alt="Dual-use applications overview" class="img-adjustable dim" style="--img-max: var(--applications-img-max);" loading="lazy" />
 
       <div class="grid grid-2">
@@ -669,15 +639,15 @@
       </div>
       <div style="color:#fff;">
         <p>
-          <i class="fas fa-envelope" aria-hidden="true" style="color:#00e5ff;"></i> 
+          <i class="fa-solid fa-envelope" aria-hidden="true" style="color:#00e5ff;"></i> 
           <a href="mailto:info@r4space.com" style="color:#fff; text-decoration:none;">info@r4space.com</a>
         </p>
         <p>
-          <i class="fas fa-phone" aria-hidden="true" style="color:#00e5ff;"></i> 
+          <i class="fa-solid fa-phone" aria-hidden="true" style="color:#00e5ff;"></i> 
           <a href="tel:+918056786745" style="color:#fff; text-decoration:none;">+91 80567 86745</a>
         </p>
         <p>
-          <i class="fas fa-location-dot" aria-hidden="true" style="color:#00e5ff;"></i> 
+          <i class="fa-solid fa-location-dot" aria-hidden="true" style="color:#00e5ff;"></i> 
           <a href="https://www.google.com/maps?q=Puliampatti,India" target="_blank" rel="noopener" style="color:#fff; text-decoration:none;">Puliampatti, India</a>
         </p>
       </div>
@@ -723,14 +693,10 @@
       const id=btn.dataset.tab;document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
       document.getElementById(id).classList.add('active');});}
 
-    // FAQ filter (FIX: correct container selector)
+    // FAQ filter
     const faqInput=document.getElementById('faqSearch');
     if(faqInput){faqInput.addEventListener('input',()=>{const q=faqInput.value.toLowerCase();
       document.querySelectorAll('#faq details').forEach(d=>{const t=d.textContent.toLowerCase();d.style.display=t.includes(q)?'':'none';});});}
   </script>
 </body>
 </html>
-
-
-
-
