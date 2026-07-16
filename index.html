@@ -1400,11 +1400,10 @@
       <div class="divider"></div>
       <div class="media">
         <div style="max-width:760px">
-<p><strong>Current Earth Observation systems are inherently fragmented, asynchronous, and sensor-limited.</strong> Optical satellites are constrained by cloud cover and darkness; Thermal IR provides valuable heat signatures but limited spatial and contextual information; SAR delivers all-weather imaging but lacks spectral and semantic richness; AIS/ADS-B/APRS rely on cooperative transmitters and are susceptible to signal loss, spoofing, or deliberate deactivation — creating persistent intelligence gaps that limit continuous monitoring, delay threat detection, and prevent timely mission-critical decision-making.</p>
-<video autoplay muted loop playsinline preload="metadata">
-          aria-label="R4 problem explainer video">
-        <source src="4.mp4" type="video/mp4" />
-        </video>
+          <p><strong>Current Earth Observation systems are inherently fragmented, asynchronous, and sensor-limited.</strong> Optical satellites are constrained by cloud cover and darkness; Thermal IR provides valuable heat signatures but limited spatial and contextual information; SAR delivers all-weather imaging but lacks spectral and semantic richness; AIS/ADS-B/APRS rely on cooperative transmitters and are susceptible to signal loss, spoofing, or deliberate deactivation — creating persistent intelligence gaps that limit continuous monitoring, delay threat detection, and prevent timely mission-critical decision-making.</p>
+          <video autoplay muted loop playsinline preload="metadata" aria-label="R4 problem explainer video">
+            <source src="4.mp4" type="video/mp4" />
+          </video>
         </div>
       </div>
     </div>
@@ -1415,245 +1414,245 @@
     <div class="container">
       <h2>Our Solutions</h2>
       <div class="divider"></div>
-<p class="sub">
-  <strong>Synchronous hardware-software fusion:</strong>
-  The <strong>Insight Set™</strong> satellite constellation and the <strong>ℝ Analytics Platform</strong> operate as a unified intelligence system, delivering defence-grade, multi-modal insights in a single orbital pass.
-</p>
-        <!-- HARDWARE: THE INSIGHT SET -->
-        <div class="card delay-1 solutions-card">
-          <i class="fa-solid fa-satellite ico-gold icon-float" aria-hidden="true"></i>
-          <h3>The Hardware: “Insight Set” Constellation</h3>
-          <div class="solutions-subtitle">Synchronous Fusion</div>
+      <p class="sub">
+        <strong>Synchronous hardware-software fusion:</strong>
+        The <strong>Insight Set™</strong> satellite constellation and the <strong>ℝ Analytics Platform</strong> operate as a unified intelligence system, delivering defence-grade, multi-modal insights in a single orbital pass.
+      </p>
 
-          <p class="muted solutions-body">
-            The <strong>"Insight Set"</strong> is a tightly controlled cluster of three satellites — one Microsat and two CubeSats —
-            flying in formation to capture Electro-Optical, Thermal Infrared, SAR and RF data over the same Area of Interest at the same instant.
-          </p>
+      <!-- HARDWARE: THE INSIGHT SET -->
+      <div class="card delay-1 solutions-card">
+        <i class="fa-solid fa-satellite ico-gold icon-float" aria-hidden="true"></i>
+        <h3>The Hardware: “Insight Set” Constellation</h3>
+        <div class="solutions-subtitle">Synchronous Fusion</div>
 
-          <ul class="solutions-list">
-            <li>
-              <i class="fa-solid fa-satellite"></i>
-              <span>
-                <strong>Clustered formation flight</strong> keeps all three spacecraft synchronized in time and geometry,
-                enabling alignment across modalities.
-              </span>
-            </li>
-            <li>
-              <i class="fa-solid fa-circle-check"></i>
-              <span>
-                <strong>Low-latency fusion:</strong> confirm <strong>Activity</strong>, <strong>Material</strong> and <strong>Location</strong> in a single pass
-                instead of waiting for multiple overflights or external cues.
-              </span>
-            </li>
-          </ul>
+        <p class="muted solutions-body">
+          The <strong>"Insight Set"</strong> is a tightly controlled cluster of three satellites — one Microsat and two CubeSats —
+          flying in formation to capture Electro-Optical, Thermal Infrared, SAR and RF data over the same Area of Interest at the same instant.
+        </p>
 
-          <div class="feature-list">
-            <span class="pill"><i class="fa-solid fa-cloud-moon" aria-hidden="true"></i> All-weather</span>
-            <span class="pill"><i class="fa-solid fa-wave-square" aria-hidden="true"></i> SAR + Optical + RF + TIR </span>
-            <span class="pill"><i class="fa-solid fa-eye" aria-hidden="true"></i> Night operations</span>
-            <span class="pill"><i class="fa-solid fa-globe" aria-hidden="true"></i> Global revisit</span>
-          </div>
+        <ul class="solutions-list">
+          <li>
+            <i class="fa-solid fa-satellite"></i>
+            <span>
+              <strong>Clustered formation flight</strong> keeps all three spacecraft synchronized in time and geometry,
+              enabling alignment across modalities.
+            </span>
+          </li>
+          <li>
+            <i class="fa-solid fa-circle-check"></i>
+            <span>
+              <strong>Low-latency fusion:</strong> confirm <strong>Activity</strong>, <strong>Material</strong> and <strong>Location</strong> in a single pass
+              instead of waiting for multiple overflights or external cues.
+            </span>
+          </li>
+        </ul>
 
-          <!-- 3D orbiting cluster -->
-          <div class="orbit-scene">
-            <div class="globe"></div>
-            <div class="orbit-ring">
-              <div class="cluster">
-                <div class="sat sat-main"></div>
-                <div class="sat sat-small-1"></div>
-                <div class="sat sat-small-2"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Tight EO formation over defended AOI -->
-          <div class="formation-scene">
-            <div class="ground-strip"></div>
-            <div class="ground-scan"></div>
-            <div class="ground-scan ground-scan-delay"></div>
-            <div class="sat-formation">
-              <div class="sat-body sat-body-cube" aria-hidden="true"></div>
-              <div class="sat-body sat-body-main" aria-hidden="true"><span></span></div>
-              <div class="sat-body sat-body-cube" aria-hidden="true"></div>
-            </div>
-            <div class="sat-formation-shadow"></div>
-
-            <div class="hud-geo">
-              <div class="hud-row">
-                <span class="hud-label">AOI</span>
-                <span class="hud-value">MARITIME CORRIDOR</span>
-              </div>
-              <div class="hud-row">
-                <span class="hud-label">LAT</span>
-                <span class="hud-value">12.9° N</span>
-              </div>
-              <div class="hud-row">
-                <span class="hud-label">LON</span>
-                <span class="hud-value">80.2° E</span>
-              </div>
-              <div class="hud-row">
-                <span class="hud-label">MODE</span>
-                <span class="hud-value">EO · SAR · TIR · RF</span>
-              </div>
-            </div>
-          </div>
-          <!-- images removed as requested -->
+        <div class="feature-list">
+          <span class="pill"><i class="fa-solid fa-cloud-moon" aria-hidden="true"></i> All-weather</span>
+          <span class="pill"><i class="fa-solid fa-wave-square" aria-hidden="true"></i> SAR + Optical + RF + TIR </span>
+          <span class="pill"><i class="fa-solid fa-eye" aria-hidden="true"></i> Night operations</span>
+          <span class="pill"><i class="fa-solid fa-globe" aria-hidden="true"></i> Global revisit</span>
         </div>
 
-        <!-- SOFTWARE: ℝ ANALYTICS PLATFORM -->
-        <div class="card delay-2 solutions-card">
-          <i class="fa-solid fa-brain ico-violet icon-float" aria-hidden="true"></i>
-          <h3>The Software: ℝ Analytics Platform </h3>
-          <div class="solutions-subtitle">Proprietary Analytics Platform</div>
+        <!-- 3D orbiting cluster -->
+        <div class="orbit-scene">
+          <div class="globe"></div>
+          <div class="orbit-ring">
+            <div class="cluster">
+              <div class="sat sat-main"></div>
+              <div class="sat sat-small-1"></div>
+              <div class="sat sat-small-2"></div>
+            </div>
+          </div>
+        </div>
 
-          <p class="muted solutions-body">
-            The <strong>ℝ Analytics Platform</strong> ingests raw multi-modal telemetry from the Insight Set and transforms it
-            into mission-ready intelligence products that plug directly into C2 and GIS workflows.
+        <!-- Tight EO formation over defended AOI -->
+        <div class="formation-scene">
+          <div class="ground-strip"></div>
+          <div class="ground-scan"></div>
+          <div class="ground-scan ground-scan-delay"></div>
+          <div class="sat-formation">
+            <div class="sat-body sat-body-cube" aria-hidden="true"></div>
+            <div class="sat-body sat-body-main" aria-hidden="true"><span></span></div>
+            <div class="sat-body sat-body-cube" aria-hidden="true"></div>
+          </div>
+          <div class="sat-formation-shadow"></div>
+
+          <div class="hud-geo">
+            <div class="hud-row">
+              <span class="hud-label">AOI</span>
+              <span class="hud-value">MARITIME CORRIDOR</span>
+            </div>
+            <div class="hud-row">
+              <span class="hud-label">LAT</span>
+              <span class="hud-value">12.9° N</span>
+            </div>
+            <div class="hud-row">
+              <span class="hud-label">LON</span>
+              <span class="hud-value">80.2° E</span>
+            </div>
+            <div class="hud-row">
+              <span class="hud-label">MODE</span>
+              <span class="hud-value">EO · SAR · TIR · RF</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SOFTWARE: ℝ ANALYTICS PLATFORM -->
+      <div class="card delay-2 solutions-card">
+        <i class="fa-solid fa-brain ico-violet icon-float" aria-hidden="true"></i>
+        <h3>The Software: ℝ Analytics Platform </h3>
+        <div class="solutions-subtitle">Proprietary Analytics Platform</div>
+
+        <p class="muted solutions-body">
+          The <strong>ℝ Analytics Platform</strong> ingests raw multi-modal telemetry from the Insight Set and transforms it
+          into mission-ready intelligence products that plug directly into C2 and GIS workflows.
+        </p>
+
+        <ul class="solutions-list">
+          <li>
+            <i class="fa-solid fa-microchip"></i>
+            <span>
+              <strong>ℝ Analytics Platform:</strong> automates sensor fusion, pattern learning, anomaly scoring and data
+              processing so analysts see curated intelligence instead of raw pixels.
+            </span>
+          </li>
+          <li>
+            <i class="fa-solid fa-diagram-project"></i>
+            <span>
+              <strong>Constellation Control:</strong> centralized tasking and cross-cueing for adaptive response, allowing
+              the cluster to re-task itself as new activity is detected.
+            </span>
+          </li>
+        </ul>
+
+        <div class="feature-list">
+          <span class="pill"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Low-latency</span>
+          <span class="pill"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i> Data fusion</span>
+          <span class="pill"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Secure</span>
+          <span class="pill"><i class="fa-solid fa-gauge-high" aria-hidden="true"></i> Scalable</span>
+        </div>
+        <div class="diagram-container">
+          <h3 class="diagram-title">
+            Proprietary <span style="color:var(--cyan)">ℝ</span> Analytics Platform
+          </h3>
+          <p class="diagram-sub">
+            Multi-modal Fusion · Anomaly Detection · Predictive Modeling · Real-time Delivery
           </p>
 
-          <ul class="solutions-list">
-            <li>
-              <i class="fa-solid fa-microchip"></i>
-              <span>
-                <strong>ℝ Analytics Platform:</strong> automates sensor fusion, pattern learning, anomaly scoring and data
-                processing so analysts see curated intelligence instead of raw pixels.
-              </span>
-            </li>
-            <li>
-              <i class="fa-solid fa-diagram-project"></i>
-              <span>
-                <strong>Constellation Control:</strong> centralized tasking and cross-cueing for adaptive response, allowing
-                the cluster to re-task itself as new activity is detected.
-              </span>
-            </li>
-          </ul>
+          <div class="flow-row">
+            <svg class="connectors-svg" viewBox="0 0 1000 500" preserveAspectRatio="none">
+              <path d="M 150 70 C 250 70, 250 150, 380 150" class="connector-line line-active"></path>
+              <path d="M 150 180 C 250 180, 250 150, 380 150" class="connector-line line-active"></path>
+              <path d="M 150 300 C 250 300, 250 150, 380 150" class="connector-line line-active"></path>
+              <path d="M 150 410 C 250 410, 250 150, 380 150" class="connector-line line-active"></path>
 
-          <div class="feature-list">
-            <span class="pill"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Low-latency</span>
-            <span class="pill"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i> Data fusion</span>
-            <span class="pill"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Secure</span>
-            <span class="pill"><i class="fa-solid fa-gauge-high" aria-hidden="true"></i> Scalable</span>
-          </div>
-<div class="diagram-container">
-            <h3 class="diagram-title">
-              Proprietary <span style="color:var(--cyan)">ℝ</span> Analytics Platform </span>
-            </h3>
-            <p class="diagram-sub">
-              Multi-modal Fusion · Anomaly Detection · Predictive Modeling · Real-time Delivery
-            </p>
+              <path d="M 500 210 L 500 290" class="connector-line line-active" style="stroke-width: 4; stroke-dasharray: 5 5;"></path>
 
-            <div class="flow-row">
-              <svg class="connectors-svg" viewBox="0 0 1000 500" preserveAspectRatio="none">
-                <path d="M 150 70 C 250 70, 250 150, 380 150" class="connector-line line-active"></path>
-                <path d="M 150 180 C 250 180, 250 150, 380 150" class="connector-line line-active"></path>
-                <path d="M 150 300 C 250 300, 250 150, 380 150" class="connector-line line-active"></path>
-                <path d="M 150 410 C 250 410, 250 150, 380 150" class="connector-line line-active"></path>
+              <path d="M 620 350 C 720 350, 720 100, 850 100" class="connector-line line-active"></path>
+              <path d="M 620 350 C 720 350, 720 250, 850 250" class="connector-line line-active"></path>
+              <path d="M 620 350 C 720 350, 720 400, 850 400" class="connector-line line-active"></path>
+            </svg>
 
-                <path d="M 500 210 L 500 290" class="connector-line line-active" style="stroke-width: 4; stroke-dasharray: 5 5;"></path>
+            <div class="col-inputs">
+              <div class="node n-opt">
+                <i class="fa-solid fa-satellite" style="color:var(--cyan)"></i>
+                <span>Optical </span>
+              </div>
+              <div class="node n-sar">
+                <i class="fa-solid fa-satellite-dish" style="color:var(--orange)"></i>
+                <span>SAR (InSAR)</span>
+              </div>
+              <div class="node n-tir">
+                <i class="fa-solid fa-fire-flame-curved" style="color:var(--red)"></i>
+                <span>Thermal (TIR)</span>
+              </div>
+              <div class="node n-rf">
+                <i class="fa-solid fa-tower-broadcast" style="color:var(--green)"></i>
+                <span>RF Signals (AIS/ADS-B/APRS)</span>
+              </div>
+            </div>
 
-                <path d="M 620 350 C 720 350, 720 100, 850 100" class="connector-line line-active"></path>
-                <path d="M 620 350 C 720 350, 720 250, 850 250" class="connector-line line-active"></path>
-                <path d="M 620 350 C 720 350, 720 400, 850 400" class="connector-line line-active"></path>
-              </svg>
-
-              <div class="col-inputs">
-                <div class="node n-opt">
-                  <i class="fa-solid fa-satellite" style="color:var(--cyan)"></i>
-                  <span>Optical </span>
-                </div>
-                <div class="node n-sar">
-                  <i class="fa-solid fa-satellite-dish" style="color:var(--orange)"></i>
-                  <span>SAR (InSAR)</span>
-                </div>
-                <div class="node n-tir">
-                  <i class="fa-solid fa-fire-flame-curved" style="color:var(--red)"></i>
-                  <span>Thermal (TIR)</span>
-                </div>
-                <div class="node n-rf">
-                  <i class="fa-solid fa-tower-broadcast" style="color:var(--green)"></i>
-                  <span>RF Signals (AIS/ADS-B/APRS)</span>
-                </div>
+            <div class="col-process">
+              <div class="node process-hero n-fusion">
+                <i class="fa-solid fa-layer-group" style="font-size:2.1rem; color:var(--blue-accent); margin-bottom:0.3rem;"></i>
+                <span class="process-main-text">ℝ Insight Engine</span>
+                <span class="process-sub-text">Multi-sensor Fusion Layer</span>
               </div>
 
-              <div class="col-process">
-                <div class="node process-hero n-fusion">
-                  <i class="fa-solid fa-layer-group" style="font-size:2.1rem; color:var(--blue-accent); margin-bottom:0.3rem;"></i>
-                  <span class="process-main-text">ℝ Insight Engine</span>
-                  <span class="process-sub-text">Multi-sensor Fusion Layer</span>
-                </div>
-
-                <div class="node process-hero n-ai">
-                  <i class="fa-solid fa-brain" style="font-size:2.1rem; color:var(--gold-accent); margin-bottom:0.3rem;"></i>
-                  <span class="process-main-text">Cognitive AI Core</span>
-                  <span class="process-sub-text">Pattern &amp; Anomaly Detection</span>
-                </div>
+              <div class="node process-hero n-ai">
+                <i class="fa-solid fa-brain" style="font-size:2.1rem; color:var(--gold-accent); margin-bottom:0.3rem;"></i>
+                <span class="process-main-text">Cognitive AI Core</span>
+                <span class="process-sub-text">Pattern &amp; Anomaly Detection</span>
               </div>
+            </div>
 
-              <div class="col-outputs">
-                <div class="node n-out">
-                  <i class="fa-solid fa-chart-pie" style="color:var(--purple)"></i>
-                  <span>Analytics Dashboard</span>
-                </div>
-                <div class="node n-out">
-                  <i class="fa-solid fa-network-wired" style="color:var(--purple)"></i>
-                  <span>Secure API Gateway</span>
-                </div>
-                <div class="node n-out">
-                  <i class="fa-solid fa-bell" style="color:var(--purple)"></i>
-                  <span>Real-time Alerts</span>
-                </div>
+            <div class="col-outputs">
+              <div class="node n-out">
+                <i class="fa-solid fa-chart-pie" style="color:var(--purple)"></i>
+                <span>Analytics Dashboard</span>
+              </div>
+              <div class="node n-out">
+                <i class="fa-solid fa-network-wired" style="color:var(--purple)"></i>
+                <span>Secure API Gateway</span>
+              </div>
+              <div class="node n-out">
+                <i class="fa-solid fa-bell" style="color:var(--purple)"></i>
+                <span>Real-time Alerts</span>
               </div>
             </div>
           </div>
-              </div>
+        </div>
+      </div>
+      
       <!-- LAYERS -->
       <div class="divider"></div>
       <h2 style="color:#FFD700;text-align:center;margin-top:1rem">Layered Approach — The 4Dimensional Intelligence Framework</h2>
       <p class="sub" style="text-align:center;color:#00FFFF;font-weight:bold">Resilient · Responsive · Real-time · Reconnaissance</p>
       <p style="text-align:center;color:#bbb;max-width:900px;margin:20px auto;">
-        A structured, defense-grade intelligence pipeline that transforms spaceborne sensing into mission-ready decision support.
+        A structured, defence-grade intelligence pipeline that transforms spaceborne sensing into mission-ready decision support.
       </p>
 
       <img src="4D2.png" alt="4D Intelligence Framework diagram" class="img-adjustable" style="--img-max: var(--framework-img-max);" loading="lazy" />
-<div class="grid grid-4" style="margin-top:1.4rem">
-  
-  <div class="card delay-1">
-    <i class="fa-solid fa-satellite ico-gold" aria-hidden="true"></i>
-    <h3 style="color:#FFD700;">Dimension 1 – Reconnaissance</h3>
-    <h4 class="muted">Insight Set™ Constellation</h4>
-    <p class="muted">
-      Synchronous <strong>Optical, SAR, Thermal IR, and RF (AIS/ADS-B/APRS)</strong> sensors capture complementary spectral, structural, thermal, and cooperative signal signatures in a single orbital pass for persistent, all-weather Earth Intelligence.
-    </p>
-  </div>
+      <div class="grid grid-4" style="margin-top:1.4rem">
+        <div class="card delay-1">
+          <i class="fa-solid fa-satellite ico-gold" aria-hidden="true"></i>
+          <h3 style="color:#FFD700;">Dimension 1 – Reconnaissance</h3>
+          <h4 class="muted">Insight Set™ Constellation</h4>
+          <p class="muted">
+            Synchronous <strong>Optical, SAR, Thermal IR, and RF (AIS/ADS-B/APRS)</strong> sensors capture complementary spectral, structural, thermal, and cooperative signal signatures in a single orbital pass for persistent, all-weather Earth Intelligence.
+          </p>
+        </div>
 
-  <div class="card delay-2">
-    <i class="fa-solid fa-network-wired ico-teal" aria-hidden="true"></i>
-    <h3 style="color:#FFD700;">Dimension 2 – Resilient</h3>
-    <h4 class="muted">Ground & Mission Systems</h4>
-    <p class="muted">
-      Secure ground infrastructure synchronizes, georeferences, validates, and fuses multi-modal observations into a trusted operating picture, ensuring resilient intelligence in contested and degraded environments.
-    </p>
-  </div>
+        <div class="card delay-2">
+          <i class="fa-solid fa-network-wired ico-teal" aria-hidden="true"></i>
+          <h3 style="color:#FFD700;">Dimension 2 – Resilient</h3>
+          <h4 class="muted">Ground & Mission Systems</h4>
+          <p class="muted">
+            Secure ground infrastructure synchronizes, georeferences, validates, and fuses multi-modal observations into a trusted operating picture, ensuring resilient intelligence in contested and degraded environments.
+          </p>
+        </div>
 
-  <div class="card delay-3">
-    <i class="fa-solid fa-brain ico-sky" aria-hidden="true"></i>
-    <h3 style="color:#FFD700;">Dimension 3 – Responsive</h3>
-    <h4 class="muted">ℝ Analytics Platform</h4>
-    <p class="muted">
-      AI-powered multi-modal fusion, target attribution, anomaly detection, behaviour analysis, and predictive intelligence transform raw observations into high-confidence, mission-ready insights.
-    </p>
-  </div>
+        <div class="card delay-3">
+          <i class="fa-solid fa-brain ico-sky" aria-hidden="true"></i>
+          <h3 style="color:#FFD700;">Dimension 3 – Responsive</h3>
+          <h4 class="muted">ℝ Analytics Platform</h4>
+          <p class="muted">
+            AI-powered multi-modal fusion, target attribution, anomaly detection, behaviour analysis, and predictive intelligence transform raw observations into high-confidence, mission-ready insights.
+          </p>
+        </div>
 
-  <div class="card delay-4">
-    <i class="fa-solid fa-crosshairs ico-rose" aria-hidden="true"></i>
-    <h3 style="color:#FFD700;">Dimension 4 – Real-Time</h3>
-    <h4 class="muted">Decision Intelligence</h4>
-    <p class="muted">
-      Actionable intelligence, secure APIs, alerts, dashboards, and tasking capabilities integrate seamlessly with defence, C2, GIS, and enterprise workflows to accelerate mission-critical decisions.
-    </p>
-  </div>
-
-</div>      <div style="text-align:center;margin-top:40px;font-size:20px;color:#FFD700;">
+        <div class="card delay-4">
+          <i class="fa-solid fa-crosshairs ico-rose" aria-hidden="true"></i>
+          <h3 style="color:#FFD700;">Dimension 4 – Real-Time</h3>
+          <h4 class="muted">Decision Intelligence</h4>
+          <p class="muted">
+            Actionable intelligence, secure APIs, alerts, dashboards, and tasking capabilities integrate seamlessly with defence, C2, GIS, and enterprise workflows to accelerate mission-critical decisions.
+          </p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:40px;font-size:20px;color:#FFD700;">
         “Our 4D (ℝ<sup>4</sup>) layered approach ensures stakeholders operate with real-time, trusted decision support.”
       </div>
     </div>
@@ -1667,74 +1666,73 @@
       <p class="sub">Designed for high-stakes defence missions and critical civil needs — equally weighted.</p>
 
       <img src="D3.png" alt="Dual-use applications overview" class="img-adjustable dim" style="--img-max: var(--applications-img-max);" loading="lazy" />
-<div class="grid grid-2">
-  <div>
-    <h3 style="text-align:center;margin-bottom:1rem">
-      <i class="fa-solid fa-user-shield ico-gold" aria-hidden="true"></i> Defence & Security
-    </h3>
+      <div class="grid grid-2">
+        <div>
+          <h3 style="text-align:center;margin-bottom:1rem">
+            <i class="fa-solid fa-user-shield ico-gold" aria-hidden="true"></i> Defence & Security
+          </h3>
 
-    <div class="grid grid-auto">
+          <div class="grid grid-auto">
+            <div class="card">
+              <i class="fa-solid fa-binoculars ico-cyan"></i>
+              <h3>Defence, ISR & National Security</h3>
+              <p class="muted">
+                Persistent all-weather ISR, target tracking, change detection, battle damage assessment, and mission-ready situational awareness.
+              </p>
+            </div>
 
-      <div class="card">
-        <i class="fa-solid fa-binoculars ico-cyan"></i>
-        <h3>Defence, ISR & National Security</h3>
-        <p class="muted">
-          Persistent all-weather ISR, target tracking, change detection, battle damage assessment, and mission-ready situational awareness.
-        </p>
+            <div class="card">
+              <i class="fa-solid fa-passport ico-rose"></i>
+              <h3>Border & Maritime Security</h3>
+              <p class="muted">
+                Detect dark vessels, monitor illegal fishing, smuggling, piracy, and border incursions with continuous Earth Intelligence.
+              </p>
+            </div>
+
+            <div class="card">
+              <i class="fa-solid fa-crosshairs ico-gold"></i>
+              <h3>Tactical Battlefield Intelligence</h3>
+              <p class="muted">
+                Enable force protection, mission planning, target identification, and operational decision superiority in contested environments.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 style="text-align:center;margin-bottom:1rem">
+            <i class="fa-solid fa-city ico-teal"></i> Civil & Public Sector
+          </h3>
+
+          <div class="grid grid-auto">
+            <div class="card">
+              <i class="fa-solid fa-house-chimney-crack ico-gold"></i>
+              <h3>Disaster Response</h3>
+              <p class="muted">
+                Rapid assessment for floods, wildfires, earthquakes, cyclones, and search-and-rescue operations.
+              </p>
+            </div>
+
+            <div class="card">
+              <i class="fa-solid fa-leaf ico-teal"></i>
+              <h3>Environmental Intelligence</h3>
+              <p class="muted">
+                Monitor deforestation, pollution, emissions, infrastructure, agriculture, mining, and ecosystem health.
+              </p>
+            </div>
+
+            <div class="card">
+              <i class="fa-solid fa-plane-up ico-violet"></i>
+              <h3>Aviation & Maritime</h3>
+              <p class="muted">
+                Improve traffic monitoring, compliance, anomaly detection, infrastructure protection, and incident response.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div class="card">
-        <i class="fa-solid fa-passport ico-rose"></i>
-        <h3>Border & Maritime Security</h3>
-        <p class="muted">
-          Detect dark vessels, monitor illegal fishing, smuggling, piracy, and border incursions with continuous Earth Intelligence.
-        </p>
-      </div>
-
-      <div class="card">
-        <i class="fa-solid fa-crosshairs ico-gold"></i>
-        <h3>Tactical Battlefield Intelligence</h3>
-        <p class="muted">
-          Enable force protection, mission planning, target identification, and operational decision superiority in contested environments.
-        </p>
-      </div>
-
     </div>
-  </div>
-
-  <div>
-    <h3 style="text-align:center;margin-bottom:1rem">
-      <i class="fa-solid fa-city ico-teal"></i> Civil & Public Sector
-    </h3>
-
-    <div class="grid grid-auto">
-
-      <div class="card">
-        <i class="fa-solid fa-house-chimney-crack ico-gold"></i>
-        <h3>Disaster Response</h3>
-        <p class="muted">
-          Rapid assessment for floods, wildfires, earthquakes, cyclones, and search-and-rescue operations.
-        </p>
-      </div>
-
-      <div class="card">
-        <i class="fa-solid fa-leaf ico-teal"></i>
-        <h3>Environmental Intelligence</h3>
-        <p class="muted">
-          Monitor deforestation, pollution, emissions, infrastructure, agriculture, mining, and ecosystem health.
-        </p>
-      </div>
-
-      <div class="card">
-        <i class="fa-solid fa-plane-up ico-violet"></i>
-        <h3>Aviation & Maritime</h3>
-        <p class="muted">
-          Improve traffic monitoring, compliance, anomaly detection, infrastructure protection, and incident response.
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
+  </section>
 
   <!-- CAPABILITIES -->
   <section id="capabilities" class="reveal">
@@ -1912,7 +1910,7 @@
         </div>
       </div>
 
-      <div class="career-grid-intern" style="margin-top:2rem;">
+      <div class="career-grid-intern" style="margin-top:2rem; display:none;">
         <h3 style="text-align:center;margin-top:0;">Internships</h3>
         <div class="grid grid-3">
           <div class="card" data-category="intern">
@@ -1947,7 +1945,7 @@
       <div class="faq-search">
         <input type="search" id="faqSearch" placeholder="Search FAQs..." aria-label="Search FAQs">
       </div>
-      <div class="faq" id="faq">
+      <div class="faq" id="faq-list">
         <details>
           <summary>How do you handle cloud cover and night operations?</summary>
           <p class="muted">We combine SAR (cloud-penetrating) with optical and hyperspectral sensors, then fuse them through the ℝ Insight Engine. This ensures consistent intelligence regardless of weather, time of day, or visibility conditions.</p>
@@ -2081,7 +2079,7 @@
       <p><strong>Visitors:</strong>
         <img src="https://hitscounter.dev/counter/incr/badge.svg?url=https%3A%2F%2Fr4space.com&title=Visitors" alt="Visitor counter" referrerpolicy="no-referrer-when-downgrade"/>
       </p>
-      <p>Built in India <img src="https://flagcdn.com/w20/in.png" alt="India Flag" width="20" height="15" style="vertical-align:middle;margin:0 .3em;"/> For the World 🌍</p>
+      <p>Built in India <img src="https://flagcdn.com/w20/in.png" alt="India Flag" width="20" height="15" style="vertical-align:middle;margin:0 .3em"/> For the World 🌍</p>
       <p>© 2026 ℝ4 Aerospace & Defence Private Limited. All rights reserved.</p>
     </div>
   </footer>
@@ -2140,7 +2138,7 @@
     if(faqInput){
       faqInput.addEventListener('input',()=>{
         const q=faqInput.value.toLowerCase();
-        document.querySelectorAll('#faq details').forEach(d=>{
+        document.querySelectorAll('#faq-list details').forEach(d=>{
           const t=d.textContent.toLowerCase();
           d.style.display=t.includes(q)?'':'none';
         });
@@ -2236,7 +2234,7 @@
 
         if (filter === 'all') {
           fullGridWrapper.style.display = '';
-          internWrapper.style.display = '';
+          internWrapper.style.display = 'none';
           fullCards.forEach(card => card.style.display = '');
           internWrapper.querySelectorAll('.card').forEach(card => card.style.display = '');
           return;
