@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Examine the Insight Set distributed satellite architecture, R Analytics platform, sensing modalities, and decision-intelligence framework." />
+  <meta name="description" content="Compare conventional single-sensor Earth observation with R4's integrated multi-sensor intelligence approach, presented without disclosing proprietary system architecture." />
   <meta name="theme-color" content="#050d19" />
   <meta property="og:title" content="Technology | R4 Aerospace & Defence" />
-  <meta property="og:description" content="Examine the Insight Set distributed satellite architecture, R Analytics platform, sensing modalities, and decision-intelligence framework." />
+  <meta property="og:description" content="A public capability overview comparing single-sensor observation with coordinated multi-sensor Earth intelligence." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="BG.jpg" />
   <title>Technology | R4 Aerospace & Defence</title>
@@ -52,82 +52,130 @@
   <div class="container hero-copy reveal">
     <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Technology</span></div>
     <span class="eyebrow">Technology</span>
-    <h1>Distributed sensing engineered as an integrated intelligence system.</h1>
-    <p class="lead">The Insight Set and ℝ Analytics Platform combine synchronous acquisition, distributed payload functions, onboard computation, geospatial processing, and secure decision delivery.</p>
+    <h1>From isolated observations to integrated Earth intelligence.</h1>
+    <p class="lead">R4 is developing a proprietary coordinated sensing and analytics system that combines complementary evidence into a more complete operational picture. Detailed spacecraft allocation, subsystem design, processing topology, and mission geometry remain confidential.</p>
   </div>
 </section>
 <main id="main">
   <section id="insight-set" class="section section-grid">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow">Orbital segment</span>
-        <h2>The Insight Set™ formation architecture</h2>
-        <p class="muted">A microsatellite and two CubeSats distribute transmission, reception, imaging, cooperative-signal collection, and edge-computing functions across a coordinated formation.</p>
+        <span class="eyebrow">Illustrative comparison</span>
+        <h2>Single-sensor observation versus multi-sensor intelligence.</h2>
+        <p class="muted">This conceptual comparison communicates operational value rather than R4's spacecraft configuration, payload allocation, communication architecture, or implementation method.</p>
       </div>
-      <div class="architecture">
-        <article class="card spacecraft reveal">
-          <span class="node-number">01</span>
+
+      <div class="grid grid-2">
+        <article class="card reveal">
+          <span class="card-tag">Conventional model</span>
           <div class="card-icon"><i class="fa-solid fa-satellite"></i></div>
-          <span class="card-tag">Microsatellite</span>
-          <h3>Primary sensing and computation node</h3>
+          <h3>Single-sensor constellation</h3>
+          <p class="muted">A collection event principally provides one category of physical evidence. The observation can be valuable, but interpretation may remain incomplete until another source or later pass provides corroboration.</p>
           <ul class="payload-list">
-            <li>SAR transmitter and receiver</li>
-            <li>Primary radar timing and waveform coordination</li>
-            <li>Onboard edge-computing capability</li>
-            <li>Formation and mission coordination functions</li>
+            <li>One principal observation layer per collection event</li>
+            <li>Performance influenced by environmental or geometric conditions</li>
+            <li>Additional context may require later collection or external data</li>
+            <li>A disruption in the primary collection path can create an information gap</li>
           </ul>
+          <div class="pill-row" style="margin-top:1.2rem">
+            <span class="pill"><i class="fa-solid fa-file-image"></i> Partial evidence</span>
+            <span class="pill"><i class="fa-solid fa-hourglass-half"></i> Sequential corroboration</span>
+          </div>
         </article>
-        <article class="card spacecraft reveal">
-          <span class="node-number">02</span>
-          <div class="card-icon"><i class="fa-solid fa-cube"></i></div>
-          <span class="card-tag">CubeSat 1</span>
-          <h3>Multi-modal imaging and passive reception node</h3>
+
+        <article class="card reveal">
+          <span class="card-tag">Integrated model</span>
+          <div class="card-icon"><i class="fa-solid fa-layer-group"></i></div>
+          <h3>Coordinated multi-sensor constellation</h3>
+          <p class="muted">Complementary observation classes examine the same event within a common operational context. Correlated evidence improves confidence, continuity, and analytical relevance without requiring the public disclosure of the underlying system architecture.</p>
           <ul class="payload-list">
-            <li>SAR receive channel</li>
-            <li>Electro-optical imaging</li>
-            <li>Thermal-infrared imaging</li>
-            <li>AIS, ADS-B, and APRS cooperative RF reception</li>
+            <li>Multiple complementary evidence layers for a common area of interest</li>
+            <li>Cross-validation of activity, context, and environmental conditions</li>
+            <li>Greater continuity across limitations affecting an individual modality</li>
+            <li>Fused interpretation prioritises anomalies and decision significance</li>
           </ul>
-        </article>
-        <article class="card spacecraft reveal">
-          <span class="node-number">03</span>
-          <div class="card-icon"><i class="fa-solid fa-cube"></i></div>
-          <span class="card-tag">CubeSat 2</span>
-          <h3>Imaging, signal reception, and distributed computation node</h3>
-          <ul class="payload-list">
-            <li>SAR receive channel</li>
-            <li>Electro-optical imaging</li>
-            <li>AIS, ADS-B, and APRS cooperative RF reception</li>
-            <li>Distributed edge-computing capability</li>
-          </ul>
+          <div class="pill-row" style="margin-top:1.2rem">
+            <span class="pill"><i class="fa-solid fa-circle-check"></i> Corroborated evidence</span>
+            <span class="pill"><i class="fa-solid fa-bolt"></i> Faster interpretation</span>
+          </div>
         </article>
       </div>
-      <div class="pill-row reveal" style="justify-content:center;margin-top:1.8rem">
-        <span class="pill"><i class="fa-solid fa-wave-square"></i> Bistatic/multistatic radar geometry</span>
-        <span class="pill"><i class="fa-solid fa-clock"></i> Synchronous observation timing</span>
-        <span class="pill"><i class="fa-solid fa-arrows-to-circle"></i> Formation-controlled geometry</span>
-        <span class="pill"><i class="fa-solid fa-microchip"></i> Distributed edge processing</span>
+
+      <div class="compare-wrap reveal" style="margin-top:2rem">
+        <table class="compare-table" aria-label="Single-sensor and multi-sensor constellation comparison">
+          <thead>
+            <tr>
+              <th>Operational attribute</th>
+              <th>Single-sensor constellation</th>
+              <th>Coordinated multi-sensor constellation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Evidence depth</strong></td>
+              <td>One principal physical perspective</td>
+              <td>Complementary perspectives correlated into a common assessment</td>
+            </tr>
+            <tr>
+              <td><strong>Context</strong></td>
+              <td>Interpretation may depend on external information</td>
+              <td>Multiple evidence layers improve contextual understanding</td>
+            </tr>
+            <tr>
+              <td><strong>Environmental resilience</strong></td>
+              <td>Observation quality depends strongly on the selected modality</td>
+              <td>Other observation classes can preserve analytical value when one is constrained</td>
+            </tr>
+            <tr>
+              <td><strong>Decision latency</strong></td>
+              <td>Corroboration can require another source or later collection</td>
+              <td>Correlation within a common event window can accelerate assessment</td>
+            </tr>
+            <tr>
+              <td><strong>Primary output</strong></td>
+              <td>Sensor data or a modality-specific product</td>
+              <td>Confidence-qualified, decision-oriented intelligence</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="cta-panel reveal" style="margin-top:2rem;padding:clamp(1.6rem,4vw,2.6rem)">
+        <span class="eyebrow">Proprietary by design</span>
+        <h2>Capability is public. Implementation remains protected.</h2>
+        <p class="muted">Public materials describe mission outcomes, evidence classes, operational advantages, and integration pathways. Detailed subsystem allocation, sensor parameters, timing methods, orbital geometry, processing distribution, and resilience mechanisms are shared only through controlled technical engagement.</p>
       </div>
     </div>
   </section>
 
   <section class="section section-tint">
     <div class="container">
-      <div class="split reverse">
-        <div class="media-frame reveal">
-          <img src="4D2.png" alt="R4 four-dimensional intelligence framework" loading="lazy" />
-        </div>
-        <div class="reveal">
-          <span class="eyebrow">Sensing physics</span>
-          <h2>Complementary modalities constrain uncertainty.</h2>
-          <p class="muted">Each modality contributes a distinct physical observation. Their synchronous combination improves interpretation by reducing the temporal and contextual disagreement that occurs across independent satellite passes.</p>
-          <ul class="feature-list">
-            <li><i class="fa-solid fa-eye"></i><span><strong>Optical:</strong> morphology, colour, texture, object classification, and contextual interpretation.</span></li>
-            <li><i class="fa-solid fa-satellite-dish"></i><span><strong>SAR:</strong> all-weather structural response, surface roughness, displacement, and radar-coherent change.</span></li>
-            <li><i class="fa-solid fa-temperature-high"></i><span><strong>Thermal infrared:</strong> heat distribution, combustion, equipment activity, and thermal anomalies.</span></li>
-            <li><i class="fa-solid fa-tower-broadcast"></i><span><strong>Cooperative RF:</strong> declared identity, position, movement, and communication metadata from AIS, ADS-B, and APRS.</span></li>
-          </ul>
-        </div>
+      <div class="section-head reveal">
+        <span class="eyebrow">Complementary evidence</span>
+        <h2>Different observation classes answer different questions.</h2>
+        <p class="muted">The specific mission configuration remains proprietary. At a public level, integrated sensing can combine complementary evidence concerning appearance, structure, activity, environmental state, and declared movement.</p>
+      </div>
+      <div class="grid grid-4">
+        <article class="card reveal">
+          <div class="card-icon"><i class="fa-solid fa-eye"></i></div>
+          <h3>Visual context</h3>
+          <p class="muted">Supports object recognition, scene interpretation, land-use assessment, and contextual understanding when observation conditions permit.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card-icon"><i class="fa-solid fa-cloud-moon"></i></div>
+          <h3>All-weather structure</h3>
+          <p class="muted">Provides structural and surface evidence under conditions that can restrict conventional visual observation.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card-icon"><i class="fa-solid fa-temperature-high"></i></div>
+          <h3>Activity signatures</h3>
+          <p class="muted">Identifies thermal or energetic variation associated with fires, equipment operation, industrial processes, and environmental anomalies.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card-icon"><i class="fa-solid fa-tower-broadcast"></i></div>
+          <h3>Signal context</h3>
+          <p class="muted">Adds declared identity, movement, and communication context where cooperative or authorised signals are available.</p>
+        </article>
       </div>
     </div>
   </section>
@@ -135,21 +183,21 @@
   <section id="analytics" class="section">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow">Analytical segment</span>
-        <h2>ℝ Analytics converts observations into structured evidence.</h2>
-        <p class="muted">The platform performs registration, quality control, multi-modal fusion, object and change analysis, uncertainty estimation, and dissemination through secure operational interfaces.</p>
+        <span class="eyebrow">Intelligence layer</span>
+        <h2>Observations become decision-oriented evidence.</h2>
+        <p class="muted">The ℝ Analytics Platform correlates heterogeneous observations, assesses confidence, identifies relevant change, and delivers prioritised outputs through secure operational interfaces.</p>
       </div>
       <div class="flow reveal">
-        <div class="flow-step"><i class="fa-solid fa-satellite"></i><strong>Acquire</strong><span>SAR, optical, TIR, and RF observations</span></div>
-        <div class="flow-step"><i class="fa-solid fa-location-crosshairs"></i><strong>Register</strong><span>Temporal and geospatial alignment</span></div>
-        <div class="flow-step"><i class="fa-solid fa-layer-group"></i><strong>Fuse</strong><span>Physics-aware multi-modal integration</span></div>
-        <div class="flow-step"><i class="fa-solid fa-brain"></i><strong>Interpret</strong><span>Detection, attribution, anomaly, and prediction</span></div>
-        <div class="flow-step"><i class="fa-solid fa-share-nodes"></i><strong>Deliver</strong><span>Alerts, APIs, dashboards, and reports</span></div>
+        <div class="flow-step"><i class="fa-solid fa-satellite"></i><strong>Observe</strong><span>Collect complementary evidence</span></div>
+        <div class="flow-step"><i class="fa-solid fa-link"></i><strong>Correlate</strong><span>Associate observations by place and time</span></div>
+        <div class="flow-step"><i class="fa-solid fa-magnifying-glass-chart"></i><strong>Assess</strong><span>Evaluate change, activity, and confidence</span></div>
+        <div class="flow-step"><i class="fa-solid fa-list-check"></i><strong>Prioritise</strong><span>Rank events by operational relevance</span></div>
+        <div class="flow-step"><i class="fa-solid fa-share-nodes"></i><strong>Deliver</strong><span>Provide alerts, maps, and analytical products</span></div>
       </div>
       <div class="grid grid-3" style="margin-top:2rem">
-        <article class="card reveal"><div class="card-icon"><i class="fa-solid fa-object-group"></i></div><h3>Multi-modal registration</h3><p class="muted">Geometric, temporal, radiometric, and confidence alignment across heterogeneous observations.</p></article>
-        <article class="card reveal"><div class="card-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div><h3>Detection and attribution</h3><p class="muted">Object identification, activity analysis, behavioural deviation, and source-corroborated attribution.</p></article>
-        <article class="card reveal"><div class="card-icon"><i class="fa-solid fa-shield"></i></div><h3>Secure dissemination</h3><p class="muted">Role-based access, encrypted data transport, auditability, and integration with sovereign or enterprise systems.</p></article>
+        <article class="card reveal"><div class="card-icon"><i class="fa-solid fa-object-group"></i></div><h3>Event correlation</h3><p class="muted">Associates observations concerning the same location, object, or activity to create a coherent evidential record.</p></article>
+        <article class="card reveal"><div class="card-icon"><i class="fa-solid fa-scale-balanced"></i></div><h3>Confidence-aware assessment</h3><p class="muted">Distinguishes confirmed evidence, probable interpretation, and residual uncertainty for responsible operational use.</p></article>
+        <article class="card reveal"><div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div><h3>Secure mission delivery</h3><p class="muted">Provides role-appropriate intelligence products for authorised sovereign, civil, and enterprise workflows.</p></article>
       </div>
     </div>
   </section>
@@ -161,30 +209,40 @@
         <h2>Reconnaissance, resilience, responsiveness, and real-time delivery.</h2>
       </div>
       <div class="grid grid-4">
-        <article class="card reveal"><span class="card-tag">Dimension 1</span><h3>Reconnaissance</h3><p class="muted">Synchronous multi-modal observations from distributed orbital sensors over a common area of interest.</p></article>
-        <article class="card reveal"><span class="card-tag">Dimension 2</span><h3>Resilient</h3><p class="muted">Distributed architecture, secure mission systems, and continuity under degraded operational conditions.</p></article>
-        <article class="card reveal"><span class="card-tag">Dimension 3</span><h3>Responsive</h3><p class="muted">Adaptive tasking, onboard processing, automated analysis, and application-specific prioritisation.</p></article>
-        <article class="card reveal"><span class="card-tag">Dimension 4</span><h3>Real-time</h3><p class="muted">Low-latency alerts, analytical products, and interfaces that support time-critical institutional decisions.</p></article>
+        <article class="card reveal"><span class="card-tag">Dimension 1</span><h3>Reconnaissance</h3><p class="muted">Complementary observations create a broader and more defensible account of an event or area of interest.</p></article>
+        <article class="card reveal"><span class="card-tag">Dimension 2</span><h3>Resilient</h3><p class="muted">Distributed collection and secure mission operations preserve continuity when an individual observation pathway is constrained.</p></article>
+        <article class="card reveal"><span class="card-tag">Dimension 3</span><h3>Responsive</h3><p class="muted">Priority-driven observation and automated analysis support rapidly evolving operational requirements.</p></article>
+        <article class="card reveal"><span class="card-tag">Dimension 4</span><h3>Real-time</h3><p class="muted">Low-latency analytical products support time-critical decisions without exposing proprietary implementation details.</p></article>
       </div>
     </div>
   </section>
 
   <section id="capabilities" class="section">
     <div class="container">
-      <div class="section-head reveal"><span class="eyebrow">Technical capabilities</span><h2>Designed for interoperable geospatial operations.</h2></div>
+      <div class="section-head reveal">
+        <span class="eyebrow">Public capability overview</span>
+        <h2>Designed around mission outcomes, not isolated data products.</h2>
+      </div>
       <div class="grid grid-3">
-        <article class="card reveal"><div class="card-icon"><i class="fa-solid fa-layer-group"></i></div><h3>Data fusion</h3><p class="muted">Pixel-, feature-, and decision-level fusion with confidence propagation and change analysis.</p></article>
-        <article class="card reveal"><div class="card-icon"><i class="fa-solid fa-satellite-dish"></i></div><h3>Adaptive tasking</h3><p class="muted">Priority acquisition, event-driven retasking, observation planning, and distributed mission coordination.</p></article>
-        <article class="card reveal"><div class="card-icon"><i class="fa-solid fa-lock"></i></div><h3>Information security</h3><p class="muted">Encryption, identity and access control, tamper-evident records, and isolated deployment architectures.</p></article>
-        <article class="card reveal"><div class="card-icon"><i class="fa-solid fa-code"></i></div><h3>Geospatial interfaces</h3><p class="muted">REST, STAC, OGC-compatible services, event webhooks, and integration with C2 and GIS platforms.</p></article>
-        <article class="card reveal"><div class="card-icon"><i class="fa-solid fa-gears"></i></div><h3>Processing infrastructure</h3><p class="muted">Orthorectification, tiling, georeferencing, DEM correction, GPU inference, and cloud or on-premise execution.</p></article>
-        <article class="card reveal"><div class="card-icon"><i class="fa-solid fa-chart-line"></i></div><h3>Intelligence products</h3><p class="muted">Imagery, vector detections, change layers, risk scores, event alerts, and analytical reports with confidence metadata.</p></article>
+        <article class="card reveal"><div class="card-icon"><i class="fa-solid fa-layer-group"></i></div><h3>Integrated observation</h3><p class="muted">Combines complementary evidence classes to reduce dependence on a single observation pathway.</p></article>
+        <article class="card reveal"><div class="card-icon"><i class="fa-solid fa-clock-rotate-left"></i></div><h3>Temporal correlation</h3><p class="muted">Relates observations within a common operational context to reduce disagreement caused by changing conditions.</p></article>
+        <article class="card reveal"><div class="card-icon"><i class="fa-solid fa-shield"></i></div><h3>Resilient collection</h3><p class="muted">Maintains useful analytical evidence when an individual modality or collection opportunity is restricted.</p></article>
+        <article class="card reveal"><div class="card-icon"><i class="fa-solid fa-brain"></i></div><h3>Automated prioritisation</h3><p class="muted">Surfaces relevant change and anomalous activity so analysts can focus on consequential events.</p></article>
+        <article class="card reveal"><div class="card-icon"><i class="fa-solid fa-lock"></i></div><h3>Secure integration</h3><p class="muted">Delivers authorised outputs into institutional mapping, monitoring, and command workflows.</p></article>
+        <article class="card reveal"><div class="card-icon"><i class="fa-solid fa-sliders"></i></div><h3>Mission configuration</h3><p class="muted">Adapts observation priorities and intelligence products to defence, maritime, disaster, infrastructure, and environmental requirements.</p></article>
       </div>
     </div>
   </section>
 
   <section class="section section-sm">
-    <div class="container"><div class="cta-panel reveal"><span class="eyebrow">Mission engineering</span><h2>Evaluate sensor allocation, formation geometry, observation cadence, and analytical requirements for a defined application.</h2><div class="actions"><a class="btn btn-primary" href="contact.html">Initiate a Technical Study</a><a class="btn btn-ghost" href="applications.html">Examine Applications</a></div></div></div>
+    <div class="container">
+      <div class="cta-panel reveal">
+        <span class="eyebrow">Controlled technical engagement</span>
+        <h2>Discuss the operational problem first. Examine protected architecture only when necessary.</h2>
+        <p class="muted">Detailed engineering information can be provided to qualified customers, partners, and investors under an appropriate confidentiality framework.</p>
+        <div class="actions"><a class="btn btn-primary" href="contact.html">Request a Capability Briefing</a><a class="btn btn-ghost" href="applications.html">Examine Applications</a></div>
+      </div>
+    </div>
   </section>
 </main>
   <footer class="site-footer">
@@ -200,7 +258,7 @@
         <div>
           <h3 class="footer-title">Technology</h3>
           <div class="footer-links">
-            <a href="technology.html#insight-set">Insight Set</a>
+            <a href="technology.html#insight-set">Integrated Sensing</a>
             <a href="technology.html#analytics">ℝ Analytics</a>
             <a href="technology.html#framework">4D Framework</a>
             <a href="technology.html#capabilities">Capabilities</a>
