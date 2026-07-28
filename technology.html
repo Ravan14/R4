@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Compare conventional single-sensor Earth observation with R4's integrated multi-sensor intelligence approach, presented without disclosing proprietary system architecture." />
+  <meta name="description" content="Compare isolated single-sensor, tip-and-cue, and synchronous multi-sensor Earth observation without disclosing proprietary system architecture." />
   <meta name="theme-color" content="#050d19" />
   <meta property="og:title" content="Technology | R4 Aerospace & Defence" />
-  <meta property="og:description" content="A public capability overview comparing single-sensor observation with coordinated multi-sensor Earth intelligence." />
+  <meta property="og:description" content="A public capability overview comparing single-sensor, tip-and-cue, and synchronous multi-sensor Earth observation." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="BG.jpg" />
   <title>Technology | R4 Aerospace & Defence</title>
@@ -16,6 +16,91 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    .observation-models .card{height:100%}
+    .observation-models .card h3{margin-bottom:.65rem}
+    .model-sequence{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:.45rem;
+      flex-wrap:wrap;
+      margin:1.2rem 0 0;
+      color:var(--muted);
+      font-size:.84rem;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+    .model-sequence span{
+      display:inline-flex;
+      align-items:center;
+      gap:.4rem;
+      padding:.42rem .7rem;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:999px;
+      background:rgba(255,255,255,.04);
+    }
+    .model-sequence i{color:var(--accent)}
+    .timing-chart-shell{
+      margin-top:2rem;
+      padding:clamp(1rem,2.5vw,1.8rem);
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:22px;
+      background:
+        radial-gradient(circle at 85% 10%,rgba(0,229,255,.10),transparent 36%),
+        radial-gradient(circle at 12% 88%,rgba(108,92,231,.12),transparent 40%),
+        rgba(4,13,27,.78);
+      box-shadow:0 22px 55px rgba(0,0,0,.32);
+      overflow:hidden;
+    }
+    .timing-chart-scroll{overflow-x:auto;padding-bottom:.35rem}
+    .timing-chart{
+      display:block;
+      width:100%;
+      min-width:760px;
+      height:auto;
+      font-family:"Roboto",sans-serif;
+    }
+    .timing-chart .grid-line{stroke:rgba(255,255,255,.075);stroke-width:1}
+    .timing-chart .axis{stroke:rgba(238,245,255,.72);stroke-width:2}
+    .timing-chart .axis-arrow{fill:rgba(238,245,255,.72)}
+    .timing-chart .zone{opacity:.8}
+    .timing-chart .zone-label{
+      fill:rgba(238,245,255,.52);
+      font-size:14px;
+      font-weight:700;
+      letter-spacing:1.7px;
+      text-transform:uppercase;
+    }
+    .timing-chart .axis-label{fill:#eef5ff;font-size:18px;font-weight:800}
+    .timing-chart .axis-end{fill:rgba(238,245,255,.7);font-size:14px;font-weight:600}
+    .timing-chart .point{stroke:#06101f;stroke-width:4;filter:drop-shadow(0 0 8px rgba(0,229,255,.35))}
+    .timing-chart .point-single{fill:#60a5fa}
+    .timing-chart .point-cue{fill:#ffd166}
+    .timing-chart .point-sync{fill:#2dd4bf}
+    .timing-chart .point-label{fill:#eef5ff;font-size:15px;font-weight:700}
+    .timing-chart .point-note{fill:rgba(238,245,255,.62);font-size:12px}
+    .chart-legend{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:.7rem 1.2rem;
+      margin-top:1rem;
+      color:var(--muted);
+      font-size:.86rem;
+    }
+    .chart-legend span{display:inline-flex;align-items:center;gap:.45rem}
+    .legend-dot{width:.72rem;height:.72rem;border-radius:50%;display:inline-block;box-shadow:0 0 10px currentColor}
+    .legend-single{background:#60a5fa;color:#60a5fa}
+    .legend-cue{background:#ffd166;color:#ffd166}
+    .legend-sync{background:#2dd4bf;color:#2dd4bf}
+    .chart-note{max-width:860px;margin:1rem auto 0;text-align:center;color:var(--muted);font-size:.88rem}
+    @media (max-width:720px){
+      .timing-chart-shell{padding:1rem .75rem}
+      .chart-note{text-align:left}
+    }
+  </style>
 </head>
 <body class="">
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -53,7 +138,7 @@
     <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Technology</span></div>
     <span class="eyebrow">Technology</span>
     <h1>From isolated observations to integrated Earth intelligence.</h1>
-    <p class="lead">R4 is developing a proprietary coordinated sensing and analytics system that combines complementary evidence into a more complete operational picture. Detailed spacecraft allocation, subsystem design, processing topology, and mission geometry remain confidential.</p>
+    <p class="lead">R4 is developing a proprietary coordinated sensing and analytics system that advances beyond isolated and sequential tip-and-cue collection by associating complementary evidence within a common observation window. Detailed spacecraft allocation, subsystem design, processing topology, and mission geometry remain confidential.</p>
   </div>
 </section>
 <main id="main">
@@ -61,89 +146,207 @@
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Illustrative comparison</span>
-        <h2>Single-sensor observation versus multi-sensor intelligence.</h2>
-        <p class="muted">This conceptual comparison communicates operational value rather than R4's spacecraft configuration, payload allocation, communication architecture, or implementation method.</p>
+        <h2>From isolated collection to tip-and-cue and synchronous observation.</h2>
+        <p class="muted">The three models differ primarily in temporal alignment and the diversity of physical evidence available for the same event. The comparison remains capability-level and does not disclose protected implementation architecture.</p>
       </div>
 
-      <div class="grid grid-2">
+      <div class="grid grid-3 observation-models">
         <article class="card reveal">
-          <span class="card-tag">Conventional model</span>
+          <span class="card-tag">Model 1 · Isolated</span>
           <div class="card-icon"><i class="fa-solid fa-satellite"></i></div>
-          <h3>Single-sensor constellation</h3>
-          <p class="muted">A collection event principally provides one category of physical evidence. The observation can be valuable, but interpretation may remain incomplete until another source or later pass provides corroboration.</p>
+          <h3>Single-sensor observation</h3>
+          <p class="muted">One collection event supplies one principal category of physical evidence. The result can be operationally valuable, but attribution may remain incomplete without additional context.</p>
           <ul class="payload-list">
-            <li>One principal observation layer per collection event</li>
-            <li>Performance influenced by environmental or geometric conditions</li>
-            <li>Additional context may require later collection or external data</li>
-            <li>A disruption in the primary collection path can create an information gap</li>
+            <li>One principal modality per observation event</li>
+            <li>Environmental and geometric sensitivity depends on the selected sensor</li>
+            <li>Context may require external information or another orbital pass</li>
+            <li>Primary output is generally a modality-specific data product</li>
           </ul>
           <div class="pill-row" style="margin-top:1.2rem">
-            <span class="pill"><i class="fa-solid fa-file-image"></i> Partial evidence</span>
-            <span class="pill"><i class="fa-solid fa-hourglass-half"></i> Sequential corroboration</span>
+            <span class="pill"><i class="fa-solid fa-file-image"></i> Isolated evidence</span>
+            <span class="pill"><i class="fa-solid fa-question"></i> Residual ambiguity</span>
           </div>
         </article>
 
         <article class="card reveal">
-          <span class="card-tag">Integrated model</span>
-          <div class="card-icon"><i class="fa-solid fa-layer-group"></i></div>
-          <h3>Coordinated multi-sensor constellation</h3>
-          <p class="muted">Complementary observation classes examine the same event within a common operational context. Correlated evidence improves confidence, continuity, and analytical relevance without requiring the public disclosure of the underlying system architecture.</p>
+          <span class="card-tag">Model 2 · Sequential</span>
+          <div class="card-icon"><i class="fa-solid fa-arrows-turn-to-dots"></i></div>
+          <h3>Tip-and-cue observation</h3>
+          <p class="muted">An initial sensor detects or flags an event and subsequently cues a complementary sensor. This increases evidential depth, but the follow-up observation occurs after a temporal interval.</p>
           <ul class="payload-list">
-            <li>Multiple complementary evidence layers for a common area of interest</li>
-            <li>Cross-validation of activity, context, and environmental conditions</li>
-            <li>Greater continuity across limitations affecting an individual modality</li>
-            <li>Fused interpretation prioritises anomalies and decision significance</li>
+            <li>Detection by one modality initiates subsequent tasking</li>
+            <li>Complementary evidence is acquired sequentially rather than concurrently</li>
+            <li>Orbital access, weather, tasking priority, and target motion affect follow-up quality</li>
+            <li>Scene evolution between observations can complicate direct correlation</li>
           </ul>
           <div class="pill-row" style="margin-top:1.2rem">
-            <span class="pill"><i class="fa-solid fa-circle-check"></i> Corroborated evidence</span>
-            <span class="pill"><i class="fa-solid fa-bolt"></i> Faster interpretation</span>
+            <span class="pill"><i class="fa-solid fa-bell"></i> Event cue</span>
+            <span class="pill"><i class="fa-solid fa-clock-rotate-left"></i> Temporal offset</span>
           </div>
         </article>
+
+        <article class="card reveal">
+          <span class="card-tag">Model 3 · Co-temporal</span>
+          <div class="card-icon"><i class="fa-solid fa-layer-group"></i></div>
+          <h3>Synchronous multi-sensor observation</h3>
+          <p class="muted">Complementary modalities observe the same area or event simultaneously, or within a tightly controlled common observation window, reducing temporal disagreement between evidence layers.</p>
+          <ul class="payload-list">
+            <li>Multiple physical evidence classes relate to the same event state</li>
+            <li>Reduced dependence on later reacquisition for basic corroboration</li>
+            <li>Improved association of appearance, structure, activity, and signal context</li>
+            <li>Faster progression from observation to confidence-qualified assessment</li>
+          </ul>
+          <div class="pill-row" style="margin-top:1.2rem">
+            <span class="pill"><i class="fa-solid fa-link"></i> Co-temporal evidence</span>
+            <span class="pill"><i class="fa-solid fa-bolt"></i> Accelerated assessment</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="model-sequence reveal" aria-label="Observation model progression">
+        <span><i class="fa-solid fa-circle-dot"></i> Detect</span>
+        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        <span><i class="fa-solid fa-bell"></i> Tip</span>
+        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        <span><i class="fa-solid fa-crosshairs"></i> Cue</span>
+        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        <span><i class="fa-solid fa-layer-group"></i> Correlate</span>
       </div>
 
       <div class="compare-wrap reveal" style="margin-top:2rem">
-        <table class="compare-table" aria-label="Single-sensor and multi-sensor constellation comparison">
+        <table class="compare-table" aria-label="Comparison of single-sensor, tip-and-cue, and synchronous observation">
           <thead>
             <tr>
               <th>Operational attribute</th>
-              <th>Single-sensor constellation</th>
-              <th>Coordinated multi-sensor constellation</th>
+              <th>Single-sensor</th>
+              <th>Tip-and-cue</th>
+              <th>Synchronous multi-sensor</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>Evidence depth</strong></td>
-              <td>One principal physical perspective</td>
-              <td>Complementary perspectives correlated into a common assessment</td>
+              <td><strong>Collection relationship</strong></td>
+              <td>Independent observation</td>
+              <td>One observation triggers a later complementary collection</td>
+              <td>Complementary observations share a common event window</td>
             </tr>
             <tr>
-              <td><strong>Context</strong></td>
-              <td>Interpretation may depend on external information</td>
-              <td>Multiple evidence layers improve contextual understanding</td>
+              <td><strong>Temporal alignment</strong></td>
+              <td>Not applicable across modalities</td>
+              <td>Asynchronous or sequential</td>
+              <td>Simultaneous or tightly co-timed</td>
             </tr>
             <tr>
-              <td><strong>Environmental resilience</strong></td>
-              <td>Observation quality depends strongly on the selected modality</td>
-              <td>Other observation classes can preserve analytical value when one is constrained</td>
+              <td><strong>Modality depth</strong></td>
+              <td>Low: one principal evidence class</td>
+              <td>Moderate to high: multiple classes acquired over time</td>
+              <td>High: multiple classes associated with the same event state</td>
+            </tr>
+            <tr>
+              <td><strong>Scene-change risk</strong></td>
+              <td>Additional evidence may be unavailable</td>
+              <td>Target, environment, or activity may change before follow-up</td>
+              <td>Reduced temporal mismatch between evidence layers</td>
             </tr>
             <tr>
               <td><strong>Decision latency</strong></td>
-              <td>Corroboration can require another source or later collection</td>
-              <td>Correlation within a common event window can accelerate assessment</td>
-            </tr>
-            <tr>
-              <td><strong>Primary output</strong></td>
-              <td>Sensor data or a modality-specific product</td>
-              <td>Confidence-qualified, decision-oriented intelligence</td>
+              <td>May require external interpretation or further collection</td>
+              <td>Depends on detection, tasking, access, and follow-up processing</td>
+              <td>Corroboration can begin immediately within the common event record</td>
             </tr>
           </tbody>
         </table>
       </div>
 
+      <div class="timing-chart-shell reveal" role="figure" aria-labelledby="timing-chart-title timing-chart-caption">
+        <div class="section-head" style="margin-bottom:1rem">
+          <span class="eyebrow">Conceptual modality map</span>
+          <h2 id="timing-chart-title">Temporal synchronisation and modality richness.</h2>
+          <p class="muted">Moving right increases temporal alignment. Moving upward increases the diversity of independent sensor modalities associated with the observation.</p>
+        </div>
+        <div class="timing-chart-scroll">
+          <svg class="timing-chart" viewBox="0 0 1000 620" role="img" aria-label="Conceptual graph with asynchronous observation on the left, synchronous observation on the right, low modality richness at the bottom, and high modality richness at the top">
+            <defs>
+              <linearGradient id="zoneGradient" x1="0" x2="1">
+                <stop offset="0%" stop-color="#60a5fa" stop-opacity=".08" />
+                <stop offset="50%" stop-color="#ffd166" stop-opacity=".08" />
+                <stop offset="100%" stop-color="#2dd4bf" stop-opacity=".10" />
+              </linearGradient>
+            </defs>
+
+            <rect x="115" y="55" width="805" height="465" rx="18" fill="url(#zoneGradient)" />
+            <line class="grid-line" x1="115" y1="145" x2="920" y2="145" />
+            <line class="grid-line" x1="115" y1="240" x2="920" y2="240" />
+            <line class="grid-line" x1="115" y1="335" x2="920" y2="335" />
+            <line class="grid-line" x1="115" y1="430" x2="920" y2="430" />
+            <line class="grid-line" x1="315" y1="55" x2="315" y2="520" />
+            <line class="grid-line" x1="520" y1="55" x2="520" y2="520" />
+            <line class="grid-line" x1="720" y1="55" x2="720" y2="520" />
+
+            <rect class="zone" x="115" y="55" width="270" height="465" fill="#60a5fa" fill-opacity=".025" />
+            <rect class="zone" x="385" y="55" width="270" height="465" fill="#ffd166" fill-opacity=".025" />
+            <rect class="zone" x="655" y="55" width="265" height="465" fill="#2dd4bf" fill-opacity=".035" />
+            <text class="zone-label" x="250" y="83" text-anchor="middle">ISOLATED</text>
+            <text class="zone-label" x="520" y="83" text-anchor="middle">TIP-AND-CUE</text>
+            <text class="zone-label" x="790" y="83" text-anchor="middle">SYNCHRONOUS</text>
+
+            <line class="axis" x1="115" y1="520" x2="938" y2="520" />
+            <polygon class="axis-arrow" points="938,520 923,512 923,528" />
+            <line class="axis" x1="115" y1="520" x2="115" y2="38" />
+            <polygon class="axis-arrow" points="115,38 107,53 123,53" />
+
+            <text class="axis-label" x="520" y="598" text-anchor="middle">Observation timing</text>
+            <text class="axis-end" x="115" y="557" text-anchor="start">Asynchronous / sequential</text>
+            <text class="axis-end" x="920" y="557" text-anchor="end">Synchronous / co-temporal</text>
+            <text class="axis-label" transform="translate(30 290) rotate(-90)" text-anchor="middle">Modality richness</text>
+            <text class="axis-end" x="78" y="515" text-anchor="end">Low</text>
+            <text class="axis-end" x="78" y="66" text-anchor="end">High</text>
+
+            <circle class="point point-single" cx="210" cy="452" r="10" />
+            <text class="point-label" x="230" y="457">Optical</text>
+
+            <circle class="point point-single" cx="245" cy="397" r="10" />
+            <text class="point-label" x="265" y="402">SAR</text>
+
+            <circle class="point point-single" cx="185" cy="342" r="10" />
+            <text class="point-label" x="205" y="347">Thermal IR</text>
+
+            <circle class="point point-single" cx="260" cy="287" r="10" />
+            <text class="point-label" x="280" y="292">Cooperative RF</text>
+
+            <circle class="point point-cue" cx="465" cy="312" r="11" />
+            <text class="point-label" x="485" y="306">Optical → SAR</text>
+            <text class="point-note" x="485" y="326">Sequential follow-up</text>
+
+            <circle class="point point-cue" cx="535" cy="247" r="11" />
+            <text class="point-label" x="555" y="241">SAR → Thermal IR</text>
+            <text class="point-note" x="555" y="261">Sequential follow-up</text>
+
+            <circle class="point point-cue" cx="490" cy="182" r="11" />
+            <text class="point-label" x="510" y="176">RF → Optical + SAR</text>
+            <text class="point-note" x="510" y="196">Cue-driven collection</text>
+
+            <circle class="point point-sync" cx="755" cy="214" r="12" />
+            <text class="point-label" x="775" y="208">Optical + SAR</text>
+            <text class="point-note" x="775" y="228">Common observation window</text>
+
+            <circle class="point point-sync" cx="825" cy="128" r="13" />
+            <text class="point-label" x="845" y="121" text-anchor="middle">Optical + SAR +</text>
+            <text class="point-label" x="845" y="141" text-anchor="middle">Thermal IR + RF</text>
+          </svg>
+        </div>
+        <div class="chart-legend" aria-hidden="true">
+          <span><i class="legend-dot legend-single"></i> Isolated modality</span>
+          <span><i class="legend-dot legend-cue"></i> Tip-and-cue sequence</span>
+          <span><i class="legend-dot legend-sync"></i> Synchronous combination</span>
+        </div>
+        <p id="timing-chart-caption" class="chart-note"><strong>Interpretation:</strong> tip-and-cue increases modality richness but remains temporally asynchronous; synchronous observation combines high modality diversity with substantially stronger temporal correspondence. Positions are qualitative and not measured performance values.</p>
+      </div>
+
       <div class="cta-panel reveal" style="margin-top:2rem;padding:clamp(1.6rem,4vw,2.6rem)">
         <span class="eyebrow">Proprietary by design</span>
         <h2>Capability is public. Implementation remains protected.</h2>
-        <p class="muted">Public materials describe mission outcomes, evidence classes, operational advantages, and integration pathways. Detailed subsystem allocation, sensor parameters, timing methods, orbital geometry, processing distribution, and resilience mechanisms are shared only through controlled technical engagement.</p>
+        <p class="muted">Public materials describe observation models, evidence classes, operational advantages, and integration pathways. Detailed subsystem allocation, sensor parameters, timing methods, orbital geometry, processing distribution, and resilience mechanisms are shared only through controlled technical engagement.</p>
       </div>
     </div>
   </section>
