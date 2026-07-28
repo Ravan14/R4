@@ -1,0 +1,10 @@
+RETAINED ROOT-RELATIVE MEDIA PATHS
+==================================
+LOGO.png
+BG.jpg
+Intro.mp4
+4.mp4
+4D2.png
+D3.png
+
+Do not place these files inside an assets, images, media, or videos subdirectory unless every website reference is deliberately revised.
