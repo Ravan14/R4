@@ -38,7 +38,7 @@
       border-radius:var(--r-sm);
       background:var(--surface-sunken);
     }
-    .model-sequence i{color:var(--accent)}
+    .model-sequence svg{color:var(--accent);flex:none}
 
     /* The timing chart is artwork built for a dark ground. It is presented as
        a deliberate inverse plate rather than re-inked, so its near-white SVG
@@ -313,9 +313,9 @@
           </svg>
         </div>
         <div class="chart-legend" aria-hidden="true">
-          <span><i class="legend-dot legend-single"></i> Isolated modality</span>
-          <span><i class="legend-dot legend-cue"></i> Tip-and-cue sequence</span>
-          <span><i class="legend-dot legend-sync"></i> Synchronous combination</span></div>
+          <span><i class="legend-dot legend-single" aria-hidden="true"></i> Isolated modality</span>
+          <span><i class="legend-dot legend-cue" aria-hidden="true"></i> Tip-and-cue sequence</span>
+          <span><i class="legend-dot legend-sync" aria-hidden="true"></i> Synchronous combination</span></div>
         <p id="timing-chart-caption" class="chart-note"><strong>Interpretation:</strong> tip-and-cue increases modality richness but remains temporally asynchronous; synchronous observation combines high modality diversity with substantially stronger temporal correspondence. Positions are qualitative and not measured performance values.</p></div>
 
       <div class="cta-panel reveal u-mt-l">

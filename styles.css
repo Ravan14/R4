@@ -14,7 +14,8 @@
   --ink:   #0A0F1A;  /* 18.7:1 AAA */
   --ink-2: #1E293B;  /* 14.3:1 AAA — headings */
   --muted: #475569;  /*  7.4:1 AAA — body copy */
-  --faint: #64748B;  /*  4.6:1 AA  — labels and meta only, never body */
+  --faint: #5B6A7E;  /*  5.4:1 surface · 5.1:1 sunken — labels and meta,      */
+                       /* never body. The sunken figure is the binding one.    */
 
   /* Lines — three, because SC 1.4.11 applies to form borders -------------- */
   --line-hair: #E6EAEF;
@@ -344,13 +345,20 @@ p  { margin-top: 0; }
 .btn-ghost { color: var(--ink); border-color: var(--line-ui); background: transparent; }
 .btn-ghost:hover { background: var(--surface-sunken); }
 
-/* Hero text sits on a dark scrim, so its ghost button inverts ------------- */
+/* Inside an inverse band --accent becomes a light tint, so a primary button
+   would go pale-on-pale. It inverts to a filled light chip instead. -------- */
+.home-hero .btn-primary, .page-hero .btn-primary {
+  background: var(--accent-on-dark);
+  color: var(--surface-inverse);
+}
+.home-hero .btn-primary:hover, .page-hero .btn-primary:hover { background: #A5E3FF; }
+
+/* Hero text sits on a dark scrim, so its ghost button inverts -------------- */
 .home-hero .btn-ghost, .page-hero .btn-ghost {
   color: var(--ink);
   border-color: rgba(244, 247, 250, 0.4);
 }
 .home-hero .btn-ghost:hover, .page-hero .btn-ghost:hover { background: rgba(244, 247, 250, 0.1); }
-.home-hero .btn-primary:hover, .page-hero .btn-primary:hover { background: var(--accent-on-dark); color: var(--surface-inverse); }
 
 .actions { display: flex; flex-wrap: wrap; gap: var(--s-3); }
 .actions.centered { justify-content: center; }
