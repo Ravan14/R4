@@ -87,6 +87,7 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
+  min-height: 100dvh; /* mobile Safari: 100vh overflows the visual viewport */
   color: var(--ink);
   background: var(--surface);
   font-family: var(--font);
@@ -874,6 +875,7 @@ details p { color: var(--muted); padding-bottom: var(--s-4); margin: 0; }
     position: fixed;
     inset: var(--header-h) var(--s-4) auto var(--s-4);
     max-height: calc(100vh - var(--header-h) - var(--s-7));
+    max-height: calc(100dvh - var(--header-h) - var(--s-7));
     overflow: auto;
     padding: var(--s-3);
     border: 1px solid var(--line);
