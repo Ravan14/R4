@@ -7,4 +7,16 @@ Intro.mp4
 4D2.png
 D3.png
 
+DERIVED WEBP SIBLINGS (same directory, generated from the sources above)
+========================================================================
+logo.webp   <- LOGO.png @128px   (header/footer mark and favicon)
+logo.png    <- LOGO.png @128px   (favicon and non-WebP fallback)
+BG.webp     <- BG.jpg            (home hero, largest contentful paint)
+BG2.webp    <- BG2.png           (operational-problem figure)
+4D2.webp    <- 4D2.png @1400px   (4D framework diagram)
+D3.webp     <- D3.png @1400px    (application domain mosaic)
+
+BG.jpg is kept at 1200x630 and remains the og:image on every page; social
+scrapers handle WebP unreliably, so it must not be replaced by BG.webp.
+
 Do not place these files inside an assets, images, media, or videos subdirectory unless every website reference is deliberately revised.
