@@ -9,7 +9,7 @@ function Hero() {
   return (
     <>
       <section className="page-hero">
-        <div className="container hero-copy reveal">
+        <div className="container hero-copy">
           <div className="breadcrumb">
             <a href="index.html">Home</a>
             <span>/</span>
@@ -29,12 +29,12 @@ export default function Defence() {
     <Layout page="defence" hero={<Hero />}>
       <section className="section section-grid">
         <div className="container">
-          <div className="section-head reveal">
+          <div className="section-head">
             <span className="eyebrow">Operational rationale</span>
             <h2>Corroboration across sensing modalities strengthens confidence.</h2>
             <p className="muted">Defence interpretation frequently depends on distinguishing declared activity from observed behaviour. Synchronous SAR, optical, thermal, and cooperative RF observations provide mutually constraining evidence.</p>
           </div>
-          <div className="compare-wrap reveal" tabIndex={0} role="region" aria-label="Comparison table, scrollable">
+          <div className="compare-wrap" tabIndex={0} role="region" aria-label="Comparison table, scrollable">
             <table className="compare-table">
               <thead>
                 <tr>
@@ -84,13 +84,13 @@ export default function Defence() {
       </section>
       <section className="section section-tint">
         <div className="container">
-          <div className="section-head reveal">
+          <div className="section-head">
             <span className="eyebrow">Potential applications</span>
             <h2>Defence and security mission domains</h2>
             <p className="muted">These are high-level, non-tactical application categories intended for capability communication and mission-study development.</p>
           </div>
           <div className="grid grid-3">
-            <article className="card reveal">
+            <article className="card">
               <span className="card-tag">Maritime</span>
               <h3>Maritime domain awareness</h3>
               <p className="muted">Correlate detected vessels with cooperative transmissions, identify route or behaviour anomalies, observe maritime corridors, and monitor port or offshore activity.</p>
@@ -106,7 +106,7 @@ export default function Defence() {
                 </li>
               </ul>
             </article>
-            <article className="card reveal">
+            <article className="card">
               <span className="card-tag">Land</span>
               <h3>Border and corridor monitoring</h3>
               <p className="muted">Observe changes in designated border regions, access corridors, temporary structures, mobility indicators, and terrain-dependent activity patterns.</p>
@@ -122,7 +122,7 @@ export default function Defence() {
                 </li>
               </ul>
             </article>
-            <article className="card reveal">
+            <article className="card">
               <span className="card-tag">Aerospace</span>
               <h3>Airfield and aviation activity</h3>
               <p className="muted">Monitor designated airfields, runway utilisation, aircraft presence, thermal activity, and correlation with cooperative aviation signals.</p>
@@ -138,7 +138,7 @@ export default function Defence() {
                 </li>
               </ul>
             </article>
-            <article className="card reveal">
+            <article className="card">
               <span className="card-tag">Strategic</span>
               <h3>Critical and strategic infrastructure</h3>
               <p className="muted">Persistent observation of selected energy, transport, communications, industrial, and logistics infrastructure for activity and condition changes.</p>
@@ -154,7 +154,7 @@ export default function Defence() {
                 </li>
               </ul>
             </article>
-            <article className="card reveal">
+            <article className="card">
               <span className="card-tag">ISR support</span>
               <h3>Wide-area situational awareness</h3>
               <p className="muted">Prioritise areas of interest, identify statistically significant changes, and provide analysts with corroborated geospatial evidence.</p>
@@ -170,7 +170,7 @@ export default function Defence() {
                 </li>
               </ul>
             </article>
-            <article className="card reveal">
+            <article className="card">
               <span className="card-tag">Humanitarian</span>
               <h3>Defence support to civil authorities</h3>
               <p className="muted">Support disaster response, search-area prioritisation, route accessibility, infrastructure status, and humanitarian logistics during major emergencies.</p>
@@ -192,10 +192,10 @@ export default function Defence() {
       <section className="section">
         <div className="container">
           <div className="split">
-            <div className="media-frame reveal">
+            <div className="media-frame">
               <img src="D3.webp" alt="Illustrative defence and civil applications overview" width="1400" height="1400" loading="lazy" decoding="async" />
             </div>
-            <div className="reveal">
+            <div>
               <span className="eyebrow">Sovereign integration</span>
               <h2>Designed to complement existing command and geospatial systems.</h2>
               <p className="muted">Outputs can be structured as alerts, geospatial layers, imagery products, change maps, analytical summaries, and machine-readable interfaces. Deployment architecture may be configured for sovereign data custody, controlled access, and institutional security requirements.</p>
@@ -212,7 +212,7 @@ export default function Defence() {
       </section>
       <section className="section section-sm">
         <div className="container">
-          <div className="cta-panel reveal">
+          <div className="cta-panel">
             <span className="eyebrow">Defence mission study</span>
             <h2>Define the operational area, observation objective, revisit need, evidence threshold, and integration constraints.</h2>
             <div className="actions">

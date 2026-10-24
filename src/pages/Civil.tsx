@@ -9,7 +9,7 @@ function Hero() {
   return (
     <>
       <section className="page-hero">
-        <div className="container hero-copy reveal">
+        <div className="container hero-copy">
           <div className="breadcrumb">
             <a href="index.html">Home</a>
             <span>/</span>
@@ -29,53 +29,53 @@ export default function Civil() {
     <Layout page="civil" hero={<Hero />}>
       <section className="section section-grid">
         <div className="container">
-          <div className="section-head reveal">
+          <div className="section-head">
             <span className="eyebrow">Public and economic value</span>
             <h2>Time-aligned observations improve event characterisation.</h2>
             <p className="muted">Civil applications benefit when physical structure, visual context, thermal state, and cooperative movement data are measured over the same event. This reduces dependence on sequential data acquisition during rapidly evolving conditions.</p>
           </div>
           <div className="grid grid-3">
-            <article className="card reveal">
+            <article className="card">
               <span className="card-tag">Public safety</span>
               <h3>Disaster management</h3>
               <p className="muted">Flood extent, burn progression, structural damage, debris or access disruption, affected infrastructure, and priority-area mapping.</p>
             </article>
-            <article className="card reveal">
+            <article className="card">
               <span className="card-tag">Environment</span>
               <h3>Climate and ecosystem observation</h3>
               <p className="muted">Coastal change, wetland dynamics, deforestation, surface-temperature anomalies, land degradation, and environmental compliance.</p>
             </article>
-            <article className="card reveal">
+            <article className="card">
               <span className="card-tag">Agriculture</span>
               <h3>Agriculture and water intelligence</h3>
               <p className="muted">Crop condition, irrigation performance, field moisture proxies, heat stress, water-body evolution, and agricultural-risk indicators.</p>
             </article>
-            <article className="card reveal">
+            <article className="card">
               <span className="card-tag">Infrastructure</span>
               <h3>Infrastructure monitoring</h3>
               <p className="muted">Transport corridors, urban growth, construction progress, surface change, asset encroachment, and condition-related indicators.</p>
             </article>
-            <article className="card reveal">
+            <article className="card">
               <span className="card-tag">Energy</span>
               <h3>Energy and industrial operations</h3>
               <p className="muted">Pipeline corridors, power infrastructure, industrial activity, thermal anomalies, mining development, and remote-asset observation.</p>
             </article>
-            <article className="card reveal">
+            <article className="card">
               <span className="card-tag">Risk</span>
               <h3>Insurance and financial risk</h3>
               <p className="muted">Exposure mapping, event verification, damage evidence, asset-condition monitoring, portfolio-level risk screening, and claims support.</p>
             </article>
-            <article className="card reveal">
+            <article className="card">
               <span className="card-tag">Maritime</span>
               <h3>Maritime safety and fisheries</h3>
               <p className="muted">Vessel correlation, illegal-fishing indicators, incident localisation, sea-surface anomalies, coastal activity, and search-area prioritisation.</p>
             </article>
-            <article className="card reveal">
+            <article className="card">
               <span className="card-tag">Aviation</span>
               <h3>Aviation and remote-area awareness</h3>
               <p className="muted">ADS-B correlation, airfield status, remote transport connectivity, emergency-support mapping, and infrastructure accessibility.</p>
             </article>
-            <article className="card reveal">
+            <article className="card">
               <span className="card-tag">Urban</span>
               <h3>Urban and regional planning</h3>
               <p className="muted">Settlement expansion, land-use transition, heat-island analysis, transportation development, drainage conditions, and public-asset inventories.</p>
@@ -85,11 +85,11 @@ export default function Civil() {
       </section>
       <section className="section section-tint">
         <div className="container">
-          <div className="section-head reveal">
+          <div className="section-head">
             <span className="eyebrow">Event-response sequence</span>
             <h2>From observation to civil decision support</h2>
           </div>
-          <div className="flow reveal">
+          <div className="flow">
             <div className="flow-step">
               <strong>Event or request</strong>
               <span>Hazard, asset, or policy question</span>
@@ -116,10 +116,10 @@ export default function Civil() {
       <section className="section">
         <div className="container">
           <div className="split reverse">
-            <div className="media-frame reveal">
+            <div className="media-frame">
               <img src="D3.webp" alt="Dual-use Earth intelligence applications" width="1400" height="1400" loading="lazy" decoding="async" />
             </div>
-            <div className="reveal">
+            <div>
               <span className="eyebrow">Illustrative disaster case</span>
               <h2>Rapid multi-modal assessment after a severe event.</h2>
               <p className="muted">SAR can delineate flood or structural change under cloud cover; optical imagery contributes contextual interpretation when visibility permits; thermal imagery may indicate active fire, equipment, or infrastructure heat; RF observations can assist movement and transport correlation. Fusion provides a more complete operating picture than any single source.</p>
@@ -143,24 +143,24 @@ export default function Civil() {
       </section>
       <section className="section section-tint">
         <div className="container">
-          <div className="section-head reveal">
+          <div className="section-head">
             <span className="eyebrow">Delivery models</span>
             <h2>Adaptable to institutional and enterprise workflows.</h2>
           </div>
           <div className="grid grid-4">
-            <article className="card reveal">
+            <article className="card">
               <h3>Monitoring subscription</h3>
               <p className="muted">Recurring area-of-interest observation, change alerts, and periodic analytical reporting.</p>
             </article>
-            <article className="card reveal">
+            <article className="card">
               <h3>Event response</h3>
               <p className="muted">Time-critical tasking and analytical delivery after a specified hazard or operational event.</p>
             </article>
-            <article className="card reveal">
+            <article className="card">
               <h3>API integration</h3>
               <p className="muted">Machine-readable indicators and geospatial products integrated into customer platforms.</p>
             </article>
-            <article className="card reveal">
+            <article className="card">
               <h3>Pilot and validation</h3>
               <p className="muted">Application-specific evaluation against reference data, field observations, or institutional baselines.</p>
             </article>
@@ -169,7 +169,7 @@ export default function Civil() {
       </section>
       <section className="section section-sm">
         <div className="container">
-          <div className="cta-panel reveal">
+          <div className="cta-panel">
             <span className="eyebrow">Civil application study</span>
             <h2>Define the decision variable, observation frequency, response time, validation data, and delivery interface.</h2>
             <div className="actions">

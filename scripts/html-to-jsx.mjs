@@ -14,7 +14,7 @@
  * Run it before the generated HTML replaces the source HTML at the root.
  */
 
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { JSDOM } from 'jsdom';
 
@@ -117,6 +117,14 @@ function attrToJsx(node) {
     }
     // A value containing a quote or brace becomes a JS string expression.
     const v = attr.value;
+    if (name === 'className') {
+      // `.reveal` is a hook main.js used for scroll animations; the restyle
+      // deleted its CSS, so every one of the 151 survivors is inert weight.
+      const kept = v.split(/\s+/).filter((c) => c && c !== 'reveal').join(' ');
+      if (!kept) continue;
+      out.push(`${name}="${kept}"`);
+      continue;
+    }
     if (NUMERIC.has(name) && /^\d+$/.test(v)) {
       out.push(`${name}={${v}}`);
       continue;
@@ -296,7 +304,18 @@ function extractHeadMeta(file) {
 
 /* ----------------------------------------------------------------- pages */
 
+const preserved = [];
+
 function extractPage(key, file, name) {
+  /* Five pages carry hand-written islands — FilterGrid, SearchableList,
+   * Counter, the contact form's onSubmit — that this script cannot generate.
+   * They are marked and left alone, so re-running the codemod stays safe. */
+  const outPath = join(ROOT, `src/pages/${name}.tsx`);
+  if (existsSync(outPath) && readFileSync(outPath, 'utf8').includes('@preserve')) {
+    preserved.push(name);
+    return;
+  }
+
   const html = readFileSync(join(ROOT, file), 'utf8');
   const dom = new JSDOM(html);
   const doc = dom.window.document;
@@ -394,8 +413,9 @@ mkdirSync(join(ROOT, 'src/pages'), { recursive: true });
 for (const [, file] of PAGES) {
   if (readFileSync(join(ROOT, file), 'utf8').includes('id="root"')) {
     throw new Error(
-      `${file} is already a generated document. The codemod reads the original ` +
-      `hand-maintained pages; recover them with: git show pre-redesign:${file}`,
+      `${file} is already a generated document, so the hand-maintained source ` +
+      `it was built from is not here. Restore the pre-migration copy first: ` +
+      `git log --oneline -- ${file}   # then git show <that commit>:${file} > ${file}`,
     );
   }
 }
@@ -447,3 +467,6 @@ console.log('generated:');
 console.log('  src/chrome/Header.tsx  Footer.tsx  skipLink.tsx');
 console.log('  src/pages/*.tsx        (9 pages)');
 console.log('  src/site.ts            (head metadata registry)');
+if (preserved.length) {
+  console.log(`  preserved by @preserve: ${preserved.join(', ')}`);
+}

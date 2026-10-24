@@ -13,6 +13,12 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   publicDir: false,
+  // Relative asset URLs. With the default '/', Vite writes url(/assets/x.jpg)
+  // into the bundle, which only resolves when the site is served from a domain
+  // root — and the README documents opening index.html straight from disk for
+  // review. './' makes every emitted URL, including the stylesheet's own image
+  // references, resolve against the document that asks for it.
+  base: './',
   build: {
     outDir: 'dist',
     emptyOutDir: true,

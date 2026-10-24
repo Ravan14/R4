@@ -466,7 +466,14 @@ p  { margin-top: 0; }
   position: absolute;
   inset: 0;
   z-index: var(--z-hero-scrim);
-  background: linear-gradient(100deg, rgba(11, 18, 32, 0.95), rgba(11, 18, 32, 0.62)), url('BG.jpg') center/cover no-repeat;
+  /* Relative to this stylesheet's source location, not the page. styles.css
+     moved to src/, so the photo it always referenced by bare name now lives
+     one directory up; 'BG.jpg' here made the browser ask for assets/BG.jpg and
+     404. Vite resolves '../BG.jpg' at build time and rewrites it to a hashed
+     sibling inside assets/, which base:'./' then emits as a relative URL — so
+     it resolves from the built CSS in dev, over HTTP, and from file:// alike.
+     The root BG.jpg stays untouched as the og:image. */
+  background: linear-gradient(100deg, rgba(11, 18, 32, 0.95), rgba(11, 18, 32, 0.62)), url('../BG.jpg') center/cover no-repeat;
 }
 .page-hero h1 { font-size: var(--step-5); margin-bottom: var(--s-4); }
 .page-hero--full { min-height: 100svh; align-items: center; }

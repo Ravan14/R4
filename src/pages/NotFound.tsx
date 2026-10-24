@@ -7,7 +7,7 @@ import Layout from '../chrome/Layout.tsx';
 export default function NotFound() {
   return (
     <Layout page="not-found" mainClass="page-hero page-hero--full">
-      <div className="container hero-copy center reveal">
+      <div className="container hero-copy center">
         <span className="eyebrow">Navigation error</span>
         <h1>404</h1>
         <p className="lead">The requested page is outside the current website architecture.</p>

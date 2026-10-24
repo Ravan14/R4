@@ -26,10 +26,10 @@ export default function Layout({
   );
 
   // 404.html has never carried the site chrome; it is a standalone document.
+  // Its <main> is itself the page hero, so only the chrome is absent.
   if (!PAGES[page].hasChrome) {
     return (
       <>
-        {hero}
         {main}
         <BackToTop />
       </>

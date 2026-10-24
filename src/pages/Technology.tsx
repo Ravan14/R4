@@ -10,7 +10,7 @@ function Hero() {
   return (
     <>
       <section className="page-hero">
-        <div className="container hero-copy reveal">
+        <div className="container hero-copy">
           <div className="breadcrumb">
             <a href="index.html">Home</a>
             <span>/</span>
@@ -30,13 +30,13 @@ export default function Technology() {
     <Layout page="technology" hero={<Hero />}>
       <section id="insight-set" className="section section-grid">
         <div className="container">
-          <div className="section-head reveal">
+          <div className="section-head">
             <span className="eyebrow">Illustrative comparison</span>
             <h2>From isolated collection to tip-and-cue and synchronous observation.</h2>
             <p className="muted">The three models differ primarily in temporal alignment and the diversity of physical evidence available for the same event. The comparison remains capability-level and does not disclose protected implementation architecture.</p>
           </div>
           <div className="grid grid-3 observation-models">
-            <article className="card reveal">
+            <article className="card">
               <span className="card-tag">Model 1 · Isolated</span>
               <h3>Single-sensor observation</h3>
               <p className="muted">One collection event supplies one principal category of physical evidence. The result can be operationally valuable, but attribution may remain incomplete without additional context.</p>
@@ -51,7 +51,7 @@ export default function Technology() {
                 <span className="pill">Residual ambiguity</span>
               </div>
             </article>
-            <article className="card reveal">
+            <article className="card">
               <span className="card-tag">Model 2 · Sequential</span>
               <h3>Tip-and-cue observation</h3>
               <p className="muted">An initial sensor detects or flags an event and subsequently cues a complementary sensor. This increases evidential depth, but the follow-up observation occurs after a temporal interval.</p>
@@ -66,7 +66,7 @@ export default function Technology() {
                 <span className="pill">Temporal offset</span>
               </div>
             </article>
-            <article className="card reveal">
+            <article className="card">
               <span className="card-tag">Model 3 · Co-temporal</span>
               <h3>Synchronous multi-sensor observation</h3>
               <p className="muted">Complementary modalities observe the same area or event simultaneously, or within a tightly controlled common observation window, reducing temporal disagreement between evidence layers.</p>
@@ -82,7 +82,7 @@ export default function Technology() {
               </div>
             </article>
           </div>
-          <div className="model-sequence reveal" aria-label="Observation model progression">
+          <div className="model-sequence" aria-label="Observation model progression">
             <span>Detect</span>
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
               <path d="M5 12h14M13 6l6 6-6 6" />
@@ -97,7 +97,7 @@ export default function Technology() {
             </svg>
             <span>Correlate</span>
           </div>
-          <div className="compare-wrap reveal u-mt-l" tabIndex={0} role="region" aria-label="Comparison table, scrollable">
+          <div className="compare-wrap u-mt-l" tabIndex={0} role="region" aria-label="Comparison table, scrollable">
             <table className="compare-table" aria-label="Comparison of single-sensor, tip-and-cue, and synchronous observation">
               <thead>
                 <tr>
@@ -151,7 +151,7 @@ export default function Technology() {
               </tbody>
             </table>
           </div>
-          <div className="timing-chart-shell reveal" role="figure" aria-labelledby="timing-chart-title timing-chart-caption">
+          <div className="timing-chart-shell" role="figure" aria-labelledby="timing-chart-title timing-chart-caption">
             <div className="section-head tight">
               <span className="eyebrow">Conceptual modality map</span>
               <h2 id="timing-chart-title">Temporal synchronisation and modality richness.</h2>
@@ -222,7 +222,7 @@ export default function Technology() {
             </div>
             <p id="timing-chart-caption" className="chart-note"><strong>Interpretation:</strong> tip-and-cue increases modality richness but remains temporally asynchronous; synchronous observation combines high modality diversity with substantially stronger temporal correspondence. Positions are qualitative and not measured performance values.</p>
           </div>
-          <div className="cta-panel reveal u-mt-l">
+          <div className="cta-panel u-mt-l">
             <span className="eyebrow">Proprietary by design</span>
             <h2>Capability is public. Implementation remains protected.</h2>
             <p className="muted">Public materials describe observation models, evidence classes, operational advantages, and integration pathways. Detailed subsystem allocation, sensor parameters, timing methods, orbital geometry, processing distribution, and resilience mechanisms are shared only through controlled technical engagement.</p>
@@ -231,25 +231,25 @@ export default function Technology() {
       </section>
       <section className="section section-tint">
         <div className="container">
-          <div className="section-head reveal">
+          <div className="section-head">
             <span className="eyebrow">Complementary evidence</span>
             <h2>Different observation classes answer different questions.</h2>
             <p className="muted">The specific mission configuration remains proprietary. At a public level, integrated sensing can combine complementary evidence concerning appearance, structure, activity, environmental state, and declared movement.</p>
           </div>
           <div className="grid grid-4">
-            <article className="card reveal">
+            <article className="card">
               <h3>Visual context</h3>
               <p className="muted">Supports object recognition, scene interpretation, land-use assessment, and contextual understanding when observation conditions permit.</p>
             </article>
-            <article className="card reveal">
+            <article className="card">
               <h3>All-weather structure</h3>
               <p className="muted">Provides structural and surface evidence under conditions that can restrict conventional visual observation.</p>
             </article>
-            <article className="card reveal">
+            <article className="card">
               <h3>Activity signatures</h3>
               <p className="muted">Identifies thermal or energetic variation associated with fires, equipment operation, industrial processes, and environmental anomalies.</p>
             </article>
-            <article className="card reveal">
+            <article className="card">
               <h3>Signal context</h3>
               <p className="muted">Adds declared identity, movement, and communication context where cooperative or authorised signals are available.</p>
             </article>
@@ -258,12 +258,12 @@ export default function Technology() {
       </section>
       <section id="analytics" className="section">
         <div className="container">
-          <div className="section-head reveal">
+          <div className="section-head">
             <span className="eyebrow">Intelligence layer</span>
             <h2>Observations become decision-oriented evidence.</h2>
             <p className="muted">The ℝ Analytics Platform correlates heterogeneous observations, assesses confidence, identifies relevant change, and delivers prioritised outputs through secure operational interfaces.</p>
           </div>
-          <div className="flow reveal">
+          <div className="flow">
             <div className="flow-step">
               <strong>Observe</strong>
               <span>Collect complementary evidence</span>
@@ -286,15 +286,15 @@ export default function Technology() {
             </div>
           </div>
           <div className="grid grid-3 u-mt-l">
-            <article className="card reveal">
+            <article className="card">
               <h3>Event correlation</h3>
               <p className="muted">Associates observations concerning the same location, object, or activity to create a coherent evidential record.</p>
             </article>
-            <article className="card reveal">
+            <article className="card">
               <h3>Confidence-aware assessment</h3>
               <p className="muted">Distinguishes confirmed evidence, probable interpretation, and residual uncertainty for responsible operational use.</p>
             </article>
-            <article className="card reveal">
+            <article className="card">
               <h3>Secure mission delivery</h3>
               <p className="muted">Provides role-appropriate intelligence products for authorised sovereign, civil, and enterprise workflows.</p>
             </article>
@@ -303,27 +303,27 @@ export default function Technology() {
       </section>
       <section id="framework" className="section section-tint">
         <div className="container">
-          <div className="section-head reveal">
+          <div className="section-head">
             <span className="eyebrow">4D intelligence framework</span>
             <h2>Reconnaissance, resilience, responsiveness, and real-time delivery.</h2>
           </div>
           <div className="grid grid-4">
-            <article className="card reveal">
+            <article className="card">
               <span className="card-tag">Dimension 1</span>
               <h3>Reconnaissance</h3>
               <p className="muted">Complementary observations create a broader and more defensible account of an event or area of interest.</p>
             </article>
-            <article className="card reveal">
+            <article className="card">
               <span className="card-tag">Dimension 2</span>
               <h3>Resilient</h3>
               <p className="muted">Distributed collection and secure mission operations preserve continuity when an individual observation pathway is constrained.</p>
             </article>
-            <article className="card reveal">
+            <article className="card">
               <span className="card-tag">Dimension 3</span>
               <h3>Responsive</h3>
               <p className="muted">Priority-driven observation and automated analysis support rapidly evolving operational requirements.</p>
             </article>
-            <article className="card reveal">
+            <article className="card">
               <span className="card-tag">Dimension 4</span>
               <h3>Real-time</h3>
               <p className="muted">Low-latency analytical products support time-critical decisions without exposing proprietary implementation details.</p>
@@ -333,32 +333,32 @@ export default function Technology() {
       </section>
       <section id="capabilities" className="section">
         <div className="container">
-          <div className="section-head reveal">
+          <div className="section-head">
             <span className="eyebrow">Public capability overview</span>
             <h2>Designed around mission outcomes, not isolated data products.</h2>
           </div>
           <div className="grid grid-3">
-            <article className="card reveal">
+            <article className="card">
               <h3>Integrated observation</h3>
               <p className="muted">Combines complementary evidence classes to reduce dependence on a single observation pathway.</p>
             </article>
-            <article className="card reveal">
+            <article className="card">
               <h3>Temporal correlation</h3>
               <p className="muted">Relates observations within a common operational context to reduce disagreement caused by changing conditions.</p>
             </article>
-            <article className="card reveal">
+            <article className="card">
               <h3>Resilient collection</h3>
               <p className="muted">Maintains useful analytical evidence when an individual modality or collection opportunity is restricted.</p>
             </article>
-            <article className="card reveal">
+            <article className="card">
               <h3>Automated prioritisation</h3>
               <p className="muted">Surfaces relevant change and anomalous activity so analysts can focus on consequential events.</p>
             </article>
-            <article className="card reveal">
+            <article className="card">
               <h3>Secure integration</h3>
               <p className="muted">Delivers authorised outputs into institutional mapping, monitoring, and command workflows.</p>
             </article>
-            <article className="card reveal">
+            <article className="card">
               <h3>Mission configuration</h3>
               <p className="muted">Adapts observation priorities and intelligence products to defence, maritime, disaster, infrastructure, and environmental requirements.</p>
             </article>
@@ -367,7 +367,7 @@ export default function Technology() {
       </section>
       <section className="section section-sm">
         <div className="container">
-          <div className="cta-panel reveal">
+          <div className="cta-panel">
             <span className="eyebrow">Controlled technical engagement</span>
             <h2>Discuss the operational problem first. Examine protected architecture only when necessary.</h2>
             <p className="muted">Detailed engineering information can be provided to qualified customers, partners, and investors under an appropriate confidentiality framework.</p>
