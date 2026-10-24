@@ -2,19 +2,29 @@ RETAINED ROOT-RELATIVE MEDIA PATHS
 ==================================
 LOGO.png
 BG.jpg
-Intro.mp4
-4.mp4
 4D2.png
 D3.png
+BG2.png
+
+REMOVED
+=======
+Intro.mp4  (9.6 MB)  home hero background  -> replaced by BG.webp still
+4.mp4      (16.9 MB) operational-problem   -> replaced by BG2.webp still
+The two videos were 26.5 MB of the home page payload and were never
+preload-limited in a way that stopped the larger one downloading in full.
 
 DERIVED WEBP SIBLINGS (same directory, generated from the sources above)
 ========================================================================
-logo.webp    <- LOGO.png @128px   (header/footer mark and favicon)
+logo.webp    <- LOGO.png @128px   (header/footer mark)
 mark-128.png <- LOGO.png @128px   (PNG favicon fallback)
 BG.webp      <- BG.jpg            (home hero, largest contentful paint)
 BG2.webp     <- BG2.png           (operational-problem figure)
 4D2.webp     <- 4D2.png @1400px   (4D framework diagram)
 D3.webp      <- D3.png @1400px    (application domain mosaic)
+
+The PNG/JPG sources above are kept as regeneration masters. Nothing on the
+site references them at runtime except BG.jpg, which stays a CSS background
+behind the .page-hero scrim and is the og:image.
 
 WARNING when regenerating these: the checkout lives on a case-insensitive
 volume, so a derived file named logo.png is the SAME FILE as LOGO.png and will
