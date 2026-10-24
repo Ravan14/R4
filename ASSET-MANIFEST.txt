@@ -48,6 +48,15 @@ The root media files above are never moved, renamed or rewritten by the build;
 publicDir is switched off in vite.config.ts precisely so that nothing gets
 copied into a subdirectory.
 
+ADDRESSES ARE NOT FILENAMES
+===========================
+Every media path in this file is a filename, and filenames are unchanged. The
+site's page ADDRESSES are not: they lost their .html suffix (see README,
+"Addresses"). technology.html is still the file; /technology is the address a
+visitor and the sitemap use, because GitHub Pages appends the suffix to a
+request that has none. Nothing in this manifest should be renamed to match —
+media is referenced by relative filename and has no extensionless form.
+
 ONE EXCEPTION, GENERATED NOT HAND-MADE
 ======================================
 assets/BG-<hash>.jpg   a second copy of the root BG.jpg

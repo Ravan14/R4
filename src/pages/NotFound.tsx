@@ -12,8 +12,8 @@ export default function NotFound() {
         <h1>404</h1>
         <p className="lead">The requested page is outside the current website architecture.</p>
         <div className="actions centered">
-          <a className="btn btn-primary" href="index.html">Return Home</a>
-          <a className="btn btn-ghost" href="contact.html">Contact R4</a>
+          <a className="btn btn-primary" href="./">Return Home</a>
+          <a className="btn btn-ghost" href="contact">Contact R4</a>
         </div>
       </div>
     </Layout>

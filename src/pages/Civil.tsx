@@ -11,7 +11,7 @@ function Hero() {
       <section className="page-hero">
         <div className="container hero-copy">
           <div className="breadcrumb">
-            <a href="index.html">Home</a>
+            <a href="./">Home</a>
             <span>/</span>
             <span>Civil &amp; Commercial</span>
           </div>
@@ -173,8 +173,8 @@ export default function Civil() {
             <span className="eyebrow">Civil application study</span>
             <h2>Define the decision variable, observation frequency, response time, validation data, and delivery interface.</h2>
             <div className="actions">
-              <a className="btn btn-primary" href="contact.html">Discuss a Civil Application</a>
-              <a className="btn btn-ghost" href="applications.html">View All Applications</a>
+              <a className="btn btn-primary" href="contact">Discuss a Civil Application</a>
+              <a className="btn btn-ghost" href="applications">View All Applications</a>
             </div>
           </div>
         </div>

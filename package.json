@@ -8,6 +8,7 @@
     "dev": "vite",
     "build": "vite build && node scripts/prerender.mjs",
     "preview": "vite preview",
+    "serve": "node scripts/serve.mjs",
     "typecheck": "tsc --noEmit",
     "verify": "node scripts/verify-content.mjs",
     "codemod": "node scripts/html-to-jsx.mjs"

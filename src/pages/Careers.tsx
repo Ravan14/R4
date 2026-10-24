@@ -15,7 +15,7 @@ function Hero() {
       <section className="page-hero">
         <div className="container hero-copy">
           <div className="breadcrumb">
-            <a href="index.html">Home</a>
+            <a href="./">Home</a>
             <span>/</span>
             <span>Careers</span>
           </div>
@@ -136,7 +136,7 @@ export default function Careers() {
             <p className="lead muted">Email applications and research-collaboration proposals to careers@r4space.com. Include a curriculum vitae, portfolio or publication links, location, availability, and preferred engagement type.</p>
             <div className="actions">
               <a className="btn btn-primary" href="mailto:careers@r4space.com?subject=Career%20Expression%20of%20Interest">Email Careers</a>
-              <a className="btn btn-ghost" href="company.html">Examine the Company</a>
+              <a className="btn btn-ghost" href="company">Examine the Company</a>
             </div>
           </div>
         </div>

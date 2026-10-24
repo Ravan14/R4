@@ -49,6 +49,14 @@ const EXPECTED = [
   { kind: 'srcs', sign: '+', file: '*', value: 'BG.webp', why: 'auto-preload of the hero image' },
   { kind: 'srcs', sign: '+', file: '*', value: 'https://flagcdn.com/w20/in.png', why: 'auto-preload of the footer flag' },
 
+  // The published addresses lost their .html suffix, and Pages still answers
+  // 200 at both forms without redirecting one to the other. So each page now
+  // declares which address it is, as a canonical link and as og:url for the
+  // scrapers that read the latter before the former. Neither tag existed in the
+  // baseline, which is the defect the site audit recorded.
+  { kind: 'srcs', sign: '+', file: '*', value: /^https:\/\/www\.r4space\.com\/[a-z-]*$/, why: 'rel=canonical' },
+  { kind: 'head title + meta', sign: '+', file: '*', value: /^https:\/\/www\.r4space\.com\/[a-z-]*$/, why: 'og:url' },
+
   // One Footer replaced eight copy-pasted ones. Seven said "Insight Set" for
   // the #insight-set link and technology.html alone said "Integrated Sensing";
   // the inconsistency is normalised, by decision.
@@ -67,6 +75,26 @@ function isExpected(kind, sign, value, file) {
       (e.file === '*' || e.file === file) &&
       (typeof e.value === 'string' ? e.value === value : e.value.test(value)),
   );
+}
+
+/*
+ * Reduce a link to the file it resolves to, so the comparison is about
+ * destinations rather than spelling.
+ *
+ * The published addresses are extensionless (src/urls.ts) and the baseline tree
+ * names every page with its .html suffix. Comparing raw strings would report
+ * all 48 rewritten hrefs as content loss and bury anything real, so both sides
+ * collapse to the same form first. A genuine destination change — a nav item
+ * that starts pointing at defence instead of technology — still fails, because
+ * that is a different file, not a different spelling.
+ */
+function asFile(href) {
+  if (/^(#|https?:|mailto:|tel:|\/\/)/i.test(href)) return href;
+  const hash = href.indexOf('#');
+  const path = hash === -1 ? href : href.slice(0, hash);
+  const fragment = hash === -1 ? '' : href.slice(hash);
+  if (path === '' || path === '.' || path === './') return `index.html${fragment}`;
+  return `${/\.html$/i.test(path) ? path : `${path}.html`}${fragment}`;
 }
 
 function corpus(file) {
@@ -94,7 +122,7 @@ function corpus(file) {
   return {
     'visible text': texts,
     ids: named('*', 'id'),
-    hrefs: named('a', 'href'),
+    hrefs: named('a', 'href').map(asFile),
     srcs: [...named('img', 'src'), ...named('iframe', 'src'), ...named('link', 'href')],
     'alt text': named('img', 'alt'),
     'aria-label / title': [...named('*', 'aria-label'), ...named('*', 'title')],

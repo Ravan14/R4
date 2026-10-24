@@ -19,8 +19,8 @@ export default function Home() {
             <h1>Integrated <span className="text-gradient">Earth Intelligence</span></h1>
             <p className="lead">A distributed satellite system that acquires SAR, optical, thermal infrared, and cooperative radio-frequency observations during the same orbital event—then converts them into decision-grade intelligence.</p>
             <div className="actions">
-              <a className="btn btn-primary" href="technology.html">Explore the Architecture</a>
-              <a className="btn btn-ghost" href="applications.html">Examine Applications</a>
+              <a className="btn btn-primary" href="technology">Explore the Architecture</a>
+              <a className="btn btn-ghost" href="applications">Examine Applications</a>
             </div>
             <div className="hero-data-strip">
               <div className="hero-data">
@@ -85,19 +85,19 @@ export default function Home() {
               <span className="card-tag">Orbital segment</span>
               <h3>Insight Set™</h3>
               <p className="muted">One microsatellite and two CubeSats operating in coordinated formation with distributed payload functions.</p>
-              <a className="link-arrow" href="technology.html#insight-set">Examine spacecraft architecture <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+              <a className="link-arrow" href="technology#insight-set">Examine spacecraft architecture <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
             </article>
             <article className="card">
               <span className="card-tag">Analytical segment</span>
               <h3>ℝ Analytics Platform</h3>
               <p className="muted">Multi-sensor registration, fusion, anomaly detection, attribution, predictive analysis, and secure dissemination.</p>
-              <a className="link-arrow" href="technology.html#analytics">Examine analytical architecture <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+              <a className="link-arrow" href="technology#analytics">Examine analytical architecture <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
             </article>
             <article className="card">
               <span className="card-tag">Decision segment</span>
               <h3>Operational Integration</h3>
               <p className="muted">Alerts, APIs, dashboards, geospatial products, and evidence packages for institutional workflows.</p>
-              <a className="link-arrow" href="applications.html#delivery">Examine delivery mechanisms <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+              <a className="link-arrow" href="applications#delivery">Examine delivery mechanisms <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
             </article>
           </div>
         </div>
@@ -120,7 +120,7 @@ export default function Home() {
                 <span className="pill">Activity attribution</span>
               </div>
               <p className="card-action">
-                <a className="link-arrow" href="defence.html">View defence applications <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+                <a className="link-arrow" href="defence">View defence applications <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
               </p>
             </article>
             <article className="card">
@@ -133,7 +133,7 @@ export default function Home() {
                 <span className="pill">Asset monitoring</span>
               </div>
               <p className="card-action">
-                <a className="link-arrow" href="civil.html">View civil applications <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+                <a className="link-arrow" href="civil">View civil applications <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
               </p>
             </article>
           </div>
@@ -168,8 +168,8 @@ export default function Home() {
             <h2>Define a mission problem and evaluate the appropriate sensing, analytical, and delivery architecture.</h2>
             <p className="lead muted">Engagements may include mission studies, application-specific demonstrations, data-pipeline integration, pilot programmes, and strategic technology collaboration.</p>
             <div className="actions">
-              <a className="btn btn-primary" href="contact.html">Request a Technical Discussion</a>
-              <a className="btn btn-ghost" href="company.html">Examine the Company</a>
+              <a className="btn btn-primary" href="contact">Request a Technical Discussion</a>
+              <a className="btn btn-ghost" href="company">Examine the Company</a>
             </div>
           </div>
         </div>

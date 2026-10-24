@@ -129,6 +129,20 @@ function attrToJsx(node) {
       out.push(`${name}={${v}}`);
       continue;
     }
+    if (name === 'href' && /^[a-z0-9._-]+\.html($|#)/i.test(v)) {
+      /* Published addresses are extensionless, so a regeneration must not put
+       * the suffix back. The authority for this rule is hrefFor() in
+       * src/urls.ts; it is restated here because this script is plain .mjs and
+       * cannot import TypeScript. verify-content.mjs compares link destinations
+       * with the suffix normalised away, so a drift between the two shows up as
+       * a missing link rather than a silent inconsistency. */
+      const hash = v.indexOf('#');
+      const path = hash === -1 ? v : v.slice(0, hash);
+      const fragment = hash === -1 ? '' : v.slice(hash);
+      const bare = path === 'index.html' ? './' : path.replace(/\.html$/i, '');
+      out.push(`${name}="${bare}${fragment}"`);
+      continue;
+    }
     const expr = /["'`\\]|\$\{/.test(v)
       ? `{${JSON.stringify(v)}}`
       : `"${v}"`;

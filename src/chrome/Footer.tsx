@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="container">
         <div className="footer-grid">
           <div className="footer-brand">
-            <a className="brand" href="index.html">
+            <a className="brand" href="./">
               <img src="logo.webp" alt="R4 logo" width="44" height="44" loading="lazy" decoding="async" />
               <span className="brand-copy">
                 <strong>ℝ<sup>4</sup> Aerospace &amp; Defence</strong>
@@ -18,19 +18,19 @@ export default function Footer() {
           <div>
             <h3 className="footer-title">Technology</h3>
             <div className="footer-links">
-              <a href="technology.html#insight-set">Insight Set</a>
-              <a href="technology.html#analytics">ℝ Analytics</a>
-              <a href="technology.html#framework">4D Framework</a>
-              <a href="technology.html#capabilities">Capabilities</a>
+              <a href="technology#insight-set">Insight Set</a>
+              <a href="technology#analytics">ℝ Analytics</a>
+              <a href="technology#framework">4D Framework</a>
+              <a href="technology#capabilities">Capabilities</a>
             </div>
           </div>
           <div>
             <h3 className="footer-title">Applications</h3>
             <div className="footer-links">
-              <a href="defence.html">Defence &amp; Security</a>
-              <a href="civil.html">Civil &amp; Public Sector</a>
-              <a href="applications.html#portfolio">Application Portfolio</a>
-              <a href="applications.html#delivery">Intelligence Delivery</a>
+              <a href="defence">Defence &amp; Security</a>
+              <a href="civil">Civil &amp; Public Sector</a>
+              <a href="applications#portfolio">Application Portfolio</a>
+              <a href="applications#delivery">Intelligence Delivery</a>
             </div>
           </div>
           <div>

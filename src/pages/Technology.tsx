@@ -12,7 +12,7 @@ function Hero() {
       <section className="page-hero">
         <div className="container hero-copy">
           <div className="breadcrumb">
-            <a href="index.html">Home</a>
+            <a href="./">Home</a>
             <span>/</span>
             <span>Technology</span>
           </div>
@@ -372,8 +372,8 @@ export default function Technology() {
             <h2>Discuss the operational problem first. Examine protected architecture only when necessary.</h2>
             <p className="muted">Detailed engineering information can be provided to qualified customers, partners, and investors under an appropriate confidentiality framework.</p>
             <div className="actions">
-              <a className="btn btn-primary" href="contact.html">Request a Capability Briefing</a>
-              <a className="btn btn-ghost" href="applications.html">Examine Applications</a>
+              <a className="btn btn-primary" href="contact">Request a Capability Briefing</a>
+              <a className="btn btn-ghost" href="applications">Examine Applications</a>
             </div>
           </div>
         </div>

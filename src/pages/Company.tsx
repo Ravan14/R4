@@ -15,7 +15,7 @@ function Hero() {
       <section className="page-hero">
         <div className="container hero-copy">
           <div className="breadcrumb">
-            <a href="index.html">Home</a>
+            <a href="./">Home</a>
             <span>/</span>
             <span>Company</span>
           </div>
@@ -177,8 +177,8 @@ export default function Company() {
             <span className="eyebrow">Collaboration</span>
             <h2>Engage across mission engineering, payload technology, analytics, institutional pilots, or strategic development.</h2>
             <div className="actions">
-              <a className="btn btn-primary" href="contact.html">Contact R4</a>
-              <a className="btn btn-ghost" href="careers.html">Examine Careers</a>
+              <a className="btn btn-primary" href="contact">Contact R4</a>
+              <a className="btn btn-ghost" href="careers">Examine Careers</a>
             </div>
           </div>
         </div>

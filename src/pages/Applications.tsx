@@ -15,7 +15,7 @@ function Hero() {
       <section className="page-hero">
         <div className="container hero-copy">
           <div className="breadcrumb">
-            <a href="index.html">Home</a>
+            <a href="./">Home</a>
             <span>/</span>
             <span>Applications</span>
           </div>
@@ -228,9 +228,9 @@ export default function Applications() {
             <span className="eyebrow">Application definition</span>
             <h2>Translate an operational problem into measurable observation and analytical requirements.</h2>
             <div className="actions">
-              <a className="btn btn-primary" href="contact.html">Discuss an Application</a>
-              <a className="btn btn-ghost" href="defence.html">Defence Portfolio</a>
-              <a className="btn btn-ghost" href="civil.html">Civil Portfolio</a>
+              <a className="btn btn-primary" href="contact">Discuss an Application</a>
+              <a className="btn btn-ghost" href="defence">Defence Portfolio</a>
+              <a className="btn btn-ghost" href="civil">Civil Portfolio</a>
             </div>
           </div>
         </div>

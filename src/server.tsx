@@ -1,6 +1,7 @@
 import { renderToStaticMarkup } from 'react-dom/server';
 import App from './App.tsx';
 import { PAGES, type PageKey } from './site.ts';
+import { canonicalFor } from './urls.ts';
 
 /* Server-side document assembly. scripts/prerender.mjs calls renderDocument
  * once per page and writes the result to the repository root, so what GitHub
@@ -29,6 +30,10 @@ function esc(value: string) {
 
 function head(key: PageKey, styles: string[]) {
   const m = PAGES[key];
+  // The error page is the one document that asks not to be indexed, so it also
+  // gets no canonical: a page that should not appear in results should not
+  // nominate an address either.
+  const indexable = m.robots !== 'noindex';
   const lines = [
     '  <meta charset="UTF-8" />',
     '  <meta name="viewport" content="width=device-width, initial-scale=1.0" />',
@@ -53,11 +58,26 @@ function head(key: PageKey, styles: string[]) {
   if (m.ogType) {
     lines.push(`  <meta property="og:type" content="${esc(m.ogType)}" />`);
   }
+  /* Declared alongside the canonical because a shared link picks up og:url
+   * before it ever reads a <link rel=canonical>. */
+  if (indexable) {
+    lines.push(
+      `  <meta property="og:url" content="${canonicalFor(key)}" />`,
+    );
+  }
   // og:image stays BG.jpg, not BG.webp: social scrapers handle WebP badly.
   if (m.ogImage) {
     lines.push(`  <meta property="og:image" content="${esc(m.ogImage)}" />`);
   }
   lines.push(`  <title>${esc(m.title)}</title>`);
+  /* Every page answers at two addresses — /technology and /technology.html —
+   * because Pages appends the suffix to a request that has none, and it will
+   * not 301 one to the other. Both return 200 with identical bytes, so the
+   * canonical tag is the only statement on the page about which address the
+   * document actually is. Home needs it most: /, /index and /index.html. */
+  if (indexable) {
+    lines.push(`  <link rel="canonical" href="${canonicalFor(key)}" />`);
+  }
   lines.push('  <link rel="icon" type="image/png" href="mark-128.png" />');
   lines.push('  <link rel="preconnect" href="https://fonts.googleapis.com" />');
   lines.push(

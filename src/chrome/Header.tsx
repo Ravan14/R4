@@ -12,23 +12,23 @@ import type { PageKey } from '../site.ts';
  * closed the menu. All four are component state now, so data-page-link is gone. */
 
 const HEAD_LINKS: { href: string; label: string; page: PageKey }[] = [
-  { href: 'index.html', label: 'Home', page: 'home' },
-  { href: 'technology.html', label: 'Technology', page: 'technology' },
+  { href: './', label: 'Home', page: 'home' },
+  { href: 'technology', label: 'Technology', page: 'technology' },
 ];
 
 const DROPDOWN_LINKS: { href: string; title: string; note: string }[] = [
   {
-    href: 'applications.html',
+    href: 'applications',
     title: 'Application Portfolio',
     note: 'Integrated dual-use intelligence domains',
   },
   {
-    href: 'defence.html',
+    href: 'defence',
     title: 'Defence & Security',
     note: 'Sovereign monitoring and operational awareness',
   },
   {
-    href: 'civil.html',
+    href: 'civil',
     title: 'Civil & Commercial',
     note: 'Disaster, climate, infrastructure and industry',
   },
@@ -36,9 +36,9 @@ const DROPDOWN_LINKS: { href: string; title: string; note: string }[] = [
 
 const TAIL_LINKS: { href: string; label: string; page: PageKey; cta?: boolean }[] =
   [
-    { href: 'company.html', label: 'Company', page: 'company' },
-    { href: 'careers.html', label: 'Careers', page: 'careers' },
-    { href: 'contact.html', label: 'Contact', page: 'contact', cta: true },
+    { href: 'company', label: 'Company', page: 'company' },
+    { href: 'careers', label: 'Careers', page: 'careers' },
+    { href: 'contact', label: 'Contact', page: 'contact', cta: true },
   ];
 
 function Chevron() {
@@ -65,7 +65,7 @@ export default function Header({ active }: { active: PageKey }) {
   return (
     <header className="site-header">
       <div className="container navbar">
-        <a className="brand" href="index.html" aria-label="R4 Aerospace and Defence home">
+        <a className="brand" href="./" aria-label="R4 Aerospace and Defence home">
           <img className="brand-mark" src="logo.webp" alt="R4 Aerospace and Defence logo" width="44" height="44" decoding="async" />
           <span className="brand-copy">
             <strong>ℝ<sup>4</sup> Aerospace &amp; Defence</strong>
