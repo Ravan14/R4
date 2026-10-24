@@ -9,12 +9,17 @@ D3.png
 
 DERIVED WEBP SIBLINGS (same directory, generated from the sources above)
 ========================================================================
-logo.webp   <- LOGO.png @128px   (header/footer mark and favicon)
-logo.png    <- LOGO.png @128px   (favicon and non-WebP fallback)
-BG.webp     <- BG.jpg            (home hero, largest contentful paint)
-BG2.webp    <- BG2.png           (operational-problem figure)
-4D2.webp    <- 4D2.png @1400px   (4D framework diagram)
-D3.webp     <- D3.png @1400px    (application domain mosaic)
+logo.webp    <- LOGO.png @128px   (header/footer mark and favicon)
+mark-128.png <- LOGO.png @128px   (PNG favicon fallback)
+BG.webp      <- BG.jpg            (home hero, largest contentful paint)
+BG2.webp     <- BG2.png           (operational-problem figure)
+4D2.webp     <- 4D2.png @1400px   (4D framework diagram)
+D3.webp      <- D3.png @1400px    (application domain mosaic)
+
+WARNING when regenerating these: the checkout lives on a case-insensitive
+volume, so a derived file named logo.png is the SAME FILE as LOGO.png and will
+silently overwrite the 1024px source. Derived names below deliberately avoid
+every case-variant of an existing filename.
 
 BG.jpg is kept at 1200x630 and remains the og:image on every page; social
 scrapers handle WebP unreliably, so it must not be replaced by BG.webp.
