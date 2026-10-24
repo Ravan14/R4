@@ -17,9 +17,6 @@
   menuToggle?.addEventListener('click', () => {
     const open = navLinks.classList.toggle('open');
     menuToggle.setAttribute('aria-expanded', String(open));
-    menuToggle.innerHTML = open
-      ? '<i class="fa-solid fa-xmark" aria-hidden="true"></i>'
-      : '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
   });
 
   dropdownButton?.addEventListener('click', (event) => {
@@ -60,7 +57,10 @@
     if (target === current) link.classList.add('active');
   });
 
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   document.querySelectorAll('[data-counter]').forEach((counter) => {
+    if (reduceMotion) return;
     const counterObserver = new IntersectionObserver((entries, obs) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;

@@ -14,7 +14,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="">
@@ -26,36 +25,30 @@
         <span class="brand-copy">
           <strong>ℝ<sup>4</sup> Aerospace &amp; Defence</strong>
           <small>Integrated Earth Intelligence</small>
-        </span>
-      </a>
+        </span></a>
       <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
-        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        <svg class="icon-open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        <svg class="icon-close" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M5 5l14 14M19 5L5 19"/></svg>
       </button>
       <nav class="nav-links" aria-label="Primary navigation">
         <a data-page-link href="index.html">Home</a>
         <a data-page-link href="technology.html">Technology</a>
         <div class="nav-dropdown">
-          <button type="button" aria-expanded="false">Applications <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+          <button type="button" aria-expanded="false">Applications <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button>
           <div class="dropdown-menu">
-            <a href="applications.html"><i class="fa-solid fa-layer-group"></i><span><strong>Application Portfolio</strong><span>Integrated dual-use intelligence domains</span></span></a>
-            <a href="defence.html"><i class="fa-solid fa-shield-halved"></i><span><strong>Defence &amp; Security</strong><span>Sovereign monitoring and operational awareness</span></span></a>
-            <a href="civil.html"><i class="fa-solid fa-earth-asia"></i><span><strong>Civil &amp; Commercial</strong><span>Disaster, climate, infrastructure and industry</span></span></a>
-          </div>
-        </div>
+            <a href="applications.html"><span><strong>Application Portfolio</strong><span>Integrated dual-use intelligence domains</span></span></a>
+            <a href="defence.html"><span><strong>Defence &amp; Security</strong><span>Sovereign monitoring and operational awareness</span></span></a>
+            <a href="civil.html"><span><strong>Civil &amp; Commercial</strong><span>Disaster, climate, infrastructure and industry</span></span></a></div></div>
         <a data-page-link href="company.html">Company</a>
         <a data-page-link href="careers.html">Careers</a>
-        <a data-page-link class="nav-cta" href="contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
+        <a data-page-link class="nav-cta" href="contact.html">Contact</a></nav>
+    </div></header>
 <section class="page-hero">
   <div class="container hero-copy reveal">
     <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Applications</span></div>
     <span class="eyebrow">Applications</span>
     <h1>A common Earth-intelligence architecture for heterogeneous mission domains.</h1>
-    <p class="lead">Application-specific analytical models convert synchronous multi-modal observations into operational indicators, alerts, evidence packages, and decision-support products.</p>
-  </div>
-</section>
+    <p class="lead">Application-specific analytical models convert synchronous multi-modal observations into operational indicators, alerts, evidence packages, and decision-support products.</p></div></section>
 <main id="main">
   <section class="section section-grid">
     <div class="container">
@@ -65,15 +58,11 @@
           <h2>Observation is shared; interpretation is application-specific.</h2>
           <p class="muted">The underlying physics remains consistent across domains. SAR provides structural and all-weather information, optical imagery provides contextual classification, thermal sensing indicates energetic activity, and RF data contributes declared identity and movement metadata.</p>
           <ul class="feature-list">
-            <li><i class="fa-solid fa-circle-check"></i><span>Configurable areas of interest, observation cadences, and event thresholds.</span></li>
-            <li><i class="fa-solid fa-circle-check"></i><span>Domain-specific detectors, classification models, and risk indices.</span></li>
-            <li><i class="fa-solid fa-circle-check"></i><span>Secure outputs for defence, government, humanitarian, scientific, and enterprise workflows.</span></li>
-          </ul>
+            <li><span>Configurable areas of interest, observation cadences, and event thresholds.</span></li>
+            <li><span>Domain-specific detectors, classification models, and risk indices.</span></li>
+            <li><span>Secure outputs for defence, government, humanitarian, scientific, and enterprise workflows.</span></li></ul>
         </div>
-        <div class="media-frame reveal"><img src="D3.webp" alt="R4 defence and civil application domains" width="1400" height="1400" loading="lazy" decoding="async" /></div>
-      </div>
-    </div>
-  </section>
+        <div class="media-frame reveal"><img src="D3.webp" alt="R4 defence and civil application domains" width="1400" height="1400" loading="lazy" decoding="async" /></div></div></div></section>
 
   <section id="portfolio" class="section section-tint">
     <div class="container">
@@ -84,21 +73,18 @@
         <button class="filter-btn" type="button" data-application-filter="civil">Civil</button>
         <button class="filter-btn" type="button" data-application-filter="maritime">Maritime</button>
         <button class="filter-btn" type="button" data-application-filter="environment">Environment</button>
-        <button class="filter-btn" type="button" data-application-filter="infrastructure">Infrastructure</button>
-      </div>
+        <button class="filter-btn" type="button" data-application-filter="infrastructure">Infrastructure</button></div>
       <div class="grid grid-3">
-        <article class="card application-card reveal" data-category="defence maritime"><div class="card-icon"><i class="fa-solid fa-ship"></i></div><span class="card-tag">Defence · Maritime</span><h3>Maritime domain awareness</h3><p class="muted">Detection and corroboration of non-cooperative vessels, anomalous routes, rendezvous activity, port utilisation, and maritime-infrastructure risk.</p><div class="application-meta"><span>SAR</span><span>Optical</span><span>Thermal</span><span>AIS</span></div></article>
-        <article class="card application-card reveal" data-category="defence"><div class="card-icon"><i class="fa-solid fa-border-all"></i></div><span class="card-tag">Defence</span><h3>Border surveillance</h3><p class="muted">Change analysis across corridors, logistics routes, temporary structures, mobility patterns, and terrain-dependent access points.</p><div class="application-meta"><span>SAR</span><span>Optical</span><span>TIR</span></div></article>
-        <article class="card application-card reveal" data-category="defence infrastructure"><div class="card-icon"><i class="fa-solid fa-tower-observation"></i></div><span class="card-tag">Defence · Infrastructure</span><h3>Strategic asset monitoring</h3><p class="muted">Persistent observation of airfields, ports, energy facilities, communication infrastructure, and other designated strategic assets.</p><div class="application-meta"><span>Change detection</span><span>Thermal activity</span></div></article>
-        <article class="card application-card reveal" data-category="civil environment"><div class="card-icon"><i class="fa-solid fa-house-chimney-crack"></i></div><span class="card-tag">Civil · Environment</span><h3>Disaster response</h3><p class="muted">Rapid mapping of flood extent, fire progression, structural damage, access disruption, and isolated population or asset zones.</p><div class="application-meta"><span>Flood</span><span>Wildfire</span><span>Cyclone</span><span>Earthquake</span></div></article>
-        <article class="card application-card reveal" data-category="civil environment"><div class="card-icon"><i class="fa-solid fa-seedling"></i></div><span class="card-tag">Civil · Environment</span><h3>Agriculture and water</h3><p class="muted">Crop-condition analysis, irrigation assessment, moisture proxies, heat stress, water-body dynamics, and agricultural risk indicators.</p><div class="application-meta"><span>Optical indices</span><span>SAR moisture</span><span>TIR stress</span></div></article>
-        <article class="card application-card reveal" data-category="civil environment"><div class="card-icon"><i class="fa-solid fa-tree"></i></div><span class="card-tag">Civil · Environment</span><h3>Climate and ecosystem monitoring</h3><p class="muted">Deforestation, wetland change, coastal erosion, land-use transition, surface-temperature anomalies, and environmental compliance.</p><div class="application-meta"><span>Multi-temporal</span><span>Change</span><span>Thermal</span></div></article>
-        <article class="card application-card reveal" data-category="civil infrastructure"><div class="card-icon"><i class="fa-solid fa-industry"></i></div><span class="card-tag">Civil · Infrastructure</span><h3>Critical infrastructure</h3><p class="muted">Condition and activity monitoring for transport, energy, industrial, water, telecommunications, and urban systems.</p><div class="application-meta"><span>Asset inventory</span><span>Change</span><span>Heat anomaly</span></div></article>
-        <article class="card application-card reveal" data-category="civil maritime"><div class="card-icon"><i class="fa-solid fa-water"></i></div><span class="card-tag">Civil · Maritime</span><h3>Maritime safety and compliance</h3><p class="muted">Traffic-density assessment, incident localisation, oil-spill indications, illegal fishing evidence, and search-area prioritisation.</p><div class="application-meta"><span>AIS correlation</span><span>SAR</span><span>Optical</span></div></article>
-        <article class="card application-card reveal" data-category="civil infrastructure"><div class="card-icon"><i class="fa-solid fa-file-shield"></i></div><span class="card-tag">Civil · Commercial</span><h3>Insurance and risk analytics</h3><p class="muted">Exposure assessment, event verification, damage estimation, asset monitoring, and evidence generation for underwriting or claims workflows.</p><div class="application-meta"><span>Risk score</span><span>Evidence layer</span><span>API</span></div></article>
-      </div>
-    </div>
-  </section>
+        <article class="card application-card reveal" data-category="defence maritime"><span class="card-tag">Defence · Maritime</span><h3>Maritime domain awareness</h3><p class="muted">Detection and corroboration of non-cooperative vessels, anomalous routes, rendezvous activity, port utilisation, and maritime-infrastructure risk.</p><div class="application-meta"><span>SAR</span><span>Optical</span><span>Thermal</span><span>AIS</span></div></article>
+        <article class="card application-card reveal" data-category="defence"><span class="card-tag">Defence</span><h3>Border surveillance</h3><p class="muted">Change analysis across corridors, logistics routes, temporary structures, mobility patterns, and terrain-dependent access points.</p><div class="application-meta"><span>SAR</span><span>Optical</span><span>TIR</span></div></article>
+        <article class="card application-card reveal" data-category="defence infrastructure"><span class="card-tag">Defence · Infrastructure</span><h3>Strategic asset monitoring</h3><p class="muted">Persistent observation of airfields, ports, energy facilities, communication infrastructure, and other designated strategic assets.</p><div class="application-meta"><span>Change detection</span><span>Thermal activity</span></div></article>
+        <article class="card application-card reveal" data-category="civil environment"><span class="card-tag">Civil · Environment</span><h3>Disaster response</h3><p class="muted">Rapid mapping of flood extent, fire progression, structural damage, access disruption, and isolated population or asset zones.</p><div class="application-meta"><span>Flood</span><span>Wildfire</span><span>Cyclone</span><span>Earthquake</span></div></article>
+        <article class="card application-card reveal" data-category="civil environment"><span class="card-tag">Civil · Environment</span><h3>Agriculture and water</h3><p class="muted">Crop-condition analysis, irrigation assessment, moisture proxies, heat stress, water-body dynamics, and agricultural risk indicators.</p><div class="application-meta"><span>Optical indices</span><span>SAR moisture</span><span>TIR stress</span></div></article>
+        <article class="card application-card reveal" data-category="civil environment"><span class="card-tag">Civil · Environment</span><h3>Climate and ecosystem monitoring</h3><p class="muted">Deforestation, wetland change, coastal erosion, land-use transition, surface-temperature anomalies, and environmental compliance.</p><div class="application-meta"><span>Multi-temporal</span><span>Change</span><span>Thermal</span></div></article>
+        <article class="card application-card reveal" data-category="civil infrastructure"><span class="card-tag">Civil · Infrastructure</span><h3>Critical infrastructure</h3><p class="muted">Condition and activity monitoring for transport, energy, industrial, water, telecommunications, and urban systems.</p><div class="application-meta"><span>Asset inventory</span><span>Change</span><span>Heat anomaly</span></div></article>
+        <article class="card application-card reveal" data-category="civil maritime"><span class="card-tag">Civil · Maritime</span><h3>Maritime safety and compliance</h3><p class="muted">Traffic-density assessment, incident localisation, oil-spill indications, illegal fishing evidence, and search-area prioritisation.</p><div class="application-meta"><span>AIS correlation</span><span>SAR</span><span>Optical</span></div></article>
+        <article class="card application-card reveal" data-category="civil infrastructure"><span class="card-tag">Civil · Commercial</span><h3>Insurance and risk analytics</h3><p class="muted">Exposure assessment, event verification, damage estimation, asset monitoring, and evidence generation for underwriting or claims workflows.</p><div class="application-meta"><span>Risk score</span><span>Evidence layer</span><span>API</span></div></article>
+      </div></div></section>
 
   <section id="delivery" class="section">
     <div class="container">
@@ -110,17 +96,13 @@
           <div class="readout"><small>Analytical state</small><strong class="status">Multi-modal correlation active</strong></div>
           <div class="readout"><small>Potential outputs</small><strong>Alert · Vector layer · Change map · Evidence report</strong></div>
           <div class="readout"><small>Integration</small><strong>C2 · GIS · API · Secure dashboard</strong></div>
-          <div class="readout"><small>Decision objective</small><strong>Reduce uncertainty and response latency</strong></div>
-        </div>
-      </div>
-      <div class="grid grid-4" style="margin-top:1.4rem">
-        <article class="card reveal"><div class="card-icon"><i class="fa-solid fa-bell"></i></div><h3>Event alerts</h3><p class="muted">Threshold- or model-generated notifications with location, confidence, and supporting evidence.</p></article>
-        <article class="card reveal"><div class="card-icon"><i class="fa-solid fa-map"></i></div><h3>Geospatial layers</h3><p class="muted">Raster, vector, and temporal layers compatible with institutional GIS environments.</p></article>
-        <article class="card reveal"><div class="card-icon"><i class="fa-solid fa-chart-pie"></i></div><h3>Analytical dashboards</h3><p class="muted">Area-of-interest status, detected changes, risk indicators, and historical context.</p></article>
-        <article class="card reveal"><div class="card-icon"><i class="fa-solid fa-code"></i></div><h3>Secure APIs</h3><p class="muted">Machine-to-machine delivery for enterprise, command, and automated response systems.</p></article>
-      </div>
-    </div>
-  </section>
+          <div class="readout"><small>Decision objective</small><strong>Reduce uncertainty and response latency</strong></div></div></div>
+      <div class="grid grid-4 u-mt-m">
+        <article class="card reveal"><h3>Event alerts</h3><p class="muted">Threshold- or model-generated notifications with location, confidence, and supporting evidence.</p></article>
+        <article class="card reveal"><h3>Geospatial layers</h3><p class="muted">Raster, vector, and temporal layers compatible with institutional GIS environments.</p></article>
+        <article class="card reveal"><h3>Analytical dashboards</h3><p class="muted">Area-of-interest status, detected changes, risk indicators, and historical context.</p></article>
+        <article class="card reveal"><h3>Secure APIs</h3><p class="muted">Machine-to-machine delivery for enterprise, command, and automated response systems.</p></article>
+      </div></div></section>
 
   <section class="section section-sm"><div class="container"><div class="cta-panel reveal"><span class="eyebrow">Application definition</span><h2>Translate an operational problem into measurable observation and analytical requirements.</h2><div class="actions"><a class="btn btn-primary" href="contact.html">Discuss an Application</a><a class="btn btn-ghost" href="defence.html">Defence Portfolio</a><a class="btn btn-ghost" href="civil.html">Civil Portfolio</a></div></div></div></section>
 </main>
@@ -130,48 +112,35 @@
         <div class="footer-brand">
           <a class="brand" href="index.html">
             <img src="logo.webp" alt="R4 logo" width="44" height="44" loading="lazy" decoding="async" />
-            <span class="brand-copy"><strong>ℝ<sup>4</sup> Aerospace &amp; Defence</strong><small>Resilient · Responsive · Real-time · Reconnaissance</small></span>
-          </a>
-          <p>Synchronous multi-modal Earth observation and analytical intelligence for sovereign, civil, environmental, and commercial decision systems.</p>
-        </div>
+            <span class="brand-copy"><strong>ℝ<sup>4</sup> Aerospace &amp; Defence</strong><small>Resilient · Responsive · Real-time · Reconnaissance</small></span></a>
+          <p>Synchronous multi-modal Earth observation and analytical intelligence for sovereign, civil, environmental, and commercial decision systems.</p></div>
         <div>
           <h3 class="footer-title">Technology</h3>
           <div class="footer-links">
             <a href="technology.html#insight-set">Insight Set</a>
             <a href="technology.html#analytics">ℝ Analytics</a>
             <a href="technology.html#framework">4D Framework</a>
-            <a href="technology.html#capabilities">Capabilities</a>
-          </div>
-        </div>
+            <a href="technology.html#capabilities">Capabilities</a></div></div>
         <div>
           <h3 class="footer-title">Applications</h3>
           <div class="footer-links">
             <a href="defence.html">Defence &amp; Security</a>
             <a href="civil.html">Civil &amp; Public Sector</a>
             <a href="applications.html#portfolio">Application Portfolio</a>
-            <a href="applications.html#delivery">Intelligence Delivery</a>
-          </div>
-        </div>
+            <a href="applications.html#delivery">Intelligence Delivery</a></div></div>
         <div>
           <h3 class="footer-title">Contact</h3>
           <div class="footer-links">
             <a href="mailto:info@r4space.com">info@r4space.com</a>
             <a href="tel:+919487266145">+91 94872 66145</a>
-            <a href="https://www.google.com/maps?q=Puliampatti,India" target="_blank" rel="noopener">Puliampatti, Tamil Nadu, India</a>
-          </div>
-          <div class="socials" style="margin-top:1rem">
-            <a href="https://www.linkedin.com/company/r4-aerospace-and-defence/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="mailto:info@r4space.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-          </div>
-        </div>
-      </div>
+            <a href="https://www.google.com/maps?q=Puliampatti,India" target="_blank" rel="noopener">Puliampatti, Tamil Nadu, India</a></div>
+          <div class="socials">
+            <a href="https://www.linkedin.com/company/r4-aerospace-and-defence/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM2.5 9.5h5V21h-5zM9.5 9.5h4.8v1.6h.07a5.3 5.3 0 014.77-2.6c5.1 0 6.03 3.35 6.03 7.7V21h-5v-5.1c0-1.22-.02-2.79-1.7-2.79-1.7 0-1.96 1.33-1.96 2.71V21h-5z"/></svg></a>
+            <a href="mailto:info@r4space.com" aria-label="Email"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M3 6l9 7 9-7"/></svg></a></div></div></div>
       <div class="footer-bottom">
         <span>© 2026 ℝ4 Aerospace &amp; Defence Private Limited. All rights reserved.</span>
-        <span>Built in India <img src="https://flagcdn.com/w20/in.png" alt="India flag" width="20" height="15" /> for global operations.</span>
-      </div>
-    </div>
-  </footer>
-  <button class="back-to-top" type="button" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+        <span>Built in India <img src="https://flagcdn.com/w20/in.png" alt="India flag" width="20" height="15" /> for global operations.</span></div></div></footer>
+  <button class="back-to-top" type="button" aria-label="Back to top"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
   <script src="main.js"></script>
 </body>
 </html>

@@ -14,7 +14,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="home-page">
@@ -26,28 +25,24 @@
         <span class="brand-copy">
           <strong>ℝ<sup>4</sup> Aerospace &amp; Defence</strong>
           <small>Integrated Earth Intelligence</small>
-        </span>
-      </a>
+        </span></a>
       <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
-        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        <svg class="icon-open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        <svg class="icon-close" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M5 5l14 14M19 5L5 19"/></svg>
       </button>
       <nav class="nav-links" aria-label="Primary navigation">
         <a data-page-link href="index.html">Home</a>
         <a data-page-link href="technology.html">Technology</a>
         <div class="nav-dropdown">
-          <button type="button" aria-expanded="false">Applications <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+          <button type="button" aria-expanded="false">Applications <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button>
           <div class="dropdown-menu">
-            <a href="applications.html"><i class="fa-solid fa-layer-group"></i><span><strong>Application Portfolio</strong><span>Integrated dual-use intelligence domains</span></span></a>
-            <a href="defence.html"><i class="fa-solid fa-shield-halved"></i><span><strong>Defence &amp; Security</strong><span>Sovereign monitoring and operational awareness</span></span></a>
-            <a href="civil.html"><i class="fa-solid fa-earth-asia"></i><span><strong>Civil &amp; Commercial</strong><span>Disaster, climate, infrastructure and industry</span></span></a>
-          </div>
-        </div>
+            <a href="applications.html"><span><strong>Application Portfolio</strong><span>Integrated dual-use intelligence domains</span></span></a>
+            <a href="defence.html"><span><strong>Defence &amp; Security</strong><span>Sovereign monitoring and operational awareness</span></span></a>
+            <a href="civil.html"><span><strong>Civil &amp; Commercial</strong><span>Disaster, climate, infrastructure and industry</span></span></a></div></div>
         <a data-page-link href="company.html">Company</a>
         <a data-page-link href="careers.html">Careers</a>
-        <a data-page-link class="nav-cta" href="contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
+        <a data-page-link class="nav-cta" href="contact.html">Contact</a></nav>
+    </div></header>
 <main id="main">
   <section class="home-hero">
     <img class="hero-poster" src="BG.webp" alt="Satellite Earth observation mission visualisation" width="1200" height="630" fetchpriority="high" decoding="async" />
@@ -57,26 +52,20 @@
         <h1>Integrated <span class="text-gradient">Earth Intelligence</span></h1>
         <p class="lead">A distributed satellite system that acquires SAR, optical, thermal infrared, and cooperative radio-frequency observations during the same orbital event—then converts them into decision-grade intelligence.</p>
         <div class="actions">
-          <a class="btn btn-primary" href="technology.html"><i class="fa-solid fa-satellite"></i> Explore the Architecture</a>
-          <a class="btn btn-ghost" href="applications.html"><i class="fa-solid fa-earth-asia"></i> Examine Applications</a>
-        </div>
+          <a class="btn btn-primary" href="technology.html">Explore the Architecture</a>
+          <a class="btn btn-ghost" href="applications.html">Examine Applications</a></div>
         <div class="hero-data-strip">
           <div class="hero-data"><strong>4 Modalities</strong><span>SAR · Optical · TIR · RF</span></div>
           <div class="hero-data"><strong>1 Orbital Event</strong><span>Synchronous acquisition</span></div>
-          <div class="hero-data"><strong>Dual-Use</strong><span>Defence and civil systems</span></div>
-        </div>
-      </div>
-    </div>
-    <span class="hero-scroll">Scroll to examine the system</span>
-  </section>
+          <div class="hero-data"><strong>Dual-Use</strong><span>Defence and civil systems</span></div></div></div></div>
+    <span class="hero-scroll">Scroll to examine the system</span></section>
 
   <section class="section section-grid">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Operational problem</span>
         <h2>Fragmented sensing produces incomplete interpretation.</h2>
-        <p class="lead muted">Independent satellite passes create temporal misalignment. Optical imagery may be obscured by cloud or darkness; SAR detects structure but can lack semantic context; thermal sensing identifies heat signatures; cooperative RF signals may be absent, spoofed, or intentionally disabled.</p>
-      </div>
+        <p class="lead muted">Independent satellite passes create temporal misalignment. Optical imagery may be obscured by cloud or darkness; SAR detects structure but can lack semantic context; thermal sensing identifies heat signatures; cooperative RF signals may be absent, spoofed, or intentionally disabled.</p></div>
       <div class="split reveal">
         <div class="media-frame">
           <img src="BG2.webp" alt="Earth observation problem visualisation" width="1400" height="933" loading="lazy" decoding="async" />
@@ -86,76 +75,56 @@
           <h2>Synchronous observation reduces temporal ambiguity.</h2>
           <p class="muted">The Insight Set combines distributed spacecraft geometry, complementary sensing, onboard computation, and a unified analytical platform. The result is a coherent observation set rather than disconnected sensor products.</p>
           <ul class="feature-list">
-            <li><i class="fa-solid fa-circle-check"></i><span>Common spatial and temporal reference for heterogeneous sensor observations.</span></li>
-            <li><i class="fa-solid fa-circle-check"></i><span>All-weather, day-night observation through complementary sensing physics.</span></li>
-            <li><i class="fa-solid fa-circle-check"></i><span>Lower analytical latency through edge processing and automated fusion.</span></li>
-            <li><i class="fa-solid fa-circle-check"></i><span>Uncertainty-aware outputs designed for C2, GIS, and enterprise systems.</span></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
+            <li><span>Common spatial and temporal reference for heterogeneous sensor observations.</span></li>
+            <li><span>All-weather, day-night observation through complementary sensing physics.</span></li>
+            <li><span>Lower analytical latency through edge processing and automated fusion.</span></li>
+            <li><span>Uncertainty-aware outputs designed for C2, GIS, and enterprise systems.</span></li></ul>
+        </div></div></div></section>
 
   <section class="section section-tint">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Integrated architecture</span>
         <h2>One observation cluster. One analytical fabric.</h2>
-        <p class="muted">Space, ground, computation, and decision interfaces are engineered as a continuous intelligence chain.</p>
-      </div>
+        <p class="muted">Space, ground, computation, and decision interfaces are engineered as a continuous intelligence chain.</p></div>
       <div class="grid grid-3">
         <article class="card reveal">
-          <div class="card-icon"><i class="fa-solid fa-satellite"></i></div>
           <span class="card-tag">Orbital segment</span>
           <h3>Insight Set™</h3>
           <p class="muted">One microsatellite and two CubeSats operating in coordinated formation with distributed payload functions.</p>
-          <a class="link-arrow" href="technology.html#insight-set">Examine spacecraft architecture <i class="fa-solid fa-arrow-right"></i></a>
-        </article>
+          <a class="link-arrow" href="technology.html#insight-set">Examine spacecraft architecture <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></article>
         <article class="card reveal">
-          <div class="card-icon"><i class="fa-solid fa-brain"></i></div>
           <span class="card-tag">Analytical segment</span>
           <h3>ℝ Analytics Platform</h3>
           <p class="muted">Multi-sensor registration, fusion, anomaly detection, attribution, predictive analysis, and secure dissemination.</p>
-          <a class="link-arrow" href="technology.html#analytics">Examine analytical architecture <i class="fa-solid fa-arrow-right"></i></a>
-        </article>
+          <a class="link-arrow" href="technology.html#analytics">Examine analytical architecture <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></article>
         <article class="card reveal">
-          <div class="card-icon"><i class="fa-solid fa-network-wired"></i></div>
           <span class="card-tag">Decision segment</span>
           <h3>Operational Integration</h3>
           <p class="muted">Alerts, APIs, dashboards, geospatial products, and evidence packages for institutional workflows.</p>
-          <a class="link-arrow" href="applications.html#delivery">Examine delivery mechanisms <i class="fa-solid fa-arrow-right"></i></a>
-        </article>
-      </div>
-    </div>
-  </section>
+          <a class="link-arrow" href="applications.html#delivery">Examine delivery mechanisms <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></article>
+      </div></div></section>
 
   <section class="section">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Dual-use portfolio</span>
         <h2>Common sensing physics. Distinct operational outcomes.</h2>
-        <p class="muted">The same observation and analytical infrastructure supports sovereign security, public safety, environmental management, and industrial risk assessment.</p>
-      </div>
+        <p class="muted">The same observation and analytical infrastructure supports sovereign security, public safety, environmental management, and industrial risk assessment.</p></div>
       <div class="grid grid-2">
         <article class="card reveal">
-          <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
           <span class="card-tag">Defence &amp; security</span>
           <h3>Sovereign operational awareness</h3>
           <p class="muted">Maritime domain awareness, border surveillance, strategic infrastructure monitoring, force protection, and high-confidence change analysis.</p>
           <div class="pill-row"><span class="pill">All-weather ISR</span><span class="pill">Dark-vessel detection</span><span class="pill">Activity attribution</span></div>
-          <p style="margin-top:1.2rem"><a class="link-arrow" href="defence.html">View defence applications <i class="fa-solid fa-arrow-right"></i></a></p>
-        </article>
+          <p class="card-action"><a class="link-arrow" href="defence.html">View defence applications <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p></article>
         <article class="card reveal">
-          <div class="card-icon"><i class="fa-solid fa-earth-asia"></i></div>
           <span class="card-tag">Civil &amp; commercial</span>
           <h3>Environmental and infrastructure intelligence</h3>
           <p class="muted">Disaster response, climate monitoring, agriculture, energy, critical infrastructure, insurance, maritime safety, and resource governance.</p>
           <div class="pill-row"><span class="pill">Rapid damage mapping</span><span class="pill">Thermal anomalies</span><span class="pill">Asset monitoring</span></div>
-          <p style="margin-top:1.2rem"><a class="link-arrow" href="civil.html">View civil applications <i class="fa-solid fa-arrow-right"></i></a></p>
-        </article>
-      </div>
-    </div>
-  </section>
+          <p class="card-action"><a class="link-arrow" href="civil.html">View civil applications <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p></article>
+      </div></div></section>
 
   <section class="section section-tint">
     <div class="container">
@@ -163,10 +132,7 @@
         <div class="kpi"><strong data-counter="3">3</strong><span>Coordinated spacecraft</span></div>
         <div class="kpi"><strong data-counter="4">4</strong><span>Complementary sensing classes</span></div>
         <div class="kpi"><strong data-counter="1">1</strong><span>Integrated observation event</span></div>
-        <div class="kpi"><strong data-counter="24" data-suffix="/7">24/7</strong><span>Day-night operational objective</span></div>
-      </div>
-    </div>
-  </section>
+        <div class="kpi"><strong data-counter="24" data-suffix="/7">24/7</strong><span>Day-night operational objective</span></div></div></div></section>
 
   <section class="section">
     <div class="container">
@@ -174,10 +140,7 @@
         <span class="eyebrow">Institutional collaboration</span>
         <h2>Define a mission problem and evaluate the appropriate sensing, analytical, and delivery architecture.</h2>
         <p class="lead muted">Engagements may include mission studies, application-specific demonstrations, data-pipeline integration, pilot programmes, and strategic technology collaboration.</p>
-        <div class="actions"><a class="btn btn-primary" href="contact.html">Request a Technical Discussion</a><a class="btn btn-ghost" href="company.html">Examine the Company</a></div>
-      </div>
-    </div>
-  </section>
+        <div class="actions"><a class="btn btn-primary" href="contact.html">Request a Technical Discussion</a><a class="btn btn-ghost" href="company.html">Examine the Company</a></div></div></div></section>
 </main>
   <footer class="site-footer">
     <div class="container">
@@ -185,48 +148,35 @@
         <div class="footer-brand">
           <a class="brand" href="index.html">
             <img src="logo.webp" alt="R4 logo" width="44" height="44" loading="lazy" decoding="async" />
-            <span class="brand-copy"><strong>ℝ<sup>4</sup> Aerospace &amp; Defence</strong><small>Resilient · Responsive · Real-time · Reconnaissance</small></span>
-          </a>
-          <p>Synchronous multi-modal Earth observation and analytical intelligence for sovereign, civil, environmental, and commercial decision systems.</p>
-        </div>
+            <span class="brand-copy"><strong>ℝ<sup>4</sup> Aerospace &amp; Defence</strong><small>Resilient · Responsive · Real-time · Reconnaissance</small></span></a>
+          <p>Synchronous multi-modal Earth observation and analytical intelligence for sovereign, civil, environmental, and commercial decision systems.</p></div>
         <div>
           <h3 class="footer-title">Technology</h3>
           <div class="footer-links">
             <a href="technology.html#insight-set">Insight Set</a>
             <a href="technology.html#analytics">ℝ Analytics</a>
             <a href="technology.html#framework">4D Framework</a>
-            <a href="technology.html#capabilities">Capabilities</a>
-          </div>
-        </div>
+            <a href="technology.html#capabilities">Capabilities</a></div></div>
         <div>
           <h3 class="footer-title">Applications</h3>
           <div class="footer-links">
             <a href="defence.html">Defence &amp; Security</a>
             <a href="civil.html">Civil &amp; Public Sector</a>
             <a href="applications.html#portfolio">Application Portfolio</a>
-            <a href="applications.html#delivery">Intelligence Delivery</a>
-          </div>
-        </div>
+            <a href="applications.html#delivery">Intelligence Delivery</a></div></div>
         <div>
           <h3 class="footer-title">Contact</h3>
           <div class="footer-links">
             <a href="mailto:info@r4space.com">info@r4space.com</a>
             <a href="tel:+919487266145">+91 94872 66145</a>
-            <a href="https://www.google.com/maps?q=Puliampatti,India" target="_blank" rel="noopener">Puliampatti, Tamil Nadu, India</a>
-          </div>
-          <div class="socials" style="margin-top:1rem">
-            <a href="https://www.linkedin.com/company/r4-aerospace-and-defence/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="mailto:info@r4space.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-          </div>
-        </div>
-      </div>
+            <a href="https://www.google.com/maps?q=Puliampatti,India" target="_blank" rel="noopener">Puliampatti, Tamil Nadu, India</a></div>
+          <div class="socials">
+            <a href="https://www.linkedin.com/company/r4-aerospace-and-defence/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM2.5 9.5h5V21h-5zM9.5 9.5h4.8v1.6h.07a5.3 5.3 0 014.77-2.6c5.1 0 6.03 3.35 6.03 7.7V21h-5v-5.1c0-1.22-.02-2.79-1.7-2.79-1.7 0-1.96 1.33-1.96 2.71V21h-5z"/></svg></a>
+            <a href="mailto:info@r4space.com" aria-label="Email"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M3 6l9 7 9-7"/></svg></a></div></div></div>
       <div class="footer-bottom">
         <span>© 2026 ℝ4 Aerospace &amp; Defence Private Limited. All rights reserved.</span>
-        <span>Built in India <img src="https://flagcdn.com/w20/in.png" alt="India flag" width="20" height="15" /> for global operations.</span>
-      </div>
-    </div>
-  </footer>
-  <button class="back-to-top" type="button" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+        <span>Built in India <img src="https://flagcdn.com/w20/in.png" alt="India flag" width="20" height="15" /> for global operations.</span></div></div></footer>
+  <button class="back-to-top" type="button" aria-label="Back to top"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
   <script src="main.js"></script>
 </body>
 </html>
