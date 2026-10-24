@@ -1,0 +1,88 @@
+.observation-models .card{height:100%}
+    .model-sequence{
+      display:flex;
+      align-items:center;
+      gap:.4rem;
+      flex-wrap:wrap;
+      margin:var(--s-4) 0 0;
+      color:var(--faint);
+      font-size:var(--step--1);
+      letter-spacing:0;
+      text-transform:none;
+    }
+    .model-sequence span{
+      display:inline-flex;
+      align-items:center;
+      gap:.4rem;
+      padding:.25rem .55rem;
+      border:1px solid var(--line);
+      border-radius:var(--r-sm);
+      background:var(--surface-sunken);
+    }
+    .model-sequence svg{color:var(--accent);flex:none}
+
+    /* The timing chart is a technical figure, so it is a plate rather than a
+       band: white ground, hairline rule, and the SVG re-inked to the page's
+       own ink tokens. It was previously a dark inverse plate, which made the
+       h2 inside it near-black on near-black. ----------------------------- */
+    .timing-chart-shell{
+      margin-top:var(--s-6);
+      padding:clamp(var(--s-4),2.5vw,var(--s-6));
+      border:1px solid var(--line);
+      border-radius:var(--r-md);
+      background-color:var(--surface-raised);
+      color:var(--ink);
+      box-shadow:var(--elev-1);
+      overflow:hidden;
+    }
+    .timing-chart-shell .section-head { max-width:none; margin-bottom:var(--s-4); }
+    .timing-chart-scroll{overflow-x:auto;padding-bottom:.35rem}
+    .timing-chart{
+      display:block;
+      width:100%;
+      min-width:760px;
+      height:auto;
+      font-family:var(--font);
+    }
+    .timing-chart .grid-line{stroke:var(--line-hair);stroke-width:1}
+    .timing-chart .axis{stroke:var(--line-ui);stroke-width:2}
+    .timing-chart .axis-arrow{fill:var(--line-ui)}
+    .timing-chart .zone{opacity:.55}
+    /* Zone wash aligned to the three series, so the plate reads as one system.
+       Set from CSS so the gradient markup stays untouched. */
+    .timing-chart #zoneGradient stop:nth-child(1){stop-color:#0369A1;stop-opacity:.06}
+    .timing-chart #zoneGradient stop:nth-child(2){stop-color:#B45309;stop-opacity:.06}
+    .timing-chart #zoneGradient stop:nth-child(3){stop-color:#0F766E;stop-opacity:.08}
+    .timing-chart .zone-label{
+      fill:var(--faint);
+      font-size:14px;
+      font-weight:600;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+    .timing-chart .axis-label{fill:var(--ink);font-size:18px;font-weight:700}
+    .timing-chart .axis-end{fill:var(--muted);font-size:14px;font-weight:600}
+    .timing-chart .point{stroke:var(--surface-raised);stroke-width:4}
+    .timing-chart .point-single{fill:#0369A1}
+    .timing-chart .point-cue{fill:#B45309}
+    .timing-chart .point-sync{fill:#0F766E}
+    .timing-chart .point-label{fill:var(--ink);font-size:15px;font-weight:700}
+    .timing-chart .point-note{fill:var(--muted);font-size:13px}
+    .chart-legend{
+      display:flex;
+      justify-content:flex-start;
+      flex-wrap:wrap;
+      gap:.5rem 1.2rem;
+      margin-top:var(--s-4);
+      color:var(--muted);
+      font-size:var(--step--1);
+    }
+    .chart-legend span{display:inline-flex;align-items:center;gap:.45rem}
+    .legend-dot{width:.6rem;height:.6rem;border-radius:50%;display:inline-block}
+    .legend-single{background:#0369A1}
+    .legend-cue{background:#B45309}
+    .legend-sync{background:#0F766E}
+    .chart-note{max-width:var(--measure);margin:var(--s-4) 0 0;color:var(--muted);font-size:var(--step--1)}
+    @media (max-width:720px){
+      .timing-chart-shell{padding:var(--s-4) var(--s-3)}
+    }

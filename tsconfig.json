@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "allowJs": true,
+    // Imports carry their extensions (./App.tsx) so the same paths resolve for
+    // Vite and for Node's ssrLoadModule without a resolver that guesses.
+    "allowImportingTsExtensions": true,
+    "types": ["vite/client"]
+  },
+  "include": ["src", "scripts", "vite.config.ts"]
+}

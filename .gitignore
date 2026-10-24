@@ -1,0 +1,9 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.DS_Store
+
+# NOTE: assets/ and the nine *.html files under the repository root are build
+# OUTPUT and are deliberately committed, because GitHub Pages serves the branch
+# root with no build step. Do not add them here. The stylesheet source lives at
+# src/styles.css; the built copy is emitted into assets/ by `npm run build`.
