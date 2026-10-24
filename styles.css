@@ -157,7 +157,6 @@ p  { margin-top: 0; }
 /* The hero emphasis. It was a cyan-to-violet gradient clip; on a light page a
    single accent word carries the same emphasis without the gradient. */
 .text-gradient { color: var(--accent); }
-.home-hero .text-gradient { color: var(--accent-on-dark); }
 
 .eyebrow {
   display: inline-block;
@@ -182,10 +181,12 @@ p  { margin-top: 0; }
 
 /* ==========================================================================
    Inverse band
-   Four regions sit on dark artwork. Re-declaring the semantic tokens here
+   Three regions sit on dark artwork. Re-declaring the semantic tokens here
    re-scopes every downstream rule at once, so no component needs a dark twin.
-   ========================================================================== */
-.home-hero,
+
+   The home hero is deliberately NOT in this list. It is a light band that
+   lets the satellite plate through from the top right, which keeps the fixed
+   header's --ink brand text legible over it. ------------------------------ */
 .page-hero,
 .mission-map,
 .media-frame--dark {
@@ -199,24 +200,28 @@ p  { margin-top: 0; }
   background-color: var(--surface-inverse);
   color: var(--ink);
 }
-.home-hero h1, .home-hero h2, .home-hero h3,
 .page-hero h1 { color: var(--ink); }
 
 /* ==========================================================================
    Header and navigation
    ========================================================================== */
+/* The header is a permanent light bar, not a transparent overlay. It was
+   transparent until .scrolled, which put --ink brand and nav text directly on
+   the dark page-hero plate on seven of the nine pages. A solid bar removes the
+   whole class of "text over unpredictable artwork" failures and is the more
+   editorial choice. */
 .site-header {
   position: fixed;
   inset: 0 0 auto 0;
   z-index: var(--z-header);
-  border-bottom: 1px solid transparent;
-  transition: background var(--dur-2) var(--ease), border-color var(--dur-2) var(--ease);
+  background: rgba(252, 252, 253, 0.94);
+  border-bottom: 1px solid var(--line-hair);
+  backdrop-filter: blur(12px);
+  transition: box-shadow var(--dur-2) var(--ease), border-color var(--dur-2) var(--ease);
 }
 .site-header.scrolled {
-  background: rgba(252, 252, 253, 0.92);
   border-bottom-color: var(--line);
   box-shadow: var(--elev-1);
-  backdrop-filter: blur(12px);
 }
 .navbar {
   min-height: var(--header-h);
@@ -348,24 +353,27 @@ p  { margin-top: 0; }
 
 /* Inside an inverse band --accent becomes a light tint, so a primary button
    would go pale-on-pale. It inverts to a filled light chip instead. -------- */
-.home-hero .btn-primary, .page-hero .btn-primary {
+.page-hero .btn-primary {
   background: var(--accent-on-dark);
   color: var(--surface-inverse);
 }
-.home-hero .btn-primary:hover, .page-hero .btn-primary:hover { background: #A5E3FF; }
+.page-hero .btn-primary:hover { background: #A5E3FF; }
 
-/* Hero text sits on a dark scrim, so its ghost button inverts -------------- */
-.home-hero .btn-ghost, .page-hero .btn-ghost {
+/* Page headers sit on a dark plate, so their ghost button inverts ---------- */
+.page-hero .btn-ghost {
   color: var(--ink);
   border-color: rgba(244, 247, 250, 0.4);
 }
-.home-hero .btn-ghost:hover, .page-hero .btn-ghost:hover { background: rgba(244, 247, 250, 0.1); }
+.page-hero .btn-ghost:hover { background: rgba(244, 247, 250, 0.1); }
 
 .actions { display: flex; flex-wrap: wrap; gap: var(--s-3); }
 .actions.centered { justify-content: center; }
 
 /* ==========================================================================
    Hero
+   A light band, not a dark slab. The plate bleeds in from the top right and
+   a white wash carries every text surface, so the fixed header's --ink brand
+   text stays legible over it and the seam into the next section disappears.
    ========================================================================== */
 .home-hero {
   position: relative;
@@ -374,24 +382,43 @@ p  { margin-top: 0; }
   align-items: center;
   overflow: hidden;
   isolation: isolate;
+  background-color: var(--surface);
+  color: var(--ink);
 }
 .home-hero .hero-poster {
   position: absolute;
   inset: 0;
   width: 100%; height: 100%;
   object-fit: cover;
+  object-position: 72% 34%;
   z-index: var(--z-hero-media);
-  opacity: 0.55;
+  opacity: 0.92;
 }
+/* Horizontal wash: near-opaque where the copy lives, thinning right so the
+   satellite keeps its detail. */
 .home-hero::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: var(--z-hero-scrim);
-  background: linear-gradient(90deg,
-    rgba(11, 18, 32, 0.96) 0%,
-    rgba(11, 18, 32, 0.82) 45%,
-    rgba(11, 18, 32, 0.42) 100%);
+  background: linear-gradient(96deg,
+    rgba(252, 252, 253, 0.99) 0%,
+    rgba(252, 252, 253, 0.97) 44%,
+    rgba(252, 252, 253, 0.74) 70%,
+    rgba(252, 252, 253, 0.46) 100%);
+}
+/* Vertical wash along the foot, so the data strip and the caption never sit
+   on bare plate however bright or dark it is at that edge. */
+.home-hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 46%;
+  z-index: var(--z-hero-scrim);
+  background: linear-gradient(0deg,
+    rgba(252, 252, 253, 0.97) 0%,
+    rgba(252, 252, 253, 0.80) 38%,
+    rgba(252, 252, 253, 0) 100%);
 }
 .hero-content { position: relative; z-index: var(--z-hero-copy); padding: calc(var(--header-h) + var(--s-9)) 0 var(--s-8); width: min(780px, 100%); }
 .hero-content h1 { margin-bottom: var(--s-5); text-transform: none; }
@@ -407,17 +434,17 @@ p  { margin-top: 0; }
   padding: var(--s-4);
   border: 1px solid var(--line);
   border-radius: var(--r-sm);
-  background: var(--surface-inverse);
+  background: var(--surface-raised);
 }
-.hero-data strong { display: block; color: var(--accent-on-dark); font-size: var(--step-2); font-weight: 700; }
-.hero-data span { color: var(--muted-on-dark); font-size: var(--step--1); letter-spacing: 0; text-transform: none; }
+.hero-data strong { display: block; color: var(--accent); font-size: var(--step-2); font-weight: 700; }
+.hero-data span { color: var(--muted); font-size: var(--step--1); letter-spacing: 0; text-transform: none; }
 
 .hero-scroll {
   position: absolute;
   right: var(--s-4);
   bottom: var(--s-4);
   z-index: var(--z-hero-copy);
-  color: var(--muted-on-dark);
+  color: var(--faint);
   font-size: var(--step--1);
   letter-spacing: 0;
   text-transform: none;
@@ -917,6 +944,16 @@ details p { color: var(--muted); padding-bottom: var(--s-4); margin: 0; }
   .timeline-item::before, .timeline-item:nth-child(even)::before { left: -1.32rem; right: auto; }
   .page-hero { min-height: 420px; }
   .mission-map { min-height: 340px; }
+
+  /* The copy spans the full viewport here, so the wash can no longer thin out
+     on the right — the plate becomes a texture rather than a picture. ------- */
+  .home-hero .hero-poster { opacity: 0.5; object-position: 62% 30%; }
+  .home-hero::before {
+    background: linear-gradient(96deg,
+      rgba(252, 252, 253, 0.99) 0%,
+      rgba(252, 252, 253, 0.97) 56%,
+      rgba(252, 252, 253, 0.90) 100%);
+  }
 }
 
 @media (max-width: 560px) {
