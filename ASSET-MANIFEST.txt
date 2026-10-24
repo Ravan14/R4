@@ -35,3 +35,35 @@ BG.jpg is kept at 1200x630 and remains the og:image on every page; social
 scrapers handle WebP unreliably, so it must not be replaced by BG.webp.
 
 Do not place these files inside an assets, images, media, or videos subdirectory unless every website reference is deliberately revised.
+
+NOT MEDIA, BUT SUBJECT TO THE SAME RULE
+=======================================
+assets/                build output (hashed JS + CSS), committed because GitHub
+                       Pages serves this branch root with no build step
+index.html .. 404.html build output, same reason — the source is src/
+src/styles.css         the stylesheet source; it is no longer at the root
+main.js                deleted: its behaviour is React components in src/
+
+The root media files above are never moved, renamed or rewritten by the build;
+publicDir is switched off in vite.config.ts precisely so that nothing gets
+copied into a subdirectory.
+
+ONE EXCEPTION, GENERATED NOT HAND-MADE
+======================================
+assets/BG-<hash>.jpg   a second copy of the root BG.jpg
+
+src/styles.css paints BG.jpg behind the .page-hero scrim. A relative url() in
+CSS resolves against the stylesheet, and the stylesheet is no longer at the
+root, so Vite treats that reference as a build input and emits it as a hashed
+sibling of the bundle. This is the only media file the build copies, and it is
+why the reference is written '../BG.jpg' rather than a bare name: a bare name
+resolves to assets/BG.jpg at runtime and 404s, which is the bug this note
+records. base:'./' keeps the emitted URL relative, so it also resolves when
+index.html is opened straight from disk.
+
+Consequences worth knowing: the photo occupies 144 KB twice in the commit, and
+the browser fetches only the hashed one — the root BG.jpg is reached solely by
+the og:image meta tag. Nothing references assets/BG-<hash>.jpg by name, so a
+rebuild that changes the photo renames it; scripts/prerender.mjs deletes the
+whole assets/ directory before copying, which is what keeps that rename from
+accumulating in git.

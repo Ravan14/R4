@@ -9,6 +9,7 @@
     "build": "vite build && node scripts/prerender.mjs",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
+    "verify": "node scripts/verify-content.mjs",
     "codemod": "node scripts/html-to-jsx.mjs"
   },
   "dependencies": {
