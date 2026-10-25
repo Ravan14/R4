@@ -3,15 +3,17 @@
  * parser, not retyped. Verify with the rendered-text diff before editing. */
 
 import Layout from '../chrome/Layout.tsx';
+import HeroMedia from '../chrome/HeroMedia.tsx';
 
 export default function NotFound() {
   return (
     <Layout page="not-found" mainClass="page-hero page-hero--full">
-      <div className="container hero-copy center">
+      <HeroMedia />
+      <div className="container hero-copy">
         <span className="eyebrow">Navigation error</span>
         <h1>404</h1>
         <p className="lead">The requested page is outside the current website architecture.</p>
-        <div className="actions centered">
+        <div className="actions">
           <a className="btn btn-primary" href="./">Return Home</a>
           <a className="btn btn-ghost" href="contact">Contact R4</a>
         </div>

@@ -17,8 +17,10 @@ export const pageFiles: Record<PageKey, string> = Object.fromEntries(
   pageKeys.map((key) => [key, PAGES[key].file]),
 ) as Record<PageKey, string>;
 
-const FONT_HREF =
-  'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap';
+/* The font is self-hosted and declared in src/styles.css, which is where its
+ * @font-face lives. Nothing here needs its URL — the only reason the head
+ * mentions it at all is the preload below, whose href comes from the build
+ * manifest because the filename is hashed. */
 
 function esc(value: string) {
   return value
@@ -28,7 +30,7 @@ function esc(value: string) {
     .replace(/"/g, '&quot;');
 }
 
-function head(key: PageKey, styles: string[]) {
+function head(key: PageKey, assets: Assets) {
   const m = PAGES[key];
   // The error page is the one document that asks not to be indexed, so it also
   // gets no canonical: a page that should not appear in results should not
@@ -37,6 +39,7 @@ function head(key: PageKey, styles: string[]) {
   const lines = [
     '  <meta charset="UTF-8" />',
     '  <meta name="viewport" content="width=device-width, initial-scale=1.0" />',
+    "  <script>document.documentElement.classList.add('js')</script>",
   ];
   if (m.description) {
     lines.push(`  <meta name="description" content="${esc(m.description)}" />`);
@@ -79,23 +82,26 @@ function head(key: PageKey, styles: string[]) {
     lines.push(`  <link rel="canonical" href="${canonicalFor(key)}" />`);
   }
   lines.push('  <link rel="icon" type="image/png" href="mark-128.png" />');
-  lines.push('  <link rel="preconnect" href="https://fonts.googleapis.com" />');
-  lines.push(
-    '  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />',
-  );
-  lines.push(
-    `  <link href="${FONT_HREF}" rel="stylesheet" />`,
-  );
-  for (const href of styles) {
+  /* Preload the font rather than letting the stylesheet find it. A url() in
+   * CSS is only discovered after the CSS itself has downloaded and parsed,
+   * which puts a second round trip in front of the first word on screen; the
+   * preload races that. crossorigin is required even though it is same-origin,
+   * because fonts are always fetched in CORS mode and a preload without it is
+   * downloaded twice and used never. */
+  for (const href of assets.fonts) {
+    lines.push(
+      `  <link rel="preload" href="${esc(href)}" as="font" type="font/woff2" crossorigin />`,
+    );
+  }
+  for (const href of assets.styles) {
     lines.push(`  <link rel="stylesheet" href="${href}" />`);
   }
   return lines.join('\n');
 }
 
-export function renderDocument(
-  key: PageKey,
-  assets: { styles: string[]; scripts: string[] },
-): string {
+type Assets = { styles: string[]; scripts: string[]; fonts: string[] };
+
+export function renderDocument(key: PageKey, assets: Assets): string {
   const m = PAGES[key];
   const body = renderToStaticMarkup(<App page={key} />);
   const scripts = assets.scripts
@@ -105,7 +111,7 @@ export function renderDocument(
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
-${head(key, assets.styles)}
+${head(key, assets)}
 </head>
 <body${m.bodyClass ? ` class="${esc(m.bodyClass)}"` : ''} data-page="${key}">
   <div id="root">${body}</div>

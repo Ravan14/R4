@@ -1,44 +1,46 @@
-import { useCallback, useState } from 'react';
-import { useClickOutside } from '../hooks.ts';
 import type { PageKey } from '../site.ts';
+import Icon, { type IconName } from '../widgets/Icon.tsx';
 
 /* GENERATED from the header that was copy-pasted into eight files, then wired
  * up. There is now one header in the codebase. Nav labels, hrefs and the brand
  * lockup are the published strings, moved verbatim.
  *
- * The behaviour used to live in main.js: a [data-page-link] scan to mark the
- * current page, a class toggle for the mobile menu, a class toggle plus a
- * document click handler for the dropdown, and a link-click handler that
- * closed the menu. All four are component state now, so data-page-link is gone. */
+ * This is static markup. src/client.ts enhances the menu and dropdown after
+ * registering their behavior; without it, every navigation destination remains
+ * available and the mobile panel stays expanded. */
 
-const HEAD_LINKS: { href: string; label: string; page: PageKey }[] = [
-  { href: './', label: 'Home', page: 'home' },
-  { href: 'technology', label: 'Technology', page: 'technology' },
+const HEAD_LINKS: { href: string; label: string; page: PageKey; icon: IconName }[] = [
+  { href: './', label: 'Home', page: 'home', icon: 'home' },
+  { href: 'technology', label: 'Technology', page: 'technology', icon: 'technology' },
 ];
 
-const DROPDOWN_LINKS: { href: string; title: string; note: string }[] = [
+const DROPDOWN_LINKS: { href: string; title: string; note: string; icon: IconName }[] = [
   {
     href: 'applications',
-    title: 'Application Portfolio',
-    note: 'Integrated dual-use intelligence domains',
+    title: 'Application overview',
+    note: 'One system, many missions',
+    icon: 'applications',
   },
   {
     href: 'defence',
     title: 'Defence & Security',
     note: 'Sovereign monitoring and operational awareness',
+    icon: 'defence',
   },
   {
     href: 'civil',
     title: 'Civil & Commercial',
     note: 'Disaster, climate, infrastructure and industry',
+    icon: 'civil',
   },
 ];
 
-const TAIL_LINKS: { href: string; label: string; page: PageKey; cta?: boolean }[] =
+const TAIL_LINKS: { href: string; label: string; page: PageKey; icon: IconName; cta?: boolean }[] =
   [
-    { href: 'company', label: 'Company', page: 'company' },
-    { href: 'careers', label: 'Careers', page: 'careers' },
-    { href: 'contact', label: 'Contact', page: 'contact', cta: true },
+    { href: 'company', label: 'Company', page: 'company', icon: 'company' },
+    { href: 'investors', label: 'Investors', page: 'investors', icon: 'analytics' },
+    { href: 'careers', label: 'Careers', page: 'careers', icon: 'careers' },
+    { href: 'contact', label: 'Contact', page: 'contact', icon: 'contact', cta: true },
   ];
 
 function Chevron() {
@@ -50,20 +52,14 @@ function Chevron() {
 }
 
 export default function Header({ active }: { active: PageKey }) {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [dropOpen, setDropOpen] = useState(false);
-  const closeDrop = useCallback(() => setDropOpen(false), []);
-  const setDropRef = useClickOutside<HTMLDivElement>(closeDrop, dropOpen);
-
+  const applicationsActive = ['applications', 'defence', 'civil'].includes(active);
   const navClass = (page: PageKey, cta?: boolean) =>
     [page === active ? 'active' : '', cta ? 'nav-cta' : '']
       .filter(Boolean)
       .join(' ') || undefined;
 
-  const closeMenu = () => setMenuOpen(false);
-
   return (
-    <header className="site-header">
+    <header className="site-header" data-site-header>
       <div className="container navbar">
         <a className="brand" href="./" aria-label="R4 Aerospace and Defence home">
           <img className="brand-mark" src="logo.webp" alt="R4 Aerospace and Defence logo" width="44" height="44" decoding="async" />
@@ -75,9 +71,10 @@ export default function Header({ active }: { active: PageKey }) {
         <button
           className="menu-toggle"
           type="button"
-          aria-label={menuOpen ? 'Close navigation' : 'Open navigation'}
-          aria-expanded={menuOpen}
-          onClick={() => setMenuOpen((v) => !v)}
+          aria-label="Open navigation"
+          aria-expanded="false"
+          aria-controls="primary-navigation"
+          data-menu-toggle
         >
           <svg className="icon-open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true" focusable="false">
             <path d="M3 6h18M3 12h18M3 18h18" />
@@ -87,36 +84,43 @@ export default function Header({ active }: { active: PageKey }) {
           </svg>
         </button>
         <nav
-          className={menuOpen ? 'nav-links open' : 'nav-links'}
+          id="primary-navigation"
+          className="nav-links"
           aria-label="Primary navigation"
+          data-nav-links
         >
           {HEAD_LINKS.map((item) => (
             <a
               key={item.href}
               className={navClass(item.page)}
               href={item.href}
-              onClick={closeMenu}
             >
-              {item.label}
+              <Icon name={item.icon} className="nav-icon" />
+              <span>{item.label}</span>
             </a>
           ))}
           <div
-            className={dropOpen ? 'nav-dropdown open' : 'nav-dropdown'}
-            ref={setDropRef}
+            className="nav-dropdown"
+            data-dropdown
           >
-            <button type="button" aria-expanded={dropOpen} onClick={() => setDropOpen((v) => !v)}>
-              Applications <Chevron />
+            <button
+              type="button"
+              className={applicationsActive ? 'active' : undefined}
+              aria-expanded="false"
+              aria-controls="application-menu"
+              data-dropdown-toggle
+            >
+              <Icon name="applications" className="nav-icon" />
+              <span>Applications</span>
+              <Chevron />
             </button>
-            <div className="dropdown-menu">
+            <div className="dropdown-menu" id="application-menu">
               {DROPDOWN_LINKS.map((item) => (
                 <a
                   key={item.href}
                   href={item.href}
-                  onClick={() => {
-                    closeMenu();
-                    setDropOpen(false);
-                  }}
                 >
+                  <Icon name={item.icon} className="dropdown-icon" />
                   <span>
                     <strong>{item.title}</strong>
                     <span>{item.note}</span>
@@ -130,13 +134,14 @@ export default function Header({ active }: { active: PageKey }) {
               key={item.href}
               className={navClass(item.page, item.cta)}
               href={item.href}
-              onClick={closeMenu}
             >
-              {item.label}
+              <Icon name={item.icon} className="nav-icon" />
+              <span>{item.label}</span>
             </a>
           ))}
         </nav>
       </div>
+      <div className="reading-progress" aria-hidden="true" />
     </header>
   );
 }

@@ -1,204 +1,209 @@
 /*
- * scripts/verify-content.mjs — proves the migration moved the site, it did not
- * rewrite it.
+ * scripts/verify-content.mjs — proves the built tree is structurally sound.
  *
- * The React pages render to static HTML at build time, so the published files
- * can be compared word-for-word against a baseline tree. This script extracts
- * the visible text corpus, the element IDs, and the link/asset URLs from both
- * trees and prints any difference that is not on the allowlist below.
+ * The word-parity migration job is done: the pages were rewritten on purpose
+ * (CONTENT-REPORT.md), so this script no longer diffs against a baseline tree.
+ * What remains worth proving before every publish:
  *
- *   node scripts/verify-content.mjs [baselineDir] [builtDir]
+ *   1. every page file exists,
+ *   2. every internal link resolves to a page that exists, and its fragment
+ *      (if any) names an element id that exists in that page,
+ *   3. every relative asset reference (img, stylesheet, script, font, icon)
+ *      exists on disk,
+ *   4. no element id is duplicated within a page,
+ *   5. every image has an alt attribute — empty alt is allowed only inside
+ *      aria-hidden decoration,
+ *   6. every indexable page declares a title, a description, a canonical, and
+ *      an og:url equal to the canonical; only 404.html declares noindex,
+ *   7. sitemap.xml lists exactly the indexable pages, each at its canonical
+ *      address.
  *
- * Produce a baseline with:
- *   rm -rf /tmp/r4-base && mkdir -p /tmp/r4-base && git archive HEAD | tar -x -C /tmp/r4-base
+ *   node scripts/verify-content.mjs [builtDir]
  *
- * Exit 0 means every word, id and destination survived. Exit 1 prints the
- * diffs, and the whole point is that nothing prints unless it is a defect.
+ * Exit 0 means every page carries the published address and nothing in the
+ * tree points at a file, fragment, or asset that does not exist. Exit 1
+ * prints the defects.
  */
 
 import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { JSDOM } from 'jsdom';
 
-const BASE = process.argv[2] ?? '/tmp/r4-base';
-const HEAD = process.argv[3] ?? '.';
+const ROOT = process.argv[2] ?? '.';
+const ORIGIN = 'https://www.r4space.com';
 
 const FILES = [
   'index.html', 'technology.html', 'applications.html', 'defence.html',
-  'civil.html', 'company.html', 'careers.html', 'contact.html', '404.html',
+  'civil.html', 'company.html', 'investors.html', 'careers.html',
+  'contact.html', '404.html',
 ];
 
-/*
- * Authorised drift — the complete list, each item with a reason.
- * If a diff is not covered here, it is a defect, and it is a defect in the
- * migration rather than something to add to this table.
- */
-const EXPECTED = [
-  // React needs a mount point for hydrateRoot.
-  { kind: 'ids', sign: '+', file: '*', value: 'root', why: 'React mount point' },
+/* 404 is the one document that asks not to be indexed; every other page must
+ * declare itself. */
+const INDEXABLE = new Set(FILES.filter((f) => f !== '404.html'));
 
-  // The stylesheet and the bundle are hashed build output now; styles.css and
-  // main.js were the hand-maintained sources they replace.
-  { kind: 'srcs', sign: '-', file: '*', value: 'styles.css', why: 'moved to src/, emitted as assets/index-<hash>.css' },
-  { kind: 'srcs', sign: '+', file: '*', value: /^assets\/index-[\w-]+\.css$/, why: 'built stylesheet' },
-
-  // React 19 hoists <link rel="preload" as="image"> for images that carry a
-  // fetch priority or sit in the chrome. It speeds up the LCP hero, so it is
-  // kept rather than suppressed.
-  { kind: 'srcs', sign: '+', file: '*', value: 'logo.webp', why: 'auto-preload of the brand mark' },
-  { kind: 'srcs', sign: '+', file: '*', value: 'BG.webp', why: 'auto-preload of the hero image' },
-  { kind: 'srcs', sign: '+', file: '*', value: 'https://flagcdn.com/w20/in.png', why: 'auto-preload of the footer flag' },
-
-  // The published addresses lost their .html suffix, and Pages still answers
-  // 200 at both forms without redirecting one to the other. So each page now
-  // declares which address it is, as a canonical link and as og:url for the
-  // scrapers that read the latter before the former. Neither tag existed in the
-  // baseline, which is the defect the site audit recorded.
-  { kind: 'srcs', sign: '+', file: '*', value: /^https:\/\/www\.r4space\.com\/[a-z-]*$/, why: 'rel=canonical' },
-  { kind: 'head title + meta', sign: '+', file: '*', value: /^https:\/\/www\.r4space\.com\/[a-z-]*$/, why: 'og:url' },
-
-  // One Footer replaced eight copy-pasted ones. Seven said "Insight Set" for
-  // the #insight-set link and technology.html alone said "Integrated Sensing";
-  // the inconsistency is normalised, by decision.
-  { kind: 'visible text', sign: '-', file: 'technology.html', value: 'Integrated Sensing', why: 'footer label normalised to "Insight Set"' },
-  { kind: 'visible text', sign: '+', file: 'technology.html', value: 'Insight Set', why: 'as above' },
-
-  // The shared chrome adds a scroll-to-top control to the standalone 404.
-  { kind: 'aria-label / title', sign: '+', file: '404.html', value: 'Back to top', why: 'shared chrome' },
-];
-
-function isExpected(kind, sign, value, file) {
-  return EXPECTED.some(
-    (e) =>
-      e.kind === kind &&
-      e.sign === sign &&
-      (e.file === '*' || e.file === file) &&
-      (typeof e.value === 'string' ? e.value === value : e.value.test(value)),
-  );
+/* The published address of a filename: index.html -> '/', anything else
+ * drops its .html suffix — the form rel=canonical, og:url, and the sitemap
+ * all carry (src/urls.ts). */
+function addressFor(file) {
+  if (file === 'index.html') return '/';
+  return `/${file.replace(/\.html$/i, '')}`;
 }
+const canonicalFor = (file) => `${ORIGIN}${addressFor(file)}`;
 
 /*
- * Reduce a link to the file it resolves to, so the comparison is about
- * destinations rather than spelling.
- *
- * The published addresses are extensionless (src/urls.ts) and the baseline tree
- * names every page with its .html suffix. Comparing raw strings would report
- * all 48 rewritten hrefs as content loss and bury anything real, so both sides
- * collapse to the same form first. A genuine destination change — a nav item
- * that starts pointing at defence instead of technology — still fails, because
- * that is a different file, not a different spelling.
+ * Reduce an href to the file and fragment it resolves to, relative to the
+ * page that carries it. Returns null for addresses that leave the tree
+ * (schemes, protocol-relative, or a bare # which is the back-to-top idiom).
  */
-function asFile(href) {
-  if (/^(#|https?:|mailto:|tel:|\/\/)/i.test(href)) return href;
+function resolve(href, fromFile) {
+  if (/^(#|https?:|mailto:|tel:|\/\/)/i.test(href)) return { file: fromFile, fragment: href.startsWith('#') ? href.slice(1) : '' };
   const hash = href.indexOf('#');
   const path = hash === -1 ? href : href.slice(0, hash);
-  const fragment = hash === -1 ? '' : href.slice(hash);
-  if (path === '' || path === '.' || path === './') return `index.html${fragment}`;
-  return `${/\.html$/i.test(path) ? path : `${path}.html`}${fragment}`;
+  const fragment = hash === -1 ? '' : href.slice(hash + 1);
+  const file = path === '' || path === '.' || path === './'
+    ? 'index.html'
+    : `${/\.html$/i.test(path) ? path : `${path}.html`}`;
+  return { file, fragment };
 }
 
-function corpus(file) {
-  const dom = new JSDOM(readFileSync(file, 'utf8'));
-  const d = dom.window.document;
-  d.querySelectorAll('script, style, noscript').forEach((n) => n.remove());
-
-  const walker = d.createTreeWalker(d.body, dom.window.NodeFilter.SHOW_TEXT);
-  const texts = [];
-  let n;
-  while ((n = walker.nextNode())) {
-    const t = n.textContent.replace(/\s+/g, ' ').trim();
-    if (!t) continue;
-    const el = n.parentElement;
-    if (el && (el.closest('[aria-hidden="true"]') || el.tagName === 'svg')) continue;
-    texts.push(t);
-  }
-
-  // Attributes that carry words or destinations — the other half of the contract.
-  const named = (sel, attr) =>
-    Array.from(d.querySelectorAll(sel))
-      .map((el) => el.getAttribute(attr))
-      .filter((v) => v !== null && v !== '');
-
-  return {
-    'visible text': texts,
-    ids: named('*', 'id'),
-    hrefs: named('a', 'href').map(asFile),
-    srcs: [...named('img', 'src'), ...named('iframe', 'src'), ...named('link', 'href')],
-    'alt text': named('img', 'alt'),
-    'aria-label / title': [...named('*', 'aria-label'), ...named('*', 'title')],
-    'head title + meta': [
-      d.querySelector('title')?.textContent?.trim() ?? '',
-      ...named('meta', 'content').filter((v) => v.length > 12),
-    ],
-  };
+/* A reference that names a local file rather than a remote resource. */
+function isLocal(ref) {
+  return ref !== '' && !/^(#|https?:|mailto:|tel:|\/\/|data:)/i.test(ref);
 }
 
-function counts(arr) {
-  const m = new Map();
-  for (const x of arr) m.set(x, (m.get(x) ?? 0) + 1);
-  return m;
+function strip(ref) {
+  return ref.split(/[?#]/, 1)[0];
 }
 
-/* Returns { problems, expected } for one comparison dimension. */
-function diff(file, kind, before, after) {
-  const ca = counts(before);
-  const cb = counts(after);
-  const problems = [];
-  let expected = 0;
-
-  const emit = (value, sign, n) => {
-    if (isExpected(kind, sign, value, file)) {
-      expected += n;
-      return;
-    }
-    for (let i = 0; i < n; i += 1) problems.push(`${sign} ${JSON.stringify(value)}`);
-  };
-
-  for (const [k, v] of ca) {
-    const w = cb.get(k) ?? 0;
-    if (w < v) emit(k, '-', v - w);
-    if (w > v) emit(k, '+', w - v);
-  }
-  for (const [k, v] of cb) if (!ca.has(k)) emit(k, '+', v);
-  return { problems, expected };
+function readDoc(file) {
+  return new JSDOM(readFileSync(join(ROOT, file), 'utf8')).window.document;
 }
 
-if (!existsSync(join(BASE, 'index.html'))) {
-  console.error(`baseline not found at ${BASE} — see the header of this script`);
-  process.exit(2);
-}
+const problems = [];
 
-let bad = 0;
-let authorised = 0;
+/* --- 1. Files, ids, and metadata ------------------------------------- */
+
+const docs = new Map();
+const ids = new Map();
 for (const file of FILES) {
-  const beforePath = join(BASE, file);
-  const afterPath = join(HEAD, file);
-  if (!existsSync(beforePath) || !existsSync(afterPath)) {
-    console.log(`MISSING: ${file} (baseline: ${existsSync(beforePath)}, built: ${existsSync(afterPath)})`);
-    bad += 1;
+  if (!existsSync(join(ROOT, file))) {
+    problems.push(`missing page: ${file}`);
     continue;
   }
-  const a = corpus(beforePath);
-  const b = corpus(afterPath);
-  const lines = [];
-  for (const kind of Object.keys(a)) {
-    const r = diff(file, kind, a[kind], b[kind]);
-    authorised += r.expected;
-    for (const p of r.problems) lines.push(`  ${kind}\n    ${p}`);
+  const d = readDoc(file);
+  docs.set(file, d);
+
+  const seen = new Set();
+  for (const el of d.querySelectorAll('[id]')) {
+    if (seen.has(el.id)) problems.push(`duplicate id: ${file}#${el.id}`);
+    seen.add(el.id);
   }
-  if (lines.length) {
-    bad += 1;
-    console.log(`\nDEVIATIONS ${file}`);
-    console.log(lines.join('\n'));
-  } else {
-    const n = a['visible text'].length;
-    console.log(`ok  ${file.padEnd(18)} ${n} text nodes carried across`);
+  ids.set(file, seen);
+
+  if (INDEXABLE.has(file)) {
+    const title = d.querySelector('title')?.textContent?.trim() ?? '';
+    if (!title) problems.push(`${file}: missing <title>`);
+    const description = d.querySelector('meta[name="description"]')?.content ?? '';
+    if (!description) problems.push(`${file}: missing meta description`);
+    const canonical = d.querySelector('link[rel="canonical"]')?.getAttribute('href') ?? '';
+    if (canonical !== canonicalFor(file)) {
+      problems.push(`${file}: canonical is ${JSON.stringify(canonical)}; expected ${canonicalFor(file)}`);
+    }
+    const ogUrl = d.querySelector('meta[property="og:url"]')?.getAttribute('content') ?? '';
+    if (ogUrl !== canonicalFor(file)) {
+      problems.push(`${file}: og:url is ${JSON.stringify(ogUrl)}; expected ${canonicalFor(file)}`);
+    }
+    if ((d.querySelector('meta[name="robots"]')?.content ?? '').includes('noindex')) {
+      problems.push(`${file}: indexable page declares noindex`);
+    }
+  } else if (!(d.querySelector('meta[name="robots"]')?.content ?? '').includes('noindex')) {
+    problems.push('404.html: missing noindex robots meta');
   }
 }
 
+/* --- 2. Links, fragments, and assets --------------------------------- */
+
+for (const [file, d] of docs) {
+  const pageIds = ids.get(file);
+
+  for (const a of d.querySelectorAll('a[href]')) {
+    const target = resolve(a.getAttribute('href'), file);
+    if (target.fragment === '' && a.getAttribute('href') === '#') continue; // back-to-top idiom
+    if (!target.file.endsWith('.html')) {
+      problems.push(`${file}: internal href ${JSON.stringify(a.getAttribute('href'))} does not name a page`);
+      continue;
+    }
+    if (!docs.has(target.file)) {
+      problems.push(`${file}: link ${JSON.stringify(a.getAttribute('href'))} -> missing page ${target.file}`);
+      continue;
+    }
+    if (target.fragment && !ids.get(target.file)?.has(target.fragment)) {
+      problems.push(`${file}: link ${JSON.stringify(a.getAttribute('href'))} -> ${target.file} has no #${target.fragment}`);
+    }
+  }
+
+  const refs = [
+    ...Array.from(d.querySelectorAll('img[src]')).map((el) => el.getAttribute('src')),
+    ...Array.from(d.querySelectorAll('link[href]')).map((el) => el.getAttribute('href')),
+    ...Array.from(d.querySelectorAll('script[src]')).map((el) => el.getAttribute('src')),
+    ...Array.from(d.querySelectorAll('iframe[src]')).map((el) => el.getAttribute('src')),
+  ];
+  for (const ref of refs) {
+    if (!isLocal(ref)) continue;
+    if (!existsSync(join(ROOT, strip(ref)))) {
+      problems.push(`${file}: missing asset ${JSON.stringify(ref)}`);
+    }
+  }
+
+  for (const img of d.querySelectorAll('img')) {
+    const alt = img.getAttribute('alt');
+    if (alt === null) {
+      problems.push(`${file}: <img src="${img.getAttribute('src')}"> has no alt attribute`);
+    } else if (alt === '' && !img.closest('[aria-hidden="true"]')) {
+      problems.push(`${file}: <img src="${img.getAttribute('src')}"> has empty alt outside aria-hidden decoration`);
+    }
+  }
+}
+
+/* --- 3. Sitemap coverage ---------------------------------------------- */
+
+let sitemap;
+try {
+  sitemap = new JSDOM(readFileSync(join(ROOT, 'sitemap.xml'), 'utf8'), { contentType: 'text/xml' }).window.document;
+} catch {
+  problems.push('missing sitemap.xml');
+  sitemap = null;
+}
+
+if (sitemap) {
+  const locs = Array.from(sitemap.querySelectorAll('loc')).map((el) => el.textContent.trim());
+  for (const loc of locs) {
+    if (!loc.startsWith(`${ORIGIN}/`)) {
+      problems.push(`sitemap: unexpected origin in ${JSON.stringify(loc)}`);
+      continue;
+    }
+    const file = loc.slice(ORIGIN.length) === '/' ? 'index.html' : `${loc.slice(ORIGIN.length + 1)}.html`;
+    if (!INDEXABLE.has(file) || !docs.has(file)) {
+      problems.push(`sitemap: ${JSON.stringify(loc)} does not name an indexable page`);
+    }
+  }
+  for (const file of INDEXABLE) {
+    if (docs.has(file) && !locs.includes(canonicalFor(file))) {
+      problems.push(`sitemap: missing ${canonicalFor(file)}`);
+    }
+  }
+}
+
+/* --- Report ------------------------------------------------------------ */
+
+const present = FILES.filter((f) => docs.has(f));
+for (const file of FILES) {
+  if (docs.has(file)) console.log(`ok  ${file.padEnd(18)} structure, links, metadata, assets`);
+}
 console.log(
-  bad
-    ? `\n${bad} page(s) deviate beyond the allowlist. Do not ship this until each line above is understood.`
-    : `\nAll nine pages carry the same content. ${authorised} authorised structural differences accounted for.`,
+  problems.length
+    ? `\n${problems.length} defect(s) in the built tree:\n  ${problems.join('\n  ')}`
+    : `\nAll ${present.length} pages resolve: links, fragments, assets, metadata, and sitemap agree.`,
 );
-process.exit(bad ? 1 : 0);
+process.exit(problems.length ? 1 : 0);

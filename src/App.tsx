@@ -8,6 +8,7 @@ import Applications from './pages/Applications.tsx';
 import Defence from './pages/Defence.tsx';
 import Civil from './pages/Civil.tsx';
 import Company from './pages/Company.tsx';
+import Investors from './pages/Investors.tsx';
 import Careers from './pages/Careers.tsx';
 import Contact from './pages/Contact.tsx';
 import NotFound from './pages/NotFound.tsx';
@@ -21,6 +22,7 @@ const COMPONENTS: Record<PageKey, () => React.JSX.Element> = {
   defence: Defence,
   civil: Civil,
   company: Company,
+  investors: Investors,
   careers: Careers,
   contact: Contact,
   'not-found': NotFound,

@@ -1,4 +1,5 @@
-/* GENERATED from the footer that used to be copy-pasted into eight files. */
+/* The shared footer. Tagline and links rewritten in plain language
+ * (CONTENT-REPORT.md); the removed Technology anchors are gone with it. */
 
 export default function Footer() {
   return (
@@ -13,32 +14,33 @@ export default function Footer() {
                 <small>Resilient · Responsive · Real-time · Reconnaissance</small>
               </span>
             </a>
-            <p>Synchronous multi-modal Earth observation and analytical intelligence for sovereign, civil, environmental, and commercial decision systems.</p>
+            <p>Same-moment, all-weather Earth intelligence for sovereign, civil, environmental, and commercial decision-makers.</p>
           </div>
           <div>
             <h3 className="footer-title">Technology</h3>
             <div className="footer-links">
-              <a href="technology#insight-set">Insight Set</a>
-              <a href="technology#analytics">ℝ Analytics</a>
-              <a href="technology#framework">4D Framework</a>
-              <a href="technology#capabilities">Capabilities</a>
+              <a href="technology#insight-set">The system</a>
+              <a href="technology#compare">Why same-moment matters</a>
+              <a href="technology#analytics">From data to decisions</a>
+              <a href="investors">Investor overview</a>
             </div>
           </div>
           <div>
             <h3 className="footer-title">Applications</h3>
             <div className="footer-links">
               <a href="defence">Defence &amp; Security</a>
-              <a href="civil">Civil &amp; Public Sector</a>
-              <a href="applications#portfolio">Application Portfolio</a>
-              <a href="applications#delivery">Intelligence Delivery</a>
+              <a href="civil">Civil &amp; Commercial</a>
+              <a href="applications">Application overview</a>
+              <a href="applications#delivery">What you receive</a>
             </div>
           </div>
           <div>
-            <h3 className="footer-title">Contact</h3>
+            <h3 className="footer-title">Company</h3>
             <div className="footer-links">
-              <a href="mailto:info@r4space.com">info@r4space.com</a>
-              <a href="tel:+919487266145">+91 94872 66145</a>
-              <a href="https://www.google.com/maps?q=Puliampatti,India" target="_blank" rel="noopener">Puliampatti, Tamil Nadu, India</a>
+              <a href="company">Mission and team</a>
+              <a href="careers">Careers</a>
+              <a href="investors">Investors</a>
+              <a href="contact">Contact</a>
             </div>
             <div className="socials">
               <a href="https://www.linkedin.com/company/r4-aerospace-and-defence/" target="_blank" rel="noopener" aria-label="LinkedIn">
@@ -57,7 +59,13 @@ export default function Footer() {
         </div>
         <div className="footer-bottom">
           <span>© 2026 ℝ4 Aerospace &amp; Defence Private Limited. All rights reserved.</span>
-          <span>Built in India <img src="https://flagcdn.com/w20/in.png" alt="India flag" width="20" height="15" /> for global operations.</span>
+          <span>Built in India <svg className="india-flag" role="img" aria-label="India flag" width="20" height="15" viewBox="0 0 20 15">
+            <path fill="#FF9933" d="M0 0h20v5H0z" />
+            <path fill="#FFFFFF" d="M0 5h20v5H0z" />
+            <path fill="#138808" d="M0 10h20v5H0z" />
+            <circle cx="10" cy="7.5" r="1.65" fill="none" stroke="#000080" strokeWidth="0.45" />
+            <circle cx="10" cy="7.5" r="0.3" fill="#000080" />
+          </svg> for global operations.</span>
         </div>
       </div>
     </footer>

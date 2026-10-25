@@ -5,10 +5,13 @@ BG.jpg
 4D2.png
 D3.png
 BG2.png
+optical-sat.png
+sar-sat.png
 
 REMOVED
 =======
-Intro.mp4  (9.6 MB)  home hero background  -> replaced by BG.webp still
+Intro.mp4  (9.6 MB)  home hero background  -> replaced by a still, now by
+                                            optical-sat.webp
 4.mp4      (16.9 MB) operational-problem   -> replaced by BG2.webp still
 The two videos were 26.5 MB of the home page payload and were never
 preload-limited in a way that stopped the larger one downloading in full.
@@ -17,14 +20,25 @@ DERIVED WEBP SIBLINGS (same directory, generated from the sources above)
 ========================================================================
 logo.webp    <- LOGO.png @128px   (header/footer mark)
 mark-128.png <- LOGO.png @128px   (PNG favicon fallback)
-BG.webp      <- BG.jpg            (home hero, largest contentful paint)
+BG.webp      <- BG.jpg @ quality 60 (no page references it since the cut-out
+               heroes; kept only so the file the og:image was derived from is
+               not orphaned. Delete on release review if unwanted.)
 BG2.webp     <- BG2.png           (operational-problem figure)
 4D2.webp     <- 4D2.png @1400px   (4D framework diagram)
 D3.webp      <- D3.png @1400px    (application domain mosaic)
+optical-sat.webp <- optical-sat.png (home hero subject, cut out of its sky)
+sar-sat.webp     <- sar-sat.png     (interior hero subject)
 
-The PNG/JPG sources above are kept as regeneration masters. Nothing on the
-site references them at runtime except BG.jpg, which stays a CSS background
-behind the .page-hero scrim and is the og:image.
+The two hero cut-outs are trimmed to their alpha bounding box, so the visible
+subject reaches the edge of the file and CSS alone decides the margin:
+optical-sat 907x775, sar-sat 1011x890. Both encode alpha, so they must be
+re-encoded with transparency kept:
+  cwebp -preset photo -sharp_yuv -q 82 -m 6 -alpha_q 100 \
+        -alpha_filter best -exact in.png -o in.webp
+
+The PNG/JPG sources above are kept as regeneration masters. BG.jpg is retained
+only as the og:image; the heroes use the sized, optimised cut-outs and no page
+loads BG.webp.
 
 WARNING when regenerating these: the checkout lives on a case-insensitive
 volume, so a derived file named logo.png is the SAME FILE as LOGO.png and will
@@ -42,7 +56,7 @@ assets/                build output (hashed JS + CSS), committed because GitHub
                        Pages serves this branch root with no build step
 index.html .. 404.html build output, same reason — the source is src/
 src/styles.css         the stylesheet source; it is no longer at the root
-main.js                deleted: its behaviour is React components in src/
+main.js                deleted: browser behaviour is vanilla TS in src/client.ts
 
 The root media files above are never moved, renamed or rewritten by the build;
 publicDir is switched off in vite.config.ts precisely so that nothing gets
@@ -57,22 +71,38 @@ visitor and the sitemap use, because GitHub Pages appends the suffix to a
 request that has none. Nothing in this manifest should be renamed to match —
 media is referenced by relative filename and has no extensionless form.
 
-ONE EXCEPTION, GENERATED NOT HAND-MADE
-======================================
-assets/BG-<hash>.jpg   a second copy of the root BG.jpg
+GENERATED FONT AND RUNTIME ASSETS
+=================================
+src/fonts/inter-latin.woff2  self-hosted Latin variable Inter, weights 400–800
+src/fonts/OFL.txt            SIL Open Font License and copyright notice
+assets/inter-latin-<hash>.woff2  generated, preloaded browser font
+assets/OFL.txt               generated copy distributed beside the font
+assets/index-<hash>.css      generated global and Technology styles
+assets/index-<hash>.js       generated vanilla browser controllers; no React
 
-src/styles.css paints BG.jpg behind the .page-hero scrim. A relative url() in
-CSS resolves against the stylesheet, and the stylesheet is no longer at the
-root, so Vite treats that reference as a build input and emits it as a hashed
-sibling of the bundle. This is the only media file the build copies, and it is
-why the reference is written '../BG.jpg' rather than a bare name: a bare name
-resolves to assets/BG.jpg at runtime and 404s, which is the bug this note
-records. base:'./' keeps the emitted URL relative, so it also resolves when
-index.html is opened straight from disk.
+The font is the only stylesheet-referenced build asset. scripts/prerender.mjs
+copies dist/assets and the font licence into root assets/, deleting the old
+generated directory first so hashed filenames cannot accumulate.
 
-Consequences worth knowing: the photo occupies 144 KB twice in the commit, and
-the browser fetches only the hashed one — the root BG.jpg is reached solely by
-the og:image meta tag. Nothing references assets/BG-<hash>.jpg by name, so a
-rebuild that changes the photo renames it; scripts/prerender.mjs deletes the
-whole assets/ directory before copying, which is what keeps that rename from
-accumulating in git.
+Both hero images are transparent cut-outs, so neither is cropped: each is
+contained in its own box and shown alone, with nothing drawn or filled behind
+it. The home subject sits in the hero's second grid column; the interior pages
+share one subject whose attitude varies per .page-hero--* variant using only
+scaleX(-1) and scale(), the two properties that cannot change its bounding box.
+src/chrome/HeroMedia.tsx and src/pages/Home.tsx carry the width/height of the
+trimmed files.
+
+Any <img fetchPriority="high"> in the React tree is preloaded automatically:
+react-dom/server writes <link rel="preload" as="image"> at the top of #root
+during scripts/prerender.mjs. There is no preload list to edit — changing the
+img src changes the preload, and adding fetchPriority to another image would
+silently add a second preload.
+
+The 78 KB / 59 KB WebPs replace the former 88,772-byte hero WebP and the 144 KB
+CSS JPEG behind it, while BG.jpg remains available to social scrapers.
+Below-fold images retain intrinsic dimensions and native lazy loading.
+
+Technical figures and the Contact locator are inline decorative SVG. The India
+flag is also inline SVG with its original accessible name. Google Fonts, the
+flag CDN, and the embedded Google Map are not initial-load dependencies; only
+user-selected external links leave the site.

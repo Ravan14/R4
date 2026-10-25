@@ -29,9 +29,16 @@ const manifest = readManifest();
 // Collect the entry chunk and every CSS file it (or any chunk) emitted.
 const styles = new Set();
 const scripts = [];
-for (const entry of Object.values(manifest)) {
+// The stylesheet references the self-hosted font by relative url(), so Vite
+// treats it as a build asset and names it here. It is the only way this script
+// can learn the hashed filename: a preload link has to name the file exactly,
+// and the whole point of preloading is that it fires before the browser gets
+// far enough to read the CSS that would otherwise discover it.
+const fonts = [];
+for (const [key, entry] of Object.entries(manifest)) {
   if (entry.isEntry) scripts.push(entry.file);
   for (const css of entry.css ?? []) styles.add(css);
+  if (/\.woff2$/.test(key) || /\.woff2$/.test(entry.file)) fonts.push(entry.file);
 }
 if (!scripts.length) throw new Error('manifest has no entry chunk');
 
@@ -58,12 +65,17 @@ try {
 }
 
 const { pageKeys, pageFiles, renderDocument } = mod;
-const assets = { styles: [...styles].map(toRelative), scripts: scripts.map(toRelative) };
+const assets = {
+  styles: [...styles].map(toRelative),
+  scripts: scripts.map(toRelative),
+  fonts: [...new Set(fonts)].map(toRelative),
+};
 
 // Replace the previous build's assets wholesale; hashed filenames otherwise
 // accumulate in git forever.
 rmSync(join(ROOT, 'assets'), { recursive: true, force: true });
 cpSync(join(DIST, 'assets'), join(ROOT, 'assets'), { recursive: true });
+cpSync(join(ROOT, 'src/fonts/OFL.txt'), join(ROOT, 'assets/OFL.txt'));
 
 let count = 0;
 for (const key of pageKeys) {

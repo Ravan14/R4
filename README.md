@@ -28,13 +28,14 @@ The published *addresses* no longer carry `.html`; the files still do. See
 | Address | File | Subject |
 |---|---|---|
 | `/` | `index.html` | Home |
-| `/technology` | `technology.html` | Insight Set and R Analytics |
-| `/applications` | `applications.html` | Dual-use application portfolio |
+| `/technology` | `technology.html` | How the system sees, fuses, and decides |
+| `/applications` | `applications.html` | One system, many missions |
 | `/defence` | `defence.html` | Defence and security applications |
 | `/civil` | `civil.html` | Civil, environmental, and commercial applications |
-| `/company` | `company.html` | Principles, roadmap, team, and FAQ |
+| `/company` | `company.html` | Mission, principles, roadmap, team, and FAQ |
+| `/investors` | `investors.html` | The thesis, the system, and the pre-seed round |
 | `/careers` | `careers.html` | Career disciplines and internships |
-| `/contact` | `contact.html` | Contact information, enquiry form, and office map |
+| `/contact` | `contact.html` | Contact information, enquiry form, and registered location |
 | *(error)* | `404.html` | Not indexed, not linked, not in the sitemap |
 
 ## Addresses
@@ -47,8 +48,8 @@ therefore links extensionlessly, lists extensionless `<loc>` entries in
 `og:url` on every indexable page, which is what tells a crawler that the surviving
 `.html` response is the same page and not a competing one.
 
-The rule lives in `src/urls.ts` and is applied by `scripts/html-to-jsx.mjs`, so a
-regeneration produces the same form rather than restoring the suffix.
+The rule lives in `src/urls.ts` and is applied by `src/server.tsx` during
+prerendering, so every generated document declares the same canonical form.
 
 Links are relative (`technology`, `./` for home) rather than root-absolute
 (`/technology`) because this repository answers to two hostnames — the apex at
@@ -62,34 +63,64 @@ production. `scripts/serve.mjs` resolves in the same order Pages does and serves
 `404.html` with a real 404 status. Opening the documents straight from disk no
 longer navigates, for the same reason.
 
-## Source and build
+## Source, architecture, and build
 
-Those eight, plus `404.html`, are **generated** — along with `assets/`. The
-source is in `src/`: one `Header` and one `Footer` instead of the eight copies
-each that used to be pasted around the site, one component per page, and the
-interactive pieces (filters, FAQ search, counters, the enquiry form) as
-components rather than as one script that patched the DOM after load.
+The nine public documents, `404.html`, and `assets/` are **generated**. The
+maintained source is in `src/`: one shared header/footer, one static React
+component per page, and small vanilla TypeScript controllers in `src/client.ts`.
+React and React DOM are development-only dependencies used by
+`react-dom/server`; neither is included in the browser bundle.
 
     npm install
-    npm run dev      # Vite dev server with hot reload
-    npm run build    # writes the nine .html files and assets/ into this directory
-    npm run serve    # preview the built site, resolving URLs the way Pages does
-    npm run verify   # diffs the built pages against a content baseline
+    npm run dev        # watch, rebuild, prerender, and serve on port 8080
+    npm run build      # write the ten HTML files and assets/ into this directory
+    npm run serve      # serve the existing build with Pages-style URLs
+    npm run typecheck  # TypeScript validation without emitting files
+    npm run verify     # design-token contrast plus structural integrity
+    npm run measure    # design metrics against a running local server
 
-`verify` compares the built pages against an older tree, defaulting to
-`/tmp/r4-base`. Point it at the last pre-migration commit, not at `HEAD` — once
-the generated files are committed, comparing them to `HEAD` proves nothing:
+`npm run dev` starts the preview after its first successful build. Later source
+changes rebuild the generated site; refresh the browser to see them. It does
+not use Vite's hydration/HMR entry or the retired `?page=` development route.
 
-    rm -rf /tmp/r4-base && mkdir -p /tmp/r4-base
-    git archive <pre-migration-commit> | tar -x -C /tmp/r4-base
-    node scripts/verify-content.mjs
-    npm run codemod  # one-time HTML -> JSX conversion; see scripts/html-to-jsx.mjs
+The static HTML exposes navigation, filters, FAQ entries, the contact form, and
+final KPI values without JavaScript. Controllers add mobile menus, the
+Applications dropdown, filtering, FAQ search, and exact `mailto:` formatting.
+CSS scroll timelines optionally add section reveals, reading progress, header
+condensation, and back-to-top visibility. Reduced-motion, printing, and browsers
+without scroll-timeline support retain visible, functional content.
 
-Commit the generated files. GitHub Pages serves this branch's root with no
-build step and no build configuration, so shipping a change means committing
-its output. What did not change: the nine filenames on disk, the `CNAME`, the
-media at their root-relative paths, and every word on every page. What did: the
-addresses visitors see, and the `<loc>` entries in `sitemap.xml` that name them.
+The design contract lives in `src/styles.css`: Inter weights 400–800, the
+`#1D4ED8` brand ramp, `#F1F4FD` secondary surfaces, large/small section spacing,
+and asymmetric grid tokens. Inline SVG diagrams and the inline India flag make
+no external requests. The embedded map and remote font/flag dependencies are
+removed; external map and social links still work when selected.
+
+Current generated-output budgets from the local production build:
+
+| Asset | Raw | Gzip |
+|---|---:|---:|
+| Browser JavaScript | 3,528 bytes | 1.46 KB |
+| Stylesheet | 29,089 bytes | 6.61 KB |
+| Inter Latin variable WOFF2 | 48,432 bytes | — |
+| Shared `BG.webp` hero | 88,772 bytes | — |
+
+`verify` proves the built tree is structurally sound rather than comparing it
+against an older one: every page file exists, every internal link and fragment
+resolves, every relative asset exists, images carry alt text, indexable pages
+declare title/description/canonical/og:url, only `404.html` declares noindex,
+and `sitemap.xml` lists exactly the indexable pages at their canonical
+addresses. The pre-migration word-parity baseline is retired — the content
+replan (CONTENT-REPORT.md) rewrote the copy on purpose.
+
+The HTML-to-JSX codemod is retired. `scripts/html-to-jsx.mjs` remains only as
+historical tooling and is intentionally absent from routine npm scripts; do not
+run it against the maintained page source.
+
+Commit generated files only with release approval. GitHub Pages serves this
+branch's root without a build step, so the approved source and generated output
+must correspond. Root filenames, `CNAME`, media paths, routes, metadata, and
+visible copy remain part of the publication contract.
 
 ## Deployment
 

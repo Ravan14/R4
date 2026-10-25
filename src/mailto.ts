@@ -5,8 +5,6 @@
  * whoever receives that email is the one who would notice.
  */
 
-import type { FormEvent } from 'react';
-
 export const ENQUIRY_ADDRESS = 'info@r4space.com';
 
 export function buildMailto(data: FormData): string {
@@ -21,9 +19,4 @@ export function buildMailto(data: FormData): string {
       `${(data.get('message') as string) || ''}`,
   );
   return `mailto:${ENQUIRY_ADDRESS}?subject=${subject}&body=${body}`;
-}
-
-export function submitContact(event: FormEvent<HTMLFormElement>) {
-  event.preventDefault();
-  window.location.href = buildMailto(new FormData(event.currentTarget));
 }

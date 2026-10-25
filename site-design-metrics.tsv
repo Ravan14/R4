@@ -1,0 +1,17 @@
+viewport	page	screens	page_height_px	bands	bands_with_no_visual	tallest_band_px	white_share	tint_share	dark_share	min_font_px	max_font_px	images	keyframes	animated_elements	scroll_snap_rules	progress_element	section_pad_top_px
+1440x900	index	5.2	4642	6	2	1047	76%	24%	0%	13	61	5	0	0	0	false	115.2px
+1440x900	technology	8.2	7361	6	5	3125	79%	21%	0%	13	48.8	3	0	0	0	false	115.2px
+1440x900	applications	5.3	4772	4	2	1359	65%	35%	0%	13	48.8	5	0	0	0	false	115.2px
+1440x900	defence	4.6	4127	4	3	1151	65%	35%	0%	13	48.8	4	0	0	0	false	115.2px
+1440x900	civil	4.9	4386	5	4	1215	70%	30%	0%	13	48.8	4	0	0	0	false	115.2px
+1440x900	company	6.1	5454	6	5	1300	70%	30%	0%	13	48.8	4	0	0	0	false	115.2px
+1440x900	careers	3.7	3342	3	3	1260	75%	25%	0%	13	48.8	3	0	0	0	false	115.2px
+1440x900	contact	3.3	2953	2	1	1570	74%	26%	0%	13	48.8	3	0	0	0	false	
+390x844	index	8.7	7305	6	2	1419	71%	29%	0%	13	50	5	0	0	0	false	64px
+390x844	technology	15	12691	6	5	4772	77%	23%	0%	13	41.5	3	0	0	0	false	64px
+390x844	applications	10	8445	4	2	3150	53%	47%	0%	13	41.5	5	0	0	0	false	64px
+390x844	defence	8.2	6908	4	3	2606	50%	50%	0%	13	41.5	4	0	0	0	false	64px
+390x844	civil	9.2	7790	5	4	2740	70%	30%	0%	13	41.5	4	0	0	0	false	64px
+390x844	company	9.2	7772	6	5	1455	66%	34%	0%	13	41.5	4	0	0	0	false	64px
+390x844	careers	7.5	6300	3	3	2832	77%	23%	0%	13	41.5	3	0	0	0	false	64px
+390x844	contact	5.2	4363	2	1	1776	65%	35%	0%	13	41.5	3	0	0	0	false	
