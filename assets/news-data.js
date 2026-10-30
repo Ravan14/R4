@@ -5,10 +5,10 @@ window.R4_NEWS = [
     "category": "Awards",
     "title": "Excellence in Defence Technology recognition",
     "summary": "R4 received Excellence in Defence Technology recognition at the National Aerospace & Defence Startup Summit 2026.",
-    "body": "The recognition was presented at NIET, Coimbatore, on 27 October 2026, in connection with the Dr. APJ Abdul Kalam Memorial Pitch Fest. It marks a company recognition milestone and is distinct from independent certification of flight readiness or operational performance.",
+    "body": "The recognition was presented at NIET, Coimbatore, on 27 October 2026, in connection with the Dr. APJ Abdul Kalam Memorial Pitch Fest. This distinction represents a milestone in the company’s development of synchronised multimodal Earth-intelligence capabilities.",
     "image": "engineering",
     "status": "published",
-    "source": ""
+    "source": "https://lnkd.in/p/gBKmYR9u"
   },
   {
     "id": "eir-grant-2026",
@@ -16,30 +16,8 @@ window.R4_NEWS = [
     "category": "Grants",
     "title": "₹8 lakh EiR grant awarded",
     "summary": "R4 has secured an ₹8 lakh Entrepreneur-in-Residence grant to support its development programme.",
-    "body": "The grant represents an institutional milestone for R4. The award is distinct from disbursement; implementation and reporting follow the applicable programme agreement.",
+    "body": "The grant supports the progression of R4’s research and technology-development activities. Implementation, disbursement and reporting are governed by the applicable programme agreement.",
     "image": "engineering",
-    "status": "published",
-    "source": ""
-  },
-  {
-    "id": "startup-singam-2026",
-    "date": "2026-07",
-    "category": "Programmes",
-    "title": "Selected for the Startup Singam Season 3 bootcamp",
-    "summary": "R4 progressed to the Startup Singam Season 3 bootcamp in Chennai.",
-    "body": "The selection created an opportunity to develop the company’s technical proposition, financing narrative and institutional engagement. Selection does not imply a confirmed investment.",
-    "image": "ground",
-    "status": "published",
-    "source": ""
-  },
-  {
-    "id": "sisfs-selection",
-    "date": "2026",
-    "category": "Programmes",
-    "title": "Selection under the Startup India Seed Fund Scheme",
-    "summary": "R4 reports selection under SISFS through the Cultiv8 / CIET-TBI programme pathway.",
-    "body": "This milestone records programme selection. Funding terms, disbursement and associated milestones are governed by the applicable programme documentation.",
-    "image": "agriculture",
     "status": "published",
     "source": ""
   },
@@ -47,12 +25,23 @@ window.R4_NEWS = [
     "id": "deep-leap-selection",
     "date": "2026",
     "category": "Accelerators",
-    "title": "Shortlisted for the IIMK LIVE DEEP LEAP selection round",
-    "summary": "R4 progressed to a selection-stage evaluation under the DEEP LEAP programme.",
-    "body": "The milestone records shortlisting for evaluation, rather than final admission or confirmed programme funding.",
+    "title": "Selected for the IIMK LIVE DEEP LEAP cohort",
+    "summary": "R4 has been selected for the IIMK LIVE DEEP LEAP cohort.",
+    "body": "Selection represents a milestone in R4’s institutional engagement as the company advances its synchronised multimodal Earth-intelligence architecture and associated analytics platform.",
     "image": "analytics",
     "status": "published",
     "source": ""
+  },
+  {
+    "id": "beyondxcelerate-selection-2026",
+    "date": "2026",
+    "category": "Accelerators",
+    "title": "Selected for BeyondXcelerate Defence x Space Tech",
+    "summary": "R4 has been selected for the BeyondXcelerate Defence x Space Tech programme.",
+    "body": "This selection strengthens R4’s engagement with the defence and space-technology ecosystem as it develops coordinated satellite observations, distributed processing and multimodal analytics for civilian and defence applications.",
+    "image": "cluster",
+    "status": "published",
+    "source": "https://www.linkedin.com/feed/update/urn:li:activity:7517871200929398784"
   },
   {
     "id": "founder-convergence",
