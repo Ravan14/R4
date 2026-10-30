@@ -1,0 +1,50 @@
+[
+  {
+    "asset": "assets/images/cluster.png",
+    "prompt": "A cinematic photorealistic conceptual visual for the R4 Aerospace & Defence website: exactly THREE unlabelled satellites in coordinated formation above a richly detailed curved Earth, Indian Ocean coastline at dawn, credible metallic spacecraft bodies, dark blue solar panels, subtle atmospheric cyan glow, vast navy space. Wide landscape 16:9 composition, left half restrained darker negative space for website text; spacecraft on right half. Premium aerospace editorial art, physically plausible lighting, no laser beams, no text, no labels, no logos, no trademark symbols. Concept artwork, not a claimed flight photograph.",
+    "method": "built-in image generation",
+    "classification": "AI-generated conceptual illustration"
+  },
+  {
+    "asset": "assets/images/maritime.png",
+    "prompt": "Wide 16:9 premium photorealistic Earth-observation editorial artwork: an overhead-oblique maritime port and blue Indian Ocean sea lanes with two civilian cargo vessels and an intricate coast. Clear ship wakes, restrained navy and teal palette, subtle warm sunrise, realistic environmental detail. Scientific Earth intelligence website illustration. No weapons, no military operations, no logos, no labels, no UI, no text. Visually rich but uncluttered.",
+    "method": "built-in image generation",
+    "classification": "AI-generated conceptual illustration"
+  },
+  {
+    "asset": "assets/images/environment.png",
+    "prompt": "Wide 16:9 photorealistic satellite-perspective conceptual Earth observation image of a river floodplain after rain, branching river, partially inundated agricultural fields, distant settlement and clearing cloud edges, muted jade, aqua, deep blue, natural earth colors. Coherent geography, editorial remote-sensing aesthetic, realistic light. No labels, logos, text, false-color overlay or measurement claims.",
+    "method": "built-in image generation",
+    "classification": "AI-generated conceptual illustration"
+  },
+  {
+    "asset": "assets/images/engineering.png",
+    "prompt": "Wide 16:9 premium photorealistic conceptual aerospace cleanroom: an unlabelled compact satellite flight-like engineering assembly on a workbench, metallic gold thermal insulation, dark solar panel segment, precision components, two anonymous engineers in cleanroom garments softly out of focus. Restrained blue-white lighting, documentary sophistication. No company logos, badges, readable text, trademark symbols or award imagery. This is illustrative engineering imagery, not a depiction of actual R4 facilities.",
+    "method": "built-in image generation",
+    "classification": "AI-generated conceptual illustration"
+  },
+  {
+    "asset": "assets/images/agriculture.png",
+    "prompt": "Wide 16:9 photorealistic conceptual Earth-observation editorial image: high aerial view of richly patterned agricultural fields in India, irrigation canals, small reservoirs, varied crop textures and green-to-gold vegetation, a winding river in distance. Premium scientific website visual with restrained jade and teal tones, coherent realistic landscape, no overlays, no writing, no logos, no measurement claims.",
+    "method": "built-in image generation",
+    "classification": "AI-generated conceptual illustration"
+  },
+  {
+    "asset": "assets/images/energy.png",
+    "prompt": "Wide 16:9 premium photorealistic conceptual Earth-intelligence image: a coastal industrial energy complex with storage tanks, a solar farm, power transmission corridors and adjacent open water, seen from a high aerial perspective at blue hour. Fine infrastructural detail, restrained navy, teal and amber. No accidents, no explosions, no text, no UI, no logos.",
+    "method": "built-in image generation",
+    "classification": "AI-generated conceptual illustration"
+  },
+  {
+    "asset": "assets/images/ground.png",
+    "prompt": "Wide 16:9 cinematic photorealistic conceptual satellite ground-segment image: two large white parabolic antennas pointed into a deep blue twilight sky, clean research campus architecture beneath, distant hills and warm equipment illumination. Refined institutional aerospace photography aesthetic. No logos, labels, writing or fabricated company signage. Illustrative scene, not an actual R4 facility.",
+    "method": "built-in image generation",
+    "classification": "AI-generated conceptual illustration"
+  },
+  {
+    "asset": "assets/images/analytics.png",
+    "prompt": "Wide 16:9 photorealistic conceptual Earth intelligence analytical environment: a modern scientific operations room, an elegant large wall display showing a curved Earth, a blue ocean coastal map and small abstract remote-sensing panels, one anonymous analyst viewed from behind at a desk. Cyan, deep navy and restrained warm accents. Display content visual only, no readable text, no numerical metrics, no logos, no claims of actual R4 software. Premium understated aerospace website artwork.",
+    "method": "built-in image generation",
+    "classification": "AI-generated conceptual illustration"
+  }
+]

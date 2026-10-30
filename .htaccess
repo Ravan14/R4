@@ -1,0 +1,6 @@
+Options -MultiViews
+DirectoryIndex index.html
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(technology|applications|defence|civil|company|investors|careers|contact|platform|news)/?$ $1.html [L]

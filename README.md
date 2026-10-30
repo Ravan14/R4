@@ -1,147 +1,103 @@
-# R4 Aerospace & Defence — Multi-page Website
+# R4 interactive website — HTML delivery
 
-This package converts the original single-page website into a responsive multi-page architecture.
+Revision: 30 October 2026.
 
-## Retained media paths
+## Open the complete website
 
-Place the existing media files in the same root directory as `index.html`:
+Extract the ZIP archive and open `index.html`. Keep the HTML files and the entire `assets/` directory together. The 11 public pages embed their styling and interaction code; generated images and the editable news dataset are bundled assets. No framework, external font, package installation or build step is required for viewing.
 
-- `LOGO.png`
-- `BG.jpg`
-- `4D2.png`
-- `D3.png`
-- `BG2.png`
-
-The site loads the derived WebP siblings (`logo.webp`, `BG.webp`, `BG2.webp`,
-`4D2.webp`, `D3.webp`, `mark-128.png`) rather than the large sources above.
-See `ASSET-MANIFEST.txt` for the derivation of each and the case-insensitive
-volume warning that governs how they are regenerated.
-
-`Intro.mp4` and `4.mp4` have been removed; the home hero and the
-operational-problem figure use still images instead.
-
-The published *addresses* no longer carry `.html`; the files still do. See
-"Addresses" below for why those are two different sentences.
+Do not open individual HTML files outside the extracted directory if you require their images and news data. Use the complete ZIP package for offline navigation and deployment.
 
 ## Pages
 
-| Address | File | Subject |
-|---|---|---|
-| `/` | `index.html` | Home |
-| `/technology` | `technology.html` | How the system sees, fuses, and decides |
-| `/applications` | `applications.html` | One system, many missions |
-| `/defence` | `defence.html` | Defence and security applications |
-| `/civil` | `civil.html` | Civil, environmental, and commercial applications |
-| `/company` | `company.html` | Mission, principles, roadmap, team, and FAQ |
-| `/investors` | `investors.html` | The thesis, the system, and the pre-seed round |
-| `/careers` | `careers.html` | Career disciplines and internships |
-| `/contact` | `contact.html` | Contact information, enquiry form, and registered location |
-| *(error)* | `404.html` | Not indexed, not linked, not in the sitemap |
+| File | Purpose |
+| --- | --- |
+| index.html | Image-led homepage, modality explorer and current news |
+| technology.html | Satellite cluster, 15-dimension comparison, interactive figure and displacement model |
+| applications.html | Applications overview and enlarged-image gallery |
+| defence.html | Institutional observation applications |
+| civil.html | Civil, commercial and environmental applications |
+| company.html | Company narrative, interactive 2023–2029+ journey and FAQ |
+| investors.html | Development and financing overview |
+| careers.html | Filterable professional disciplines |
+| contact.html | Enquiry preparation and contact details |
+| platform.html | Interactive conceptual platform preview and demonstration request |
+| news.html | Searchable, filterable news archive and article overlays |
+| news-editor.html | Local editorial utility; exclude from the public deployment |
 
-## Addresses
+## Demonstration requests
 
-A request for `/technology` has no extension, so GitHub Pages appends one and
-serves `technology.html`. Both forms answer 200 with identical bytes, and Pages
-offers no way to 301 one to the other — it has no rewrite engine. The site
-therefore links extensionlessly, lists extensionless `<loc>` entries in
-`sitemap.xml`, and declares the extensionless form as `rel=canonical` and
-`og:url` on every indexable page, which is what tells a crawler that the surviving
-`.html` response is the same page and not a competing one.
+Select **Request demo** in the navigation. Enter the institution, email address, application focus and demonstration objectives. **Prepare demonstration email** opens a draft addressed to `info@r4space.com`. The visitor reviews and sends it in their email application. **Copy request** provides a fallback.
 
-The rule lives in `src/urls.ts` and is applied by `src/server.tsx` during
-prerendering, so every generated document declares the same canonical form.
+This static implementation does not send email automatically, store form submissions or book appointments. A backend would be required for direct submission without an email client. No email was sent during validation.
 
-Links are relative (`technology`, `./` for home) rather than root-absolute
-(`/technology`) because this repository answers to two hostnames — the apex at
-`www.r4space.com` and one level down at `Ravan14.github.io/R4`. A root-absolute
-link is correct on the first and a 404 on the second.
+## Interactive features
 
-**Preview with `npm run serve`, not `python -m http.server`.** The Python server
-maps a request onto a file and nothing else, so it 404s on `/technology` while
-Pages 200s — every internal link would look broken locally and fine in
-production. `scripts/serve.mjs` resolves in the same order Pages does and serves
-`404.html` with a real 404 status. Opening the documents straight from disk no
-longer navigates, for the same reason.
+- Image-led homepage, section reveals, reading-progress indicator and reduced-motion support.
+- Global accessible demonstration-request dialog with required-field validation and copy fallback.
+- Satellite-cluster terminology and removal of trademark symbols throughout the generated public pages.
+- Interactive architecture selector, column highlighting, an expandable 15-dimension table and a qualitative modality-versus-synchronicity chart.
+- Hypothetical constant-speed displacement calculator: displacement = speed × acquisition offset.
+- Six selectable journey milestones with previous/next navigation and historical/planned status labels.
+- Platform-preview modality selection, synthetic event inspection, timeline controls and illustrative JSON evidence export.
+- News category/year/keyword filters, pagination, article dialogs and draft/published states.
+- Image-enlargement dialogs and eight new generated conceptual images.
+- Existing FAQ search, career filtering and contact interactions retained.
 
-## Source, architecture, and build
+## Update news and events
 
-The nine public documents, `404.html`, and `assets/` are **generated**. The
-maintained source is in `src/`: one shared header/footer, one static React
-component per page, and small vanilla TypeScript controllers in `src/client.ts`.
-React and React DOM are development-only dependencies used by
-`react-dom/server`; neither is included in the browser bundle.
+1. Open `news-editor.html` from the extracted website directory.
+2. Select an existing announcement or create a new one.
+3. Enter the exact title, category, date precision, summary, article and optional public evidence URL.
+4. Select Draft or Published. Draft records are excluded from public news.
+5. Choose **Apply to session** to incorporate the form values.
+6. Choose **Export news-data.js** and replace `assets/news-data.js` in the website directory with the downloaded file.
+7. Review `news.html` and the homepage, then deploy the updated data file to the host.
 
-    npm install
-    npm run dev        # watch, rebuild, prerender, and serve on port 8080
-    npm run build      # write the ten HTML files and assets/ into this directory
-    npm run serve      # serve the existing build with Pages-style URLs
-    npm run typecheck  # TypeScript validation without emitting files
-    npm run verify     # design-token contrast plus structural integrity
-    npm run measure    # design metrics against a running local server
+Import accepts a previously exported JavaScript data file or equivalent JSON. The editing utility operates in memory; it does not authenticate users or modify a hosted website. Export changes before closing or refreshing. Apply any field changes before exporting. Preserve the original filename `news-data.js` when replacing the asset. Do not deploy the editing page or source folder publicly.
 
-`npm run dev` starts the preview after its first successful build. Later source
-changes rebuild the generated site; refresh the browser to see them. It does
-not use Vite's hydration/HMR entry or the retired `?page=` development route.
+Dates may be a year, year-month or full date. Do not invent an exact announcement day where only the year is known. Use factual status distinctions: shortlisting, selection, award, disbursement and completion are different milestones. The existing award record is based on the supplied company certificate; other institutional records are based on company-provided information. The included editorial award template remains a draft and is excluded from public results.
 
-The static HTML exposes navigation, filters, FAQ entries, the contact form, and
-final KPI values without JavaScript. Controllers add mobile menus, the
-Applications dropdown, filtering, FAQ search, and exact `mailto:` formatting.
-CSS scroll timelines optionally add section reveals, reading progress, header
-condensation, and back-to-top visibility. Reduced-motion, printing, and browsers
-without scroll-timeline support retain visible, functional content.
+This section supports ongoing editorial updates; it does not automatically retrieve announcements from external services.
 
-The design contract lives in `src/styles.css`: Inter weights 400–800, the
-`#1D4ED8` brand ramp, `#F1F4FD` secondary surfaces, large/small section spacing,
-and asymmetric grid tokens. Inline SVG diagrams and the inline India flag make
-no external requests. The embedded map and remote font/flag dependencies are
-removed; external map and social links still work when selected.
+## Figures and imagery
 
-Current generated-output budgets from the local production build:
+- `assets/sensor-synchronicity.svg`: editable vector comparison figure.
+- `assets/sensor-synchronicity.png`: 2120-pixel-wide raster rendering of the same figure.
+- `assets/images/`: eight built-in image-generation outputs used throughout the website.
+- `source/image-prompts.json`: complete prompt set, method and asset mapping.
 
-| Asset | Raw | Gzip |
-|---|---:|---:|
-| Browser JavaScript | 3,528 bytes | 1.46 KB |
-| Stylesheet | 29,089 bytes | 6.61 KB |
-| Inter Latin variable WOFF2 | 48,432 bytes | — |
-| Shared `BG.webp` hero | 88,772 bytes | — |
+The figure is categorical and qualitative. Horizontal coordinates are not measured timing values, numerical scores or operator benchmarks. Showing all modality families does not claim that every system carries every sensor.
 
-`verify` proves the built tree is structurally sound rather than comparing it
-against an older one: every page file exists, every internal link and fragment
-resolves, every relative asset exists, images carry alt text, indexable pages
-declare title/description/canonical/og:url, only `404.html` declares noindex,
-and `sitemap.xml` lists exactly the indexable pages at their canonical
-addresses. The pre-migration word-parity baseline is retired — the content
-replan (CONTENT-REPORT.md) rewrote the copy on purpose.
+Generated images are conceptual illustrations. They are not actual R4 spacecraft, facilities, event photographs or measured Earth-observation products. Platform SAR and thermal modes are explicitly labelled visual interface concepts, not physical simulations or sensor retrievals.
 
-The HTML-to-JSX codemod is retired. `scripts/html-to-jsx.mjs` remains only as
-historical tooling and is intentionally absent from routine npm scripts; do not
-run it against the maintained page source.
+## Maintenance and regeneration
 
-Commit generated files only with release approval. GitHub Pages serves this
-branch's root without a build step, so the approved source and generated output
-must correspond. Root filenames, `CNAME`, media paths, routes, metadata, and
-visible copy remain part of the publication contract.
+Edit `source/build_site.py` for the baseline content and `source/enhancements.py` for the interactive extension. Run:
 
-## Deployment
+```bash
+python3 source/build_site.py
+```
 
-Upload every HTML file, the `assets/` directory, and the media files listed in
-`ASSET-MANIFEST.txt` to the same web-root directory. The package works with
-static hosting and requires no build process on the host — the build runs here,
-and its output is what gets committed.
+The generator uses the Python standard library. It preserves an existing `assets/news-data.js` and regenerates the HTML plus shared CSS/JavaScript source. Direct edits to generated HTML will be overwritten. The PNG graph is a rendered copy of the SVG; rerender it if the vector diagram changes. The supplied PNG was rendered using Inkscape.
 
-One host requirement: because the links are extensionless, the server must be
-able to resolve `/technology` to `technology.html`. GitHub Pages, Netlify, and
-Cloudflare Pages all do. A plain `nginx` or Apache root will not until you add
-the equivalent of `try_files $uri $uri.html /index.html`, and every internal link
-will 404 without it.
+## Hosting
 
-For local review use `npm run serve`. Opening `index.html` straight from disk no
-longer navigates, and `python -m http.server` resolves only exact filenames, so
-both disagree with production on the one thing the URLs depend on.
+Production has not been modified. Upload the 11 public HTML files, `assets/`, sitemap, robots file and the routing configuration appropriate to the actual host. Keep `news-editor.html`, `source/` and documentation outside the production document root.
 
-## Additional deployment files
+`.htaccess` provides an Apache example; `_redirects` provides a compatible static-host rewrite example. Preserve or merge existing host settings and verify the extensionless URLs before replacing production files. These examples were not executed against the actual r4space.com hosting environment. Canonical metadata assumes `https://www.r4space.com/`.
 
-- `404.html` — static error page
-- `robots.txt` — search-engine access rules
-- `sitemap.xml` — public page index
-- `ASSET-MANIFEST.txt` — exact retained root-relative media paths
+## Validation completed
+
+- 12 HTML files passed 578 structural, label, internal-link, fragment, metadata, structured-data and JavaScript-syntax checks.
+- All 37 static image/script references resolved; eight concept-image files are present.
+- Eight news records validated structurally: seven published announcements and one draft.
+- No trademark symbols or spacecraft-class labels remain in the generated HTML.
+- Desktop homepage visually reviewed in the browser.
+- Demonstration dialog opening, required input, copying and closing verified with synthetic data.
+- Architecture selection, comparison expansion and displacement calculation verified in the browser.
+- Journey selection and navigation verified in the browser.
+- Platform modality switching, synthetic-event selection and timeline-range changes verified in the browser.
+- The standalone comparison figure was rendered and visually inspected.
+
+Browser transport disconnected before the final news-editor, playback/export and full responsive regression checks could be completed. These controls have source and syntax checks but not complete browser verification in this revision. Email-client launch and actual delivery remain device-dependent and were not tested end to end. No formal accessibility certification or full cross-browser assessment is claimed.
